@@ -23,8 +23,11 @@
 	
 	<!-- FontAwesome FA FA ICONS -->
 	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-	
-	<!-- Offline GOOGLE Fonts -->
+
+
+
+
+	<!-- Offline GOOGLE Fonts  there -->
 	<link href="google-font/google-font-montserrat-400-700.css" rel="stylesheet" type="text/css">
     <link href="google-font/google-font-400-700.css" rel="stylesheet" type="text/css">
 	
