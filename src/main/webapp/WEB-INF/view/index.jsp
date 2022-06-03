@@ -13,23 +13,30 @@
 <div class="container-fluid" style="margin-top:75px;">
 
 
-	<div class="row">
+	<div class="row" >
 
 				<!----------------- BODY AREA-------------------->
 				<div class="col-md-12 col-sm-12 col-xs-12" >
 					<div id="mainbody">
-				            <h1> Welcome to Index Page  </h1>
-				     </div>
-						
-				</div> 
 
-	
-		
+				     </div>
+
+				</div>
+
 	</div>  <!-- END OF ROW  -->	
 	
 </div>  <!-- END OF CONTAINER -->
 
 
-</html>
 
+
+
+</html>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <%@include file="include/footer.jsp" %>

@@ -66,12 +66,6 @@
     </div>
 
 
-    <div class="navbar-header" >
-   
-     <h1> Hi there </h3>
-		
-    </div>
-
 
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -754,8 +748,6 @@
                         Welcome to Stobart Air Link  - providing you with seamless access to all your IT systems, company and HR information and more.
                         <br><br><span class="pull-left" style="font-weight:600;"> Employee Feedback</span><br>
                          Please send your feedback to HR : <b>human.resources@stobartair.com</b>
-                        
-                        
                         </div>
                     </div>					
                     <div class="footer-col col-md-3">

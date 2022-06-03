@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,7 +43,7 @@
     <link rel="stylesheet" href="<c:url value="css/superfish.css"/>">
 
 	<!-- FontAwesome FA FA ICONS -->
-	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 
 	<link rel="stylesheet" href="css/custom-style.css">
 
@@ -65,27 +66,23 @@
 
 //--- This function will be loading all pages to the body main area
 function loadJspPagetoTheBody(callingpagename) {
-		var callingurl = "ajaxrest/loadjsppage?pagename="+callingpagename;
+		var callingurl = "loadjsppage?pagename="+callingpagename;
 		$('#mainbody').load(callingurl);
-
-	}
-
+}
 
 
-
-
-
-function CalAlfresco(){
-
-	document.alfresco.action="logonalfresco";
-	document.alfresco.method="POST"
-	document.alfresco.target="_blank"
-    document.alfresco.submit();
+function calHomePage(){
+	document.portal.method="POST";
+	document.portal.action="index";
+    document.portal.submit();
 	return true;
 }
 
 </script>
 
+<form name="portal" id="portal">
+
+</form>
 
 
 
@@ -95,9 +92,8 @@ function CalAlfresco(){
 
 <div class="container-fluid" style="background:#0071ba;" >
 
-
     <div class="navbar-header">
-		<img src="images/logo_on_white.png" alt="Home Page" class="img-responsive"  />
+		<img src="images/radiant-logo.png" alt="Home Page" class="img-responsive"  />
     </div>
 
 
@@ -117,23 +113,37 @@ function CalAlfresco(){
     <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
 
-
-
              <li class="dropdown">
-                <a href="javascript:void();" onClick="calHomePage();" style="font-size:9pt;font-weight:600;color:#FDFEFE;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-home fa-lg" aria-hidden="true"></i></a>
+                <a href="javascript:void();" onClick="calHomePage();" style="font-size:9pt;font-weight:600;color:#FDFEFE;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-home fa-lg" aria-hidden="true"></i> Home</a>
             </li>
 
             <li class="dropdown">
 
-                <a onmouseover="this.click()" style="font-size:09pt;font-weight:600;color:#FDFEFE;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-plane" aria-hidden="true"></i> &nbsp;Data Orchestation <span class="caret"></span></a>
+                <a onmouseover="this.click()" style="font-size:09pt;font-weight:600;color:#FDFEFE;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-cogs" aria-hidden="true"></i> &nbsp;Data Orchestation <span class="caret"></span></a>
                     <ul class="dropdown-menu" style="left:0;width:200px;">
-                        <li style="margin-top:3px;margin-bottom:3px;"><a href="javascript:void();" onClick="loadJspPagetoTheBody('convertxmlfile');"  style="font-size:09pt;color:black;">
-                            <img src="images/database.png">&nbsp;&nbsp;XML File Input </a></li>
-                            <li style="margin-top:3px;margin-bottom:3px;"><a href="javascript:void();" onClick="loadJspPagetoTheBody('convertcsvfile');"  style="font-size:09pt;color:black;">
-                             <img src="images/database.png">&nbsp;&nbsp;Convert CSV Excel File</a>
+                        <li style="margin-top:3px;margin-bottom:3px;"><a href="javascript:void();" onClick="loadJspPagetoTheBody('convertcsvfile');"  style="font-size:09pt;color:black;">
+                                <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;Convert CSV File</a>
                         </li>
+                        <li style="margin-top:3px;margin-bottom:3px;"><a href="javascript:void();" onClick="loadJspPagetoTheBody('convertjsonfile');"  style="font-size:09pt;color:black;">
+                                <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;Convert Json File</a>
+                         </li>
+
+
+                        <!--
+                        <li style="margin-top:3px;margin-bottom:3px;"><a href="javascript:void();" onClick="loadJspPagetoTheBody('convertjsonfile');"  style="font-size:09pt;color:black;">
+                            <img src="images/database.png">&nbsp;&nbsp;Convert Json File</a>
+                         </li>
+                         -->
                     </ul>
             </li>
+
+
+			<li class="dropdown">
+			  <a onmouseover="this.click()" href="#" style="font-size:9pt;font-weight:600;color:#FDFEFE;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle"></i>&nbsp jai.wardhan<span class="caret"></span></a>
+			  <ul class="dropdown-menu">
+				<li style="margin-top:3px;margin-bottom:3px;"><a href="index.jsp" style="font-size:9pt;">Logout</a></li>
+			  </ul>
+			</li>
 
 
 

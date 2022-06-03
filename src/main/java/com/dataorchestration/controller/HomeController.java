@@ -27,14 +27,23 @@ public class HomeController {
     //-------THis Will be Called when link is clicked form the Header -----------------
     @RequestMapping(value = "/index",method = {RequestMethod.POST,RequestMethod.GET}, produces = { MimeTypeUtils.TEXT_PLAIN_VALUE })
     public ModelAndView invoiceConversionTool(HttpServletRequest req, ModelMap model) throws Exception{
-        
     	ModelAndView modelAndView = new ModelAndView();
-        
         modelAndView.setViewName("index");
-        
         return modelAndView;
     }//--------------- End Of Function -------------
 
+
+
+
+
+
+    //-------THis Will be Called when link is clicked form the Header -----------------
+    @RequestMapping(value = "/sample",method = {RequestMethod.POST,RequestMethod.GET}, produces = { MimeTypeUtils.TEXT_PLAIN_VALUE })
+    public ModelAndView sample(HttpServletRequest req, ModelMap model) throws Exception{
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("sample_gui_layer");
+        return modelAndView;
+    }//--------------- End Of Function -------------
 
 
 
