@@ -35,15 +35,15 @@
 
 
     <!-- Bootstrap Core CSS -->
-    <link href="<c:url value="css/bootstrap.min.css"/>" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom-style.css">
 
-	<link rel="stylesheet" href="<c:url value="css/freelancer.css"/>">
-    <link rel="stylesheet" href="<c:url value="css/superfish.css"/>">
+
 
 
 	<!-- FontAwesome FA FA ICONS -->
 	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/custom-style.css">
+
 
 	<!-- Favicon -->
     <link rel="icon"   href="<c:url value="images/favicon.png"/>">
