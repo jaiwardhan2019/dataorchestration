@@ -40,13 +40,9 @@
 
 
 
-
 	<!-- FontAwesome FA FA ICONS -->
 	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 
-
-	<!-- Favicon -->
-    <link rel="icon"   href="<c:url value="images/favicon.png"/>">
 
 
 </head>

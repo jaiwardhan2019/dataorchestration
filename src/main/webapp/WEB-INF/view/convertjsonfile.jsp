@@ -21,7 +21,45 @@
 </ul>
 
 <h1> Under Construction..............  </h1>
-</body>
+
+
+
+         <p align="center">
+
+
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+              Launch demo modal
+            </button>
+
+
+         </p>
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Manage Data.</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        1.) List Data.
+        2.) Remove Data.
+        3.) Update Date.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 </html>
 
 <br>

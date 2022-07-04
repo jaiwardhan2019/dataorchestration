@@ -78,8 +78,6 @@
 		<!-- End of  HOT Deployment-->
 
 
-
-
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
