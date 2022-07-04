@@ -65,13 +65,29 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.27</version>
 		</dependency>
-		
+
+
+		<!--
+		For HOT Development add this below dependency and follow the steps in this link
+		https://faun.pub/10-steps-to-enabling-auto-reload-for-spring-boot-in-intellij-230326413b68
+		-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+		<!-- End of  HOT Deployment-->
+
+
+
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
+
+
 	</dependencies>
 
 	<build>

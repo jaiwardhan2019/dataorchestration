@@ -37,14 +37,12 @@
     <!-- Bootstrap Core CSS -->
     <link href="<c:url value="css/bootstrap.min.css"/>" rel="stylesheet">
 
-
-
 	<link rel="stylesheet" href="<c:url value="css/freelancer.css"/>">
     <link rel="stylesheet" href="<c:url value="css/superfish.css"/>">
 
+
 	<!-- FontAwesome FA FA ICONS -->
 	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-
 	<link rel="stylesheet" href="css/custom-style.css">
 
 	<!-- Favicon -->
@@ -121,7 +119,8 @@ function Logout_application(){
 <div class="container-fluid" style="background:#0071ba;" >
 
     <div class="navbar-header">
-		<img src="images/radiant-logo.png" alt="Home Page" class="img-responsive"  />
+	     <img src="images/radiant-logo.png" alt="Home Page" class="img-responsive"  />
+		<!--<span style="color:white"> <h5> Company Name  </h5> </span> -->
     </div>
 
 
@@ -161,7 +160,7 @@ function Logout_application(){
 
 
 			<li class="dropdown">
-			  <a onmouseover="this.click()" href="#" style="font-size:9pt;font-weight:600;color:#FDFEFE;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle"></i>&nbsp User Name<span class="caret"></span></a>
+			  <a onmouseover="this.click()" href="#" style="font-size:9pt;font-weight:600;color:#FDFEFE;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle"></i>&nbspAloka Anant<span class="caret"></span></a>
 			  <ul class="dropdown-menu">
 				<li style="margin-top:3px;margin-bottom:3px;"><a  href="javascript:window.close();" onClick="javascript:window.close();" style="font-size:9pt;">Logout</a></li>
 			  </ul>
