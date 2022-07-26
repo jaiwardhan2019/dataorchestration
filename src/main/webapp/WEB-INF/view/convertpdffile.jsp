@@ -94,12 +94,12 @@ function Convert_CsvFile() {
 <!-- First Part of page -->
 <ul class="breadcrumb">
     <li><a href="javascript:void();" onClick="calHomePage();">Home</a></li>
-    <li>Data Orchestation</li>
-    <li>Convert Csv File</li>
+    <li>Convert File </li>
+    <li>Convert PDF File</li>
 </ul>
 
 <div class="col-md-12 col-sm-12 col-xs-12"  align="left">
-    <i class="fa fa-cogs fa-2x" aria-hidden="true"></i>&ensp;&ensp;<span style="font-weight:600;font-size:13pt;">Convery PDF to Excel </span></a>
+    <i class="fa fa-cogs fa-2x" aria-hidden="true"></i>&ensp;&ensp;<span style="font-weight:600;font-size:13pt;">Convert PDF to Excel </span></a>
 </div>
  <br>
  <br>
@@ -184,19 +184,11 @@ function Convert_CsvFile() {
               <table class="table table-striped table-bordered" border="1" style="width: 60%;" align="center">
                     <tbody>
                          <tr align="center">
-                             <td  colspan="5" align="right">
-                               <span style="color:blue;"> <i class="fa fa-download" aria-hidden="true"></i> Download Data..</span>
+                             <td  colspan="5" align="center">
+                               <span style="color:blue;"> <i class="fa fa-download" aria-hidden="true"></i> ${dataList} </span>
                              </td>
                          </tr>
-                             <c:forEach var="userdata" items="${dataList}">
-                                   <tr>
-                                        <td> ${userdata.firstName} </td>
-                                        <td> ${userdata.lastName} </td>
-                                        <td> ${userdata.emailId} </td>
-                                        <td> ${userdata.phoneNumber}  </td>
-                                        <td> ${userdata.eircode}  </td>
-                                       </tr>
-                                </c:forEach>
+
                           </tbody>
                     </table>
 

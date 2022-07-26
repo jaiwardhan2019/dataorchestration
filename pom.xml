@@ -46,7 +46,7 @@
 		<dependency>
 			<groupId>e-iceblue</groupId>
 			<artifactId>spire.pdf</artifactId>
-			<version>8.5.8</version>
+			<version>8.7.0</version>
 		</dependency>
 		<!-- END -->
 

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -69,7 +70,7 @@ public class dataOrchesTrationImp implements  dataOrchesTration{
     @Value("${spring.operations.pdf.datafolder}")
     private String pdfFilesFolder;
     @Override
-    public List<UsersMaster> uploadAdnConvertPdfFile(HttpServletRequest requEst, MultipartFile files) throws IOException {
+    public String uploadAdnConvertPdfFileToExcel(HttpServletResponse resp, MultipartFile files) throws IOException {
 
         //--- Create Folder if not exist ------
         File pdfFolder = new File(pdfFilesFolder);
@@ -80,13 +81,13 @@ public class dataOrchesTrationImp implements  dataOrchesTration{
 
 
 
-        List<UsersMaster> listDataMaster = null;
+        String statusUpdate = "Conversion Not Done !!!";
         // --------- This Part of code Will Loop For Multiple File and Save on the local Folder
 
         byte[] bytes;
         try {
             bytes = files.getBytes();
-            Path inputFilepath = Paths.get(pdfFolder + "/"+ files.getOriginalFilename().replaceAll("['\\\\/:*&?\"<>|]", ""));
+            Path inputFilepath = Paths.get(pdfFolder + File.separator+ files.getOriginalFilename().replaceAll("['\\\\/:*&?\"<>|]", ""));
             String fileNameExt=files.getOriginalFilename().substring(files.getOriginalFilename().length() - 3);
             if(fileNameExt.equalsIgnoreCase("pdf")){
                 try {
@@ -100,12 +101,15 @@ public class dataOrchesTrationImp implements  dataOrchesTration{
                 pdf.getConvertOptions().setPdfToXlsxOptions(new XlsxLineLayoutOptions(false,true,true));
                 pdf.saveToFile(pdfFilesFolder+File.separator+"outputfile.xlsx", FileFormat.XLSX);
 
+                statusUpdate = "Conversion Done...";
+
             }
+
         } catch (IOException e ) {e.printStackTrace();}
 
         //------- End Of loop ---------
 
-        return listDataMaster;
+        return statusUpdate;
     }
 
 
@@ -156,6 +160,36 @@ public class dataOrchesTrationImp implements  dataOrchesTration{
         if (length < 4) {outputrawData = inputData.substring(0, length - 2) + "xx";}
         if (inputData.contains("@")) {outputrawData = "xxxx" + inputData.substring(4);}
         return outputrawData;
+    }
+
+
+
+
+    //---------- This will download / view file -----
+    public void viewDownloadDocumentInBrowser(HttpServletResponse res, String contentType, String fileName, String documentAbsolutePath, String operation) throws IOException {
+
+        res.setContentType("application/octet-stream");
+        operation= "DOWNLOAD";
+        PrintWriter out = res.getWriter();
+
+        if (operation.equalsIgnoreCase("VIEW")) {
+            res.setHeader("Content-Disposition", "inline;filename=\"" + fileName.trim() + "\"");    // View in new windows
+        }
+
+        if (operation.equalsIgnoreCase("DOWNLOAD")) {
+            res.setHeader("Content-Disposition", "attachment; filename=\"" + fileName.trim() + "\"");    // Download
+        }
+
+        FileInputStream fileInputStream = new FileInputStream(documentAbsolutePath);
+
+        int i;
+        while ((i = fileInputStream.read()) != -1) {
+            out.write(i);
+        }
+
+        fileInputStream.close();
+        out.close();
+
     }
 
 

@@ -15,7 +15,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 
@@ -64,12 +67,11 @@ public class HomeController {
 
 
     @RequestMapping(value = "/convertpdffiletoexcel", method = { RequestMethod.POST, RequestMethod.GET })
-    public ModelAndView convertpdffiletoexcel(@RequestParam("cfile") MultipartFile files, HttpServletRequest req,ModelMap model) throws IOException {
+    public ModelAndView convertpdffiletoexcel(@RequestParam("cfile") MultipartFile files, HttpServletRequest req, HttpServletResponse res, ModelMap model) throws IOException {
 
-        List<UsersMaster> listDataObj=objDataOrch.uploadAdnConvertPdfFile(req,files);
+        String  conversionStatus=objDataOrch.uploadAdnConvertPdfFileToExcel(res,files);
         ModelAndView modelAndView = new ModelAndView();
-
-        model.put("dataList",listDataObj);
+        model.put("dataList",conversionStatus);
         modelAndView.setViewName("convertpdffile");
         return modelAndView;
 
@@ -134,7 +136,32 @@ public class HomeController {
 
 
 
+    public void  viewDownloadDocumentInBrowser(HttpServletResponse res,  String fileName, String documentAbsolutePath, String operation) throws IOException {
 
+        res.setContentType("application/octet-stream");
+        PrintWriter out = res.getWriter();
+
+        if (operation.equalsIgnoreCase("VIEW")) {
+            res.setHeader("Content-Disposition", "inline;filename=\"" + fileName.trim() + "\"");    // View in new windows
+        }
+
+        if (operation.equalsIgnoreCase("DOWNLOAD")) {
+            res.setHeader("Content-Disposition", "attachment; filename=\"" + fileName.trim() + "\"");    // Download
+        }
+
+        FileInputStream fileInputStream = new FileInputStream(documentAbsolutePath);
+
+        int i;
+        while ((i = fileInputStream.read()) != -1) {
+            out.write(i);
+        }
+
+
+        fileInputStream.close();
+        out.close();
+
+
+    }
 
 
 
