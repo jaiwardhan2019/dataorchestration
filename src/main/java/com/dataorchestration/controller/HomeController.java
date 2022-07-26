@@ -6,6 +6,7 @@ package com.dataorchestration.controller;
 import com.dataorchestration.models.UsersMaster;
 import com.dataorchestration.service.dataOrchesTration;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.ModelMap;
@@ -80,6 +81,31 @@ public class HomeController {
 
 
 
+    @Value("${spring.operations.pdf.datafolder}")
+    private String pdfFilesFolder;
+    /**
+     * This API will Collect All  file for a project and make 1 zip file and then download.
+     * Input Parameter : ProjectId
+     * Output          : zip file downloaded to the user.
+     */
+    @RequestMapping(value = "/viewdownloadalldocuments/{filFullName}", method = {RequestMethod.POST, RequestMethod.GET})
+    public void zipanddownloadalldocuments(@PathVariable String filFullName, HttpServletRequest reqObj, HttpServletResponse resObj) throws Exception {
+                try {
+
+                    String fileFullAbsoulutePath = pdfFilesFolder+File.separator+filFullName;
+                    //---- Once Ziping Operation is Done then Do the Download
+                    viewDownloadDocumentInBrowser(resObj,  filFullName, fileFullAbsoulutePath, "DOWNLOAD");
+                } catch (IOException e) {
+
+                }
+
+
+
+    }
+
+
+
+
 
 
 
@@ -131,6 +157,34 @@ public class HomeController {
 
 
 
+
+
+    //---------- This will download / view file -----
+    public void viewDownloadDocumentInBrowser(HttpServletResponse res, String fileName, String documentAbsolutePath, String operation) throws IOException {
+
+        res.setContentType("application/octet-stream");
+        operation= "DOWNLOAD";
+        PrintWriter out = res.getWriter();
+
+        if (operation.equalsIgnoreCase("VIEW")) {
+            res.setHeader("Content-Disposition", "inline;filename=\"" + fileName.trim() + "\"");    // View in new windows
+        }
+
+        if (operation.equalsIgnoreCase("DOWNLOAD")) {
+            res.setHeader("Content-Disposition", "attachment; filename=\"" + fileName.trim() + "\"");    // Download
+        }
+
+        FileInputStream fileInputStream = new FileInputStream(documentAbsolutePath);
+
+        int i;
+        while ((i = fileInputStream.read()) != -1) {
+            out.write(i);
+        }
+
+        fileInputStream.close();
+        out.close();
+
+    }
 
 
 

@@ -4,7 +4,6 @@
 
 <html>
 <head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 
@@ -65,7 +64,7 @@ function Convert_CsvFile() {
 		return false;
 	}
 	if (Validate_Xml_File(document.convertpdffile.cfile.value)) {
-		//search_progress();
+		search_progress();
 		document.convertpdffile.method = "POST";
 		document.convertpdffile.action = "convertpdffiletoexcel";
 	    document.convertpdffile.submit();
@@ -135,7 +134,7 @@ function Download_Excel_File(fileFullPath) {
     		<tbody>
 			     <tr align="center">
 					 <td  bgcolor="#0070BA" colspan="2">
-					   <span style="color:white;"> <i class="fa fa-file-excel-o" aria-hidden="true"></i> &nbsp;<b>
+					   <span style="color:white;"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> &nbsp;<b>
 					    Convert PDF File &nbsp;&nbsp;
 					   </b></span>
 					 </td>
@@ -195,11 +194,11 @@ function Download_Excel_File(fileFullPath) {
 	 <c:if test="${fn:length(dataList) > 0}">
               <br>
               <br>
-              <table class="table table-striped table-bordered" border="1" style="width: 60%;" align="center">
+              <table class="table table-striped table-bordered" border="1" style="width: 40%;" align="center">
                     <tbody>
                          <tr align="center">
                              <td  colspan="5" align="center">
-                               <span style="color:blue;"> <i class="fa fa-download" aria-hidden="true"></i> <a href="javascript:void()" onClick="Download_Excel_File('${dataList}');"> Download File </a> </span><br>
+                               <span style="color:blue;"> <a href="javascript:void()" onClick="Download_Excel_File('${dataList}');"> Download Converted EXCEL File </a> &nbsp; <i class="fa fa-download" aria-hidden="true"></i> </span>
 
                              </td>
                          </tr>

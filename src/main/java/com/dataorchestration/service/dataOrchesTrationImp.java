@@ -103,9 +103,9 @@ public class dataOrchesTrationImp implements  dataOrchesTration{
                 pdf.saveToFile(pdfFilesFolder+File.separator+outputFileName, FileFormat.XLSX);
 
                 //--- THis part will download the file
-                viewDownloadDocumentInBrowser(resp, outputFileName, pdfFilesFolder+File.separator+outputFileName, "DOWNLOAD");
+                //viewDownloadDocumentInBrowser(resp, outputFileName, pdfFilesFolder+File.separator+outputFileName, "DOWNLOAD");
 
-                statusUpdate = "File Converted to Excel File ..";
+                statusUpdate = outputFileName;
 
             } // End of If --
 

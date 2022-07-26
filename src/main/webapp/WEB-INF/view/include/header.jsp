@@ -48,6 +48,7 @@
 
 	<!-- FontAwesome FA FA ICONS -->
 	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.css">
 
 	<!-- CUSTOM CSS BY SURAJIT -->
 	<link rel="stylesheet" href="css/custom-style.css">
@@ -177,9 +178,6 @@ function Logout_application(){
                         <li style="margin-top:3px;margin-bottom:3px;"><a href="javascript:void();" onClick="loadPdfFileConversionPage();"  style="font-size:09pt;color:#FDFEFE;">
                                 <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;PDF to Excel </a>
                         </li>
-                        <li style="margin-top:3px;margin-bottom:3px;"><a href="javascript:void();" onClick="loadJsonFileConversionPage();"  style="font-size:09pt;color:#FDFEFE;">
-                                <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;Convert Json File</a>
-                         </li>
 
               </ul>
             </li>
