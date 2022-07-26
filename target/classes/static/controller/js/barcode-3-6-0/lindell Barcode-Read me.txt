@@ -1,0 +1,131 @@
+http://lindell.me/JsBarcode/
+
+Include
+Download the library and include the script or use the CDN. 
+<script src="JsBarcode.all.min.js"></script>
+
+Use
+Create a HTML tag:
+<svg id="barcode"></svg>
+ 
+Generate with JsBarcode:
+JsBarcode("#barcode", "Hi!");
+
+Customize
+Customize the barcode with the 17 different options.
+
+
+
+
+EAN (GS1) Country Codes
+
+The first two or three digits of an EAN-13 or UPC-13 barcode identify the country in which the manufacturer's identification code was assigned. They do not necessarily indicate the country in which the goods were actually manufactured.
+
+The international registrar for retail barcodes world-wide is GS1. Visit their website and click on the Contact link to locate the office for any country.
+
+GS1 provides a search engine which you can use to find the registered manufacturer for any retail barcode.
+
+Prefix	Country	ISO country code
+00 to 13	UCC (USA & Canada)	us/ca
+20 - 29	In-store numbers	
+30 - 37	GENCOD-EAN France	fr
+380	BCCI (Bulgaria)	bg
+383	EAN Slovenija	si
+385	EAN Croatia	hr
+387	EAN-BIH (Bosnia-Herzegovina)	ba
+400 - 440	CCG (Germany)	de
+45, 49	Distribution Code Center DCC (Japan)	jp
+460 - 469	UNISCAN - EAN Russia (Russian Federation)	ru
+471	EAN Taiwan	tw
+474	EAN Estonia	ee
+475	EAN Latvia	lv
+476	EAN Azerbaijan	az
+477	EAN Lithuania	lt
+478	EAN Uzbekistan	uz
+479	EAN Sri Lanka	lk
+480	PANC (Philippines)	ph
+481	EAN Belarus	by
+482	EAN Ukraine	ua
+484	EAN Moldova	md
+485	EAN Armenia	am
+486	EAN Georgia	ge
+487	EAN Kazakhstan	kz
+489	HKANA (Hong-Kong)	hk
+50	e.centre	gb
+520	EAN HELLAS (Greece)	gr
+528	EAN Lebanon	lb
+529	EAN Cyprus	cy
+531	EAN-MAC (FYR Macedonia)	mk
+535	EAN Malta	mt
+539	EAN Ireland	ie
+54	EAN Belgium.Luxembourg	be/lu
+560	CODIPOR (Portugal)	pt
+569	EAN Iceland	is
+57	EAN Danmark	dk
+590	EAN Poland	pl
+594	EAN Romania	ro
+599	EAN Hungary	hu
+600 - 601	EAN South Africa	za
+608	EAN Bahrain	bh
+609	EAN Mauritius	mu
+611	EAN Maroc (Morocco)	ma
+613	EAN Algerie (Algeria)	dz
+616	EAN Kenya	ke
+619	Tunicode (Tunisia)	tn
+621	EAN Syria	sy
+622	EAN Egypt	eg
+624	EAN Libya	ly
+625	EAN Jordan	jo
+626	EAN Iran	ir
+627	EAN Kuwait	kw
+628	EAN Saudi Arabia	sa
+629	EAN Emirates	ae
+64	EAN Finland	fi
+690 - 695	Article Numbering Centre of China - ANCC	cn
+70	EAN Norge (Norway)	no
+729	Israeli Bar Code Association - EAN Israel	il
+73	EAN Sweden	se
+740	EAN Guatemala	gt
+741	EAN El Salvador	sv
+742	EAN Honduras	hn
+743	EAN Nicaragua	ni
+744	EAN Costa Rica	cr
+745	EAN Panama	pa
+746	EAN Republica Dominicana	do
+750	AMECE (Mexico)	mx
+759	EAN Venezuela	ve
+76	EAN Switzerland	ch
+770	IAC (Colombia)	co
+773	EAN Uruguay	uy
+775	EAN Peru	pe
+777	EAN Bolivia	bo
+779	CODIGO - EAN Argentina	ar
+780	EAN Chile	cl
+784	EAN Paraguay	py
+786	ECOP (Ecuador)	ec
+789 - 790	EAN Brasil	br
+80 - 83	INDICOD (Italy)	it
+84	AECOC (Spain)	es
+850	Camera de Comercio de la Republica de Cuba	cu
+858	EAN Slovakia	sk
+859	EAN Czech	cz
+860	EAN YU (Yugoslavia)	yu
+867	EAN DPR Korea (North Korea)	kp
+869	UCCET (Turkey)	tr
+87	EAN Nederland	nl
+880	EAN Korea (South Korea)	kr
+885	EAN Thailand	th
+888	SANC (Singapore)	sg
+890	EAN India	in
+893	EAN Vietnam	vn
+899	EAN Indonesia	id
+90 - 91	EAN Austria	at
+93	EAN Australia	au
+94	EAN New Zealand	nz
+955	EAN Malaysia	my
+958	EAN Macau	mo
+977	Periodicals (ISSN)	
+978 - 979	Books (ISBN)	
+980	Refund receipts	
+981 - 982	Common currency coupons	
+99	Coupons	
