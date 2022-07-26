@@ -97,6 +97,17 @@ function loadCsvFileConversionPage() {
 
 
 
+function loadPdfFileConversionPage() {
+    document.portal.method="POST";
+	document.portal.action="loadpdftoexcelgui";
+    document.portal.submit();
+	return true;
+}
+
+
+
+
+
 function loadJsonFileConversionPage() {
     document.portal.method="POST";
 	document.portal.action="loadjsonconvertergui";
@@ -156,6 +167,26 @@ function Logout_application(){
                 <a href="javascript:void();" onClick="calHomePage();" style="font-size:9pt;font-weight:600;color:#FDFEFE;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-home fa-lg" aria-hidden="true"></i> Home</a>
             </li>
 
+
+
+
+            <li class="dropdown">
+
+                <a onmouseover="this.click()" style="font-size:9pt;font-weight:600;color:#FDFEFE;"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-cogs" aria-hidden="true"></i> &nbsp;Convert File <span class="caret"></span></a>
+                    <ul class="dropdown-menu" style="left:0;width:200px;">
+                        <li style="margin-top:3px;margin-bottom:3px;"><a href="javascript:void();" onClick="loadPdfFileConversionPage();"  style="font-size:09pt;color:#FDFEFE;">
+                                <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;PDF to Excel </a>
+                        </li>
+                        <li style="margin-top:3px;margin-bottom:3px;"><a href="javascript:void();" onClick="loadJsonFileConversionPage();"  style="font-size:09pt;color:#FDFEFE;">
+                                <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;Convert Json File</a>
+                         </li>
+
+              </ul>
+            </li>
+
+
+
+
             <li class="dropdown">
 
                 <a onmouseover="this.click()" style="font-size:9pt;font-weight:600;color:#FDFEFE;"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-cogs" aria-hidden="true"></i> &nbsp;Data Orchestation <span class="caret"></span></a>
@@ -183,15 +214,11 @@ function Logout_application(){
 
 
 	        <!--
-
-
 				         <li class="dropdown">
 
 							  <a onmouseover="this.click()" style="font-size:09pt;font-weight:600;color:#FDFEFE;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-plane" aria-hidden="true"></i> &nbsp;Reports <span class="caret"></span></a>
 
-
 								  <ul class="dropdown-menu" style="left:0;width:200px;">
-
 					   		               <li style="margin-top:3px;margin-bottom:3px;"><a href="javascript:void();" onClick="calFlightReport('flightreport?airlinecode=ALL&airportcode=ALL&flightno=');"  style="font-size:09pt;color:black;"><img src="images/database.png">&nbsp;&nbsp;Flight Report (MayFly)</a></li>
 								         <li style="margin-top:3px;margin-bottom:3px;"><a href="javascript:void();" onClick="calFlightReport('reliablityflightreport?airlinecode=ALL&airportcode=ALL&delayCodeGroupCode=ALL&tolerance=0&flightno=');"  style="font-size:09pt;color:black;"><img src="images/database.png">&nbsp;&nbsp;Reliability Report</a></li>
 

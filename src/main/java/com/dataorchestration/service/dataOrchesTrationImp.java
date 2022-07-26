@@ -1,16 +1,18 @@
 package com.dataorchestration.service;
 
+
+import com.spire.pdf.FileFormat;
+import com.spire.pdf.PdfDocument;
+
 import com.dataorchestration.models.UsersMaster;
+import com.spire.pdf.conversion.XlsxLineLayoutOptions;
 import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -52,10 +54,54 @@ public class dataOrchesTrationImp implements  dataOrchesTration{
                         Files.write(inputFilepath, bytes);
                     } catch (IOException e) {e.printStackTrace();}
                     System.out.println("Upload is done please do the read and change Data..");
-                    listDataMaster= readUploadedCsvFile(inputFilepath.toString());
+                    listDataMaster= readUploadedCsvFileAndAnnonmize(inputFilepath.toString());
 
                 }
             } catch (IOException e ) {e.printStackTrace();}
+
+        //------- End Of loop ---------
+
+        return listDataMaster;
+    }
+
+
+
+    @Value("${spring.operations.pdf.datafolder}")
+    private String pdfFilesFolder;
+    @Override
+    public List<UsersMaster> uploadAdnConvertPdfFile(HttpServletRequest requEst, MultipartFile files) throws IOException {
+
+        //--- Create Folder if not exist ------
+        File pdfFolder = new File(pdfFilesFolder);
+        if (!pdfFolder.exists()) {pdfFolder.mkdir();}
+
+        //--- Will clear all old existing file
+        FileUtils.cleanDirectory(pdfFolder);
+
+
+
+        List<UsersMaster> listDataMaster = null;
+        // --------- This Part of code Will Loop For Multiple File and Save on the local Folder
+
+        byte[] bytes;
+        try {
+            bytes = files.getBytes();
+            Path inputFilepath = Paths.get(pdfFolder + "/"+ files.getOriginalFilename().replaceAll("['\\\\/:*&?\"<>|]", ""));
+            String fileNameExt=files.getOriginalFilename().substring(files.getOriginalFilename().length() - 3);
+            if(fileNameExt.equalsIgnoreCase("pdf")){
+                try {
+                    Files.write(inputFilepath, bytes);
+                } catch (IOException e) {e.printStackTrace();}
+
+                System.out.println("Upload is Now Comversion Started...");
+
+                PdfDocument pdf = new PdfDocument();
+                pdf.loadFromFile(String.valueOf(inputFilepath));
+                pdf.getConvertOptions().setPdfToXlsxOptions(new XlsxLineLayoutOptions(false,true,true));
+                pdf.saveToFile(pdfFilesFolder+File.separator+"outputfile.xlsx", FileFormat.XLSX);
+
+            }
+        } catch (IOException e ) {e.printStackTrace();}
 
         //------- End Of loop ---------
 
@@ -69,8 +115,16 @@ public class dataOrchesTrationImp implements  dataOrchesTration{
 
 
 
+
+
+
+
+
+
+
+
     //---- This method will read csvfile uploaded
-    private List<UsersMaster> readUploadedCsvFile(String csvFileAbsolutePath) {
+    private List<UsersMaster> readUploadedCsvFileAndAnnonmize(String csvFileAbsolutePath) {
 
         List<UsersMaster> listUserMaster =  new ArrayList<UsersMaster>();
 

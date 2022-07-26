@@ -26,7 +26,29 @@
 		<java.version>1.8</java.version>
 	</properties>
 
+
+	<!-- PDF to Excel REPO -->
+	<repositories>
+		<repository>
+			<id>com.e-iceblue</id>
+			<name>e-iceblue</name>
+			<url>https://repo.e-iceblue.com/nexus/content/groups/public/</url>
+		</repository>
+	</repositories>
+	<!-- END-->
+
+
+
+
 	<dependencies>
+
+		<!-- PDF to Excel Tool -->
+		<dependency>
+			<groupId>e-iceblue</groupId>
+			<artifactId>spire.pdf</artifactId>
+			<version>8.5.8</version>
+		</dependency>
+		<!-- END -->
 
 
 		<dependency>

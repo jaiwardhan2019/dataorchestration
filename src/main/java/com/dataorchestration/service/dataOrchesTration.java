@@ -19,4 +19,15 @@ public interface dataOrchesTration {
     * */
     public List<UsersMaster> uploadAdnConvertCsvFile(HttpServletRequest requEst, MultipartFile files)throws IOException;
 
+
+
+
+    /*
+     *  Author  : Jai Wardhan
+     *  Date    : 26 - July -2022
+     *  Purpose : Purpose of this method to upload the .pdf file to the given folder and once the file is uploaded then do the
+     *            orchastation and save data in the new file.
+     * */
+    public List<UsersMaster> uploadAdnConvertPdfFile(HttpServletRequest requEst, MultipartFile files)throws IOException;
+
 }

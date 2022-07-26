@@ -40,8 +40,49 @@ public class HomeController {
 
 
 
+
+
+
     @Autowired
     dataOrchesTration objDataOrch;
+
+
+
+
+
+
+
+
+
+    @RequestMapping(value = "/loadpdftoexcelgui", method = { RequestMethod.POST, RequestMethod.GET }, produces = {MimeTypeUtils.APPLICATION_JSON_VALUE })
+    public ModelAndView loadpdftoexcelgui(HttpServletRequest req, ModelMap model) throws IOException {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("convertpdffile");
+        return modelAndView;
+    }
+
+
+
+    @RequestMapping(value = "/convertpdffiletoexcel", method = { RequestMethod.POST, RequestMethod.GET })
+    public ModelAndView convertpdffiletoexcel(@RequestParam("cfile") MultipartFile files, HttpServletRequest req,ModelMap model) throws IOException {
+
+        List<UsersMaster> listDataObj=objDataOrch.uploadAdnConvertPdfFile(req,files);
+        ModelAndView modelAndView = new ModelAndView();
+
+        model.put("dataList",listDataObj);
+        modelAndView.setViewName("convertpdffile");
+        return modelAndView;
+
+    }
+
+
+
+
+
+
+
+
+
 
 
     @RequestMapping(value = "/loadcsvconvertergui", method = { RequestMethod.POST, RequestMethod.GET }, produces = {MimeTypeUtils.APPLICATION_JSON_VALUE })
@@ -89,6 +130,11 @@ public class HomeController {
         modelAndView.setViewName("sample_gui_layer");
         return modelAndView;
     }//--------------- End Of Function -------------
+
+
+
+
+
 
 
 
