@@ -79,6 +79,8 @@ public class dataOrchesTrationImp implements  dataOrchesTration{
         //--- Will clear all old existing file
         FileUtils.cleanDirectory(pdfFolder);
 
+        String outputFileName = files.getOriginalFilename().replaceAll("['\\\\/:*&?\"<>|-]", "");
+        outputFileName = outputFileName.substring(0, outputFileName.length()-3)+"xlsx";
 
 
         String statusUpdate = "Conversion Not Done !!!";
@@ -94,16 +96,18 @@ public class dataOrchesTrationImp implements  dataOrchesTration{
                     Files.write(inputFilepath, bytes);
                 } catch (IOException e) {e.printStackTrace();}
 
-                System.out.println("Upload is Now Comversion Started...");
-
+                //--- THis part will convert PDF to Excel and save on /pdf folder
                 PdfDocument pdf = new PdfDocument();
                 pdf.loadFromFile(String.valueOf(inputFilepath));
                 pdf.getConvertOptions().setPdfToXlsxOptions(new XlsxLineLayoutOptions(false,true,true));
-                pdf.saveToFile(pdfFilesFolder+File.separator+"outputfile.xlsx", FileFormat.XLSX);
+                pdf.saveToFile(pdfFilesFolder+File.separator+outputFileName, FileFormat.XLSX);
 
-                statusUpdate = "Conversion Done...";
+                //--- THis part will download the file
+                viewDownloadDocumentInBrowser(resp, outputFileName, pdfFilesFolder+File.separator+outputFileName, "DOWNLOAD");
 
-            }
+                statusUpdate = "File Converted to Excel File ..";
+
+            } // End of If --
 
         } catch (IOException e ) {e.printStackTrace();}
 
@@ -166,7 +170,7 @@ public class dataOrchesTrationImp implements  dataOrchesTration{
 
 
     //---------- This will download / view file -----
-    public void viewDownloadDocumentInBrowser(HttpServletResponse res, String contentType, String fileName, String documentAbsolutePath, String operation) throws IOException {
+    public void viewDownloadDocumentInBrowser(HttpServletResponse res, String fileName, String documentAbsolutePath, String operation) throws IOException {
 
         res.setContentType("application/octet-stream");
         operation= "DOWNLOAD";
@@ -191,6 +195,8 @@ public class dataOrchesTrationImp implements  dataOrchesTration{
         out.close();
 
     }
+
+
 
 
 

@@ -3,7 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <html>
-<head> </head>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 
 
 <script type="text/javascript">
@@ -63,7 +65,7 @@ function Convert_CsvFile() {
 		return false;
 	}
 	if (Validate_Xml_File(document.convertpdffile.cfile.value)) {
-		search_progress();
+		//search_progress();
 		document.convertpdffile.method = "POST";
 		document.convertpdffile.action = "convertpdffiletoexcel";
 	    document.convertpdffile.submit();
@@ -71,6 +73,18 @@ function Convert_CsvFile() {
 	}
 
 }//---------- End Of Function  ------------------
+
+
+
+function Download_Excel_File(fileFullPath) {
+
+		document.convertpdffile.method = "POST";
+		document.convertpdffile.action = "viewdownloadalldocuments/"+fileFullPath;
+	    document.convertpdffile.submit();
+		return true;
+
+}//---------- End Of Function  ------------------
+
 
 
 
@@ -85,7 +99,7 @@ function Convert_CsvFile() {
 
 
 
-<body>
+<body >
 <br>
 <br>
 <br>
@@ -185,7 +199,8 @@ function Convert_CsvFile() {
                     <tbody>
                          <tr align="center">
                              <td  colspan="5" align="center">
-                               <span style="color:blue;"> <i class="fa fa-download" aria-hidden="true"></i> ${dataList} </span>
+                               <span style="color:blue;"> <i class="fa fa-download" aria-hidden="true"></i> <a href="javascript:void()" onClick="Download_Excel_File('${dataList}');"> Download File </a> </span><br>
+
                              </td>
                          </tr>
 

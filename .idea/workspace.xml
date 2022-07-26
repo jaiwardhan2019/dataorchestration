@@ -5,8 +5,50 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="94dd30b3-bd56-43dd-8a6c-739fe0bef4b3" name="Changes" comment="PDF to EXCEL File Conversion">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__e_iceblue_spire_pdf_8_7_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/css/font-awesome.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/css/font-awesome.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/fonts/FontAwesome.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/fonts/fontawesome-webfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/fonts/fontawesome-webfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/fonts/fontawesome-webfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/fonts/fontawesome-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/fonts/fontawesome-webfont.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/less/animated.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/less/bordered-pulled.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/less/core.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/less/fixed-width.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/less/font-awesome.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/less/icons.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/less/larger.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/less/list.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/less/mixins.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/less/path.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/less/rotated-flipped.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/less/screen-reader.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/less/stacked.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/less/variables.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/scss/_animated.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/scss/_bordered-pulled.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/scss/_core.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/scss/_fixed-width.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/scss/_icons.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/scss/_larger.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/scss/_list.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/scss/_mixins.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/scss/_path.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/scss/_rotated-flipped.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/scss/_screen-reader.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/scss/_stacked.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/scss/_variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/font-awesome/scss/font-awesome.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dataorchestration.iml" beforeDir="false" afterPath="$PROJECT_DIR$/dataorchestration.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dataorchestration/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dataorchestration/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dataorchestration/service/dataOrchesTrationImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dataorchestration/service/dataOrchesTrationImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/convertpdffile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/convertpdffile.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dataorchestration/controller/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dataorchestration/controller/HomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dataorchestration/service/dataOrchesTrationImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dataorchestration/service/dataOrchesTrationImp.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,8 +113,9 @@
     <property name="ChangesTree.GroupingKeys" value="" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static/font-awesome" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -80,11 +123,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\JavaProject\DataOrchestration\src\main\resources\static\font-awesome" />
+      <recent name="C:\JavaProject\DataOrchestration\src\main\resources\static\font-awesome\fonts" />
+      <recent name="C:\JavaProject\DataOrchestration\src\main\resources\static\font-awesome\css" />
       <recent name="C:\JavaProject\DataOrchestration\src\main\webapp\WEB-INF\view" />
       <recent name="C:\JavaProject\DataOrchestration\src\main\resources\static\css" />
-      <recent name="C:\JavaProject\DataOrchestration\src\main\resources\static" />
-      <recent name="C:\JavaProject\DataOrchestration\src\main\resources\static\js" />
-      <recent name="C:\JavaProject\DataOrchestration\src\main\resources\static\images" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.dataorchestration.models" />
@@ -199,7 +242,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658839319043</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="PDF to EXCEL File Conversion">
+      <created>1658840333425</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1658840333425</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="UnknownFeatures">
