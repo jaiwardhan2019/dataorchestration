@@ -85,21 +85,15 @@ public class HomeController {
     private String pdfFilesFolder;
     /**
      * This API will Collect All  file for a project and make 1 zip file and then download.
-     * Input Parameter : ProjectId
-     * Output          : zip file downloaded to the user.
+     * Input Parameter : File Name
+     * Output          : Same File downloaded to the user.
      */
     @RequestMapping(value = "/viewdownloadalldocuments/{filFullName}", method = {RequestMethod.POST, RequestMethod.GET})
     public void zipanddownloadalldocuments(@PathVariable String filFullName, HttpServletRequest reqObj, HttpServletResponse resObj) throws Exception {
                 try {
-
                     String fileFullAbsoulutePath = pdfFilesFolder+File.separator+filFullName;
-                    //---- Once Ziping Operation is Done then Do the Download
                     viewDownloadDocumentInBrowser(resObj,  filFullName, fileFullAbsoulutePath, "DOWNLOAD");
-                } catch (IOException e) {
-
-                }
-
-
+                } catch (IOException e) { System.out.println(e.toString()); }
 
     }
 
@@ -175,7 +169,6 @@ public class HomeController {
         }
 
         FileInputStream fileInputStream = new FileInputStream(documentAbsolutePath);
-
         int i;
         while ((i = fileInputStream.read()) != -1) {
             out.write(i);

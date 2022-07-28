@@ -102,16 +102,18 @@ public class dataOrchesTrationImp implements  dataOrchesTration{
                 pdf.getConvertOptions().setPdfToXlsxOptions(new XlsxLineLayoutOptions(false,true,true));
                 pdf.saveToFile(pdfFilesFolder+File.separator+outputFileName, FileFormat.XLSX);
 
-                //--- THis part will download the file
-                //viewDownloadDocumentInBrowser(resp, outputFileName, pdfFilesFolder+File.separator+outputFileName, "DOWNLOAD");
 
                 statusUpdate = outputFileName;
 
             } // End of If --
 
-        } catch (IOException e ) {e.printStackTrace();}
+        } catch (IOException e ) {
+            e.printStackTrace();
+            statusUpdate =e.toString();
+            return statusUpdate;
+        }
 
-        //------- End Of loop ---------
+
 
         return statusUpdate;
     }

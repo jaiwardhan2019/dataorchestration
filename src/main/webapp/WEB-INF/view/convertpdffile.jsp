@@ -84,31 +84,16 @@ function Download_Excel_File(fileFullPath) {
 
 }//---------- End Of Function  ------------------
 
-
-
-
-
 </script>
-
-
-
-
-
-
-
-
-
 <body >
 <br>
 <br>
 <br>
-
-
 <!-- First Part of page -->
 <ul class="breadcrumb">
     <li><a href="javascript:void();" onClick="calHomePage();">Home</a></li>
     <li>Convert File </li>
-    <li>Convert PDF File</li>
+    <li>PDF To Excel </li>
 </ul>
 
 <div class="col-md-12 col-sm-12 col-xs-12"  align="left">
@@ -117,19 +102,16 @@ function Download_Excel_File(fileFullPath) {
  <br>
  <br>
  <br>
-<!-- End First Part of page -->
-
 
 
 <!-- Start Body Part of page -->
 
  <div class="container" align="center">
+
  <div class="col-md-12 col-sm-12 col-xs-12" align="center">
 
  <form name="convertpdffile" id="convertpdffile" method="post" enctype="multipart/form-data">
-
     <input type="hidden" id="profilelist" name="profilelist" value="${profilelist}">
-
       <table class="table table-striped table-bordered" border="1" style="width: 40%;" align="center">
     		<tbody>
 			     <tr align="center">
@@ -208,16 +190,11 @@ function Download_Excel_File(fileFullPath) {
 
  </c:if>
 
-
-
-
-
+<br>
 
 
 </body>
 </html>
-<br>
-<br>
-<br>
-<br>
+
+
 <%@include file="include/footer.jsp" %>

@@ -183,7 +183,7 @@ function Logout_application(){
             </li>
 
 
-
+            <!--
 
             <li class="dropdown">
 
@@ -195,15 +195,15 @@ function Logout_application(){
                         <li style="margin-top:3px;margin-bottom:3px;"><a href="javascript:void();" onClick="loadJsonFileConversionPage();"  style="font-size:09pt;color:#FDFEFE;">
                                 <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;Convert Json File</a>
                          </li>
-
               </ul>
             </li>
 
+            -->
 
 
 
 			<li class="dropdown">
-			  <a onmouseover="this.click()" href="#" style="font-size:9pt;font-weight:600;color:#FDFEFE;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle"></i>&nbspGuest User<span class="caret"></span></a>
+			  <a onmouseover="this.click()" href="#" style="font-size:9pt;font-weight:600;color:#FDFEFE;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle"></i>&nbspJai Wardhan<span class="caret"></span></a>
 			  <ul class="dropdown-menu">
 				<li style="margin-top:3px;margin-bottom:3px;"><a  href="javascript:window.close();" onClick="javascript:window.close();" style="font-size:9pt;">Logout</a></li>
 			  </ul>
@@ -233,10 +233,6 @@ function Logout_application(){
 
 						</li>
 
-
-
-
-
 				<li class="dropdown">
 					   <a onmouseover="this.click()" style="font-size:9pt;font-weight:600;color:#FDFEFE;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;GCI /GCM /GCR&nbsp;<span class="caret"></span></a>
 				   	   <ul class="dropdown-menu" style="left:0;width:200px;">
@@ -248,11 +244,6 @@ function Logout_application(){
 				</li>
 
 
-
-
-
-
-
 	    <li class="dropdown">
 	  	    <a onmouseover="this.click()" style="font-size:9pt;font-weight:600;color:#FDFEFE;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;Manuals&nbsp;<span class="caret"></span></a>
 	  	   	   <ul class="dropdown-menu" style="left:0;width:200px;">
@@ -261,10 +252,6 @@ function Logout_application(){
 
             </ul>
 		</li>
-
-
-
-
 
 
 		    <li class="dropdown">
@@ -294,9 +281,6 @@ function Logout_application(){
 			</li>
 
 
-
-
-
 		    <li class="dropdown">
 		  	    <a onmouseover="this.click()" style="font-size:9pt;font-weight:600;color:#FDFEFE;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;Training  &nbsp;<span class="caret"></span></a>
 		  	   	   <ul class="dropdown-menu" style="left:0;width:250px;">
@@ -306,12 +290,8 @@ function Logout_application(){
 			    	       <li style="margin-top:3px;margin-bottom:3px;"><a href="javascript:void();" onClick="calDocumentReport('listdocuments?cat=trac&operation=view');"  style="font-size:09pt;color:black;"><img src="images/folder.png"> &nbsp;Aer Lingus Check-in and Boarding </a></li>
 			    	       <li style="margin-top:3px;margin-bottom:3px;"><a href="javascript:void();" onClick="calDocumentReport('listdocuments?cat=trar&operation=view');"  style="font-size:09pt;color:black;"><img src="images/folder.png"> &nbsp;Aer Lingus Reservations </a></li>
 			    	       <li style="margin-top:3px;margin-bottom:3px;"><a href="javascript:void();" onClick="calDocumentReport('listdocuments?cat=trs&operation=view');"  style="font-size:09pt;color:black;"><img src="images/folder.png"> &nbsp;Stobart Air Training Modules </a></li>
-
 		             </ul>
 			</li>
-
-
-
 
 
 		    <li class="dropdown">
@@ -345,8 +325,6 @@ function Logout_application(){
 		       </ul>
 
 		</li>
-
-
 
 			<li class="dropdown">
 					  <a href="#" onmouseover="this.click()" style="font-size:09pt;font-weight:600;color:#FDFEFE;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-user-circle"></i>&nbsp;&nbsp;User Name &nbsp;<span class="caret"></span></a>
