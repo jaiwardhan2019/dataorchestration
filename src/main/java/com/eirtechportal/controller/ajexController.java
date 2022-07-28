@@ -1,8 +1,8 @@
-package com.dataorchestration.controller;
+package com.eirtechportal.controller;
 
 
-import com.dataorchestration.models.UsersMaster;
-import com.dataorchestration.service.dataOrchesTration;
+import com.eirtechportal.models.UsersMasterForCsv;
+import com.eirtechportal.service.applicatioBasicService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
@@ -17,7 +17,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
 import java.util.List;
 
 
@@ -38,18 +37,18 @@ public class ajexController {
 
 
 	@Autowired
-	dataOrchesTration objDataOrch;
+	applicatioBasicService objDataOrch;
 
 
 	@RequestMapping(value = "uploadandconvertcsvfileajex", method = { RequestMethod.POST, RequestMethod.GET }, produces = {
 			MimeTypeUtils.APPLICATION_JSON_VALUE })
-	public ResponseEntity<List<UsersMaster>> getflightcomment(HttpServletRequest req,@RequestParam("cfile") MultipartFile files) {
+	public ResponseEntity<List<UsersMasterForCsv>> getflightcomment(HttpServletRequest req, @RequestParam("cfile") MultipartFile files) {
 		try {
-			ResponseEntity<List<UsersMaster>> responseEntity = new ResponseEntity<List<UsersMaster>>(
+			ResponseEntity<List<UsersMasterForCsv>> responseEntity = new ResponseEntity<List<UsersMasterForCsv>>(
 					objDataOrch.uploadAdnConvertCsvFile(req,files), HttpStatus.OK);
 			return responseEntity;
 		} catch (Exception e) {
-			return new ResponseEntity<List<UsersMaster>>(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<List<UsersMasterForCsv>>(HttpStatus.BAD_REQUEST);
 		}
 
 	}

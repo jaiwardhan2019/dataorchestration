@@ -1,10 +1,11 @@
 /**
  * 
  */
-package com.dataorchestration.controller;
+package com.eirtechportal.controller;
 
-import com.dataorchestration.models.UsersMaster;
-import com.dataorchestration.service.dataOrchesTration;
+import com.eirtechportal.models.UserMaster;
+import com.eirtechportal.models.UsersMasterForCsv;
+import com.eirtechportal.service.applicatioBasicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
@@ -21,20 +22,22 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
 import java.util.List;
+import org.apache.log4j.Logger;
 
 
 @RestController
+@CrossOrigin
 public class HomeController {
+
+
+    private static final Logger LOGGER = Logger.getLogger(HomeController.class);
+
 
     @RequestMapping(value = "/test", method = {RequestMethod.POST, RequestMethod.GET}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> uploadFilesToUserFolder() {
         return ResponseEntity.ok("Welcome to REST API......");
     }
-
-
-
 
     //-------THis Will be Called when link is clicked form the Header -----------------
     @RequestMapping(value = "/index",method = {RequestMethod.POST,RequestMethod.GET}, produces = { MimeTypeUtils.TEXT_PLAIN_VALUE })
@@ -49,8 +52,35 @@ public class HomeController {
 
 
 
+
+
+
+
+
     @Autowired
-    dataOrchesTration objDataOrch;
+    applicatioBasicService objDataOrch;
+
+
+
+
+
+
+
+    //----- Will register User to the DB With Encoded Password ----------
+    @RequestMapping(value = "/register", method = { RequestMethod.POST,RequestMethod.GET},produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> saveUser(@RequestBody UserMaster user) throws Exception {
+        UserMaster registerUser = objDataOrch.registerNewUser(user);
+        return ResponseEntity.ok(registerUser);
+    }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -79,8 +109,6 @@ public class HomeController {
     }
 
 
-
-
     @Value("${spring.operations.pdf.datafolder}")
     private String pdfFilesFolder;
     /**
@@ -101,8 +129,6 @@ public class HomeController {
 
 
 
-
-
     @RequestMapping(value = "/loadcsvconvertergui", method = { RequestMethod.POST, RequestMethod.GET }, produces = {MimeTypeUtils.APPLICATION_JSON_VALUE })
     public ModelAndView uploadandConvertCsvfile(HttpServletRequest req, ModelMap model) throws IOException {
         ModelAndView modelAndView = new ModelAndView();
@@ -116,7 +142,7 @@ public class HomeController {
     @RequestMapping(value = "/convertcsvfile", method = { RequestMethod.POST, RequestMethod.GET })
     public ModelAndView convertCsvFile(@RequestParam("cfile") MultipartFile files, HttpServletRequest req,ModelMap model) throws IOException {
 
-        List<UsersMaster> listDataObj=objDataOrch.uploadAdnConvertCsvFile(req,files);
+        List<UsersMasterForCsv> listDataObj=objDataOrch.uploadAdnConvertCsvFile(req,files);
         ModelAndView modelAndView = new ModelAndView();
 
         model.put("dataList",listDataObj);
@@ -142,7 +168,7 @@ public class HomeController {
 
 
     //-------THis Will be Called when link is clicked form the Header -----------------
-    @RequestMapping(value = "/sample",method = {RequestMethod.POST,RequestMethod.GET}, produces = { MimeTypeUtils.TEXT_PLAIN_VALUE })
+    @RequestMapping(value = "/guisample",method = {RequestMethod.POST,RequestMethod.GET}, produces = { MimeTypeUtils.TEXT_PLAIN_VALUE })
     public ModelAndView sample(HttpServletRequest req, ModelMap model) throws Exception{
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("sample_gui_layer");

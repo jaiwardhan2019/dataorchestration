@@ -1,4 +1,4 @@
-package com.dataorchestration;
+package com.eirtechportal;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,12 +1,19 @@
-package com.dataorchestration.service;
+package com.eirtechportal.service;
+
+
+import com.eirtechportal.controller.HomeController;
+import com.eirtechportal.daorepository.UserDao;
+import com.eirtechportal.models.UserMaster;
+import org.apache.log4j.Logger;
 
 
 import com.spire.pdf.FileFormat;
 import com.spire.pdf.PdfDocument;
 
-import com.dataorchestration.models.UsersMaster;
+import com.eirtechportal.models.UsersMasterForCsv;
 import com.spire.pdf.conversion.XlsxLineLayoutOptions;
 import org.apache.tomcat.util.http.fileupload.FileUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,20 +25,73 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 
 
 @Repository
-public class dataOrchesTrationImp implements  dataOrchesTration{
+public class applicatioBasicServiceImp extends passwordEncoderDcoder  implements applicatioBasicService  {
 
 
 
     @Value("${spring.operations.csv.datafolder}")
     private String csvFilesFolder;
+
+
+    private static final Logger LOGGER = Logger.getLogger(applicatioBasicServiceImp.class);
+
+
+
+    @Autowired
+    private UserDao usDao;
+
+
+
+
+    //------ Save User And Encoded Password to the DataBase
+    public UserMaster registerNewUser(UserMaster user) throws Exception {
+
+        if (user.equals(null)) {
+           new Exception("User details are Missing..!!:");
+        }
+
+        try {
+            UserMaster newUser = new UserMaster();
+            newUser.setUserFirstName(user.getUserFirstName());
+            newUser.setUserLastName(user.getUserLastName());
+            newUser.setUserEmailID(user.getUserEmailID());
+            newUser.setUserPhoneNo(user.getUserPhoneNo());
+            newUser.setUserFullAddress("");
+            newUser.setUsername(user.getUsername());
+            newUser.setPassword(encrypt(user.getPassword()));
+            newUser.setPassword(user.getPassword());
+            newUser.setGdprConsent(user.getGdprConsent());
+            newUser.setGdprConsentDate(new Date());
+            newUser.setLastLoginDate(new Date());
+            newUser.setUserIsActive(true);
+            newUser = usDao.save(newUser);
+            LOGGER.info(user.getUsername() + " : Registered on # " + new Date());
+            return newUser;
+
+        } catch (Exception e) {
+            String errorMessage = e.toString();
+            if (errorMessage.contains("USERNAME_UNIQUE")) {
+                errorMessage = "Login Name :# " + user.getUsername() + " is already in use ...!!";
+            }
+            if (errorMessage.contains("EMAIL_UNIQUE")) {
+                errorMessage = "Email ID :# " + user.getUserEmailID() + " is already in use " +
+                        " Please Correct your given Email ID or contact your Admin User to fix this issue...!!";
+            }
+            throw new Exception(errorMessage);
+        }
+
+
+
+    }
+
+
     @Override
-    public List<UsersMaster> uploadAdnConvertCsvFile(HttpServletRequest filePath, MultipartFile files) throws IOException {
+    public List<UsersMasterForCsv> uploadAdnConvertCsvFile(HttpServletRequest filePath, MultipartFile files) throws IOException {
 
         //--- Create Folder if not exist ------
         File csvFolder = new File(csvFilesFolder);
@@ -42,7 +102,7 @@ public class dataOrchesTrationImp implements  dataOrchesTration{
 
 
 
-        List<UsersMaster> listDataMaster = null;
+        List<UsersMasterForCsv> listDataMaster = null;
         // --------- This Part of code Will Loop For Multiple File and Save on the local Folder
 
             byte[] bytes;
@@ -134,9 +194,9 @@ public class dataOrchesTrationImp implements  dataOrchesTration{
 
 
     //---- This method will read csvfile uploaded
-    private List<UsersMaster> readUploadedCsvFileAndAnnonmize(String csvFileAbsolutePath) {
+    private List<UsersMasterForCsv> readUploadedCsvFileAndAnnonmize(String csvFileAbsolutePath) {
 
-        List<UsersMaster> listUserMaster =  new ArrayList<UsersMaster>();
+        List<UsersMasterForCsv> listUserMaster =  new ArrayList<UsersMasterForCsv>();
 
         try {
             final String delimiter = ";";
@@ -148,7 +208,7 @@ public class dataOrchesTrationImp implements  dataOrchesTration{
             while ((line = brObject.readLine()) != null) {
                 tempArr = line.split(delimiter);
                 //--Create UserMaster obj with the data and adding to the List
-                listUserMaster.add(new UsersMaster(replaceLastThree(tempArr[0]), replaceLastThree(tempArr[1]), replaceLastThree(tempArr[2]),
+                listUserMaster.add(new UsersMasterForCsv(replaceLastThree(tempArr[0]), replaceLastThree(tempArr[1]), replaceLastThree(tempArr[2]),
                         replaceLastThree(tempArr[3]), replaceLastThree(tempArr[4])));
               }
             brObject.close();

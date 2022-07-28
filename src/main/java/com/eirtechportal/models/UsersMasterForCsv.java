@@ -1,4 +1,4 @@
-package com.dataorchestration.models;
+package com.eirtechportal.models;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.context.WebApplicationContext;
@@ -6,7 +6,7 @@ import org.springframework.web.context.WebApplicationContext;
 import java.io.Serializable;
 
 @Scope(WebApplicationContext.SCOPE_REQUEST)
-public class UsersMaster implements Serializable {
+public class UsersMasterForCsv implements Serializable {
 	
 
 	private String  firstName;
@@ -15,7 +15,7 @@ public class UsersMaster implements Serializable {
 	private String  phoneNumber;
 	private String  eircode;
 
-	public UsersMaster(String firstName, String lastName, String emailId, String phoneNumber, String eircode) {
+	public UsersMasterForCsv(String firstName, String lastName, String emailId, String phoneNumber, String eircode) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.emailId = emailId;

@@ -11,10 +11,12 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="dataorchestration" target="1.8" />
+      <module name="WebSecurityDBConfigurer" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="WebSecurityDBConfigurer" options="-parameters" />
       <module name="dataorchestration" options="-parameters" />
     </option>
   </component>

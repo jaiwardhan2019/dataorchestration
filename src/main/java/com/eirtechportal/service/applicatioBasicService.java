@@ -1,16 +1,29 @@
-package com.dataorchestration.service;
+package com.eirtechportal.service;
 
-import com.dataorchestration.models.UsersMaster;
+import com.eirtechportal.models.UserMaster;
+import com.eirtechportal.models.UsersMasterForCsv;
 import org.springframework.web.multipart.MultipartFile;
-import org.xml.sax.SAXException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.List;
 
-public interface dataOrchesTration {
+public interface applicatioBasicService {
+
+
+
+    /*
+     *  Author  : Jai Wardhan
+     *  Date    : 28 - July -2022
+     *  Purpose : Register User and save their detail to the DB
+     * */
+    public UserMaster registerNewUser(UserMaster user) throws Exception;
+
+
+
+
+
 
     /*
     *  Author  : Jai Wardhan
@@ -18,7 +31,7 @@ public interface dataOrchesTration {
     *  Purpose : Purpose of this method to upload the .csv file to the given folder and once the file is uploaded then do the
     *            orchastation and save data in the new file.
     * */
-    public List<UsersMaster> uploadAdnConvertCsvFile(HttpServletRequest requEst, MultipartFile files)throws IOException;
+    public List<UsersMasterForCsv> uploadAdnConvertCsvFile(HttpServletRequest requEst, MultipartFile files)throws IOException;
 
 
 
