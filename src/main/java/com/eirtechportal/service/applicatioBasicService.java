@@ -22,6 +22,14 @@ public interface applicatioBasicService {
 
 
 
+    /*
+     *  Author  : Jai Wardhan
+     *  Date    : 29 - July -2022
+     *  Purpose : Validate  User Name and Password from DB
+     * */
+    public String[] validateUserLoginDetail(String userLoginName , String userPassword) throws Exception;
+
+
 
 
 

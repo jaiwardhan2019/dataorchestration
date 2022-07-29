@@ -57,14 +57,10 @@ public class HomeController {
 
 
 
+
+
     @Autowired
     applicatioBasicService objDataOrch;
-
-
-
-
-
-
 
     //----- Will register User to the DB With Encoded Password ----------
     @RequestMapping(value = "/register", method = { RequestMethod.POST,RequestMethod.GET},produces = MediaType.APPLICATION_JSON_VALUE)
@@ -72,6 +68,33 @@ public class HomeController {
         UserMaster registerUser = objDataOrch.registerNewUser(user);
         return ResponseEntity.ok(registerUser);
     }
+
+
+
+
+
+
+
+    @RequestMapping(value = "/authenticate", method = { RequestMethod.POST, RequestMethod.GET }, produces = {MimeTypeUtils.APPLICATION_JSON_VALUE })
+    public ModelAndView authenticateUserDetail(@RequestBody UserMaster user, ModelMap model) throws Exception {
+
+        String userStatus[] = objDataOrch.validateUserLoginDetail(user.getUsername(),user.getPassword());
+        ModelAndView modelAndView = new ModelAndView();
+
+        if(userStatus[0].equalsIgnoreCase("OK")) {
+            model.put("userFullName",userStatus[1]);
+            model.put("userLastLoginDate",userStatus[2]);
+            modelAndView.setViewName("index");
+        }
+        else
+        {
+            model.put("loginStatus",userStatus[1]);
+            modelAndView.setViewName("login");
+
+        }
+        return modelAndView;
+    }
+
 
 
 

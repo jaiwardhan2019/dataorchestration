@@ -3,14 +3,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.dataorchestration</groupId>
-	<artifactId>dataorchestration</artifactId>
+	<groupId>com.jwportal.eirtech</groupId>
+	<artifactId>eirtechportal</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	
 	<packaging>war</packaging>
 
-	<name>SpringBootJPASpringData</name>
-	<description>SpringBootJPASpringData project for Spring Boot with Spring Data JPA implementation</description>
+	<name>eirtechportalsystem</name>
+	<description>Will server Eirtech Day to Day Business</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -127,7 +127,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>dataorchestation</finalName>
+		<finalName>eirtechportal</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

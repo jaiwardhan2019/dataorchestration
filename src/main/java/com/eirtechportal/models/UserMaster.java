@@ -59,6 +59,10 @@ public class UserMaster {
 	@Column(name = "ACTIVE")
 	private boolean userIsActive;
 
+	@Column(name = "ROLE")
+	private String userRole;
+
+
 	public int getUserId() {
 		return userId;
 	}
@@ -161,5 +165,13 @@ public class UserMaster {
 
 	public void setUserIsActive(boolean userIsActive) {
 		this.userIsActive = userIsActive;
+	}
+
+	public String getUserRole() {
+		return userRole;
+	}
+
+	public void setUserRole(String userRole) {
+		this.userRole = userRole;
 	}
 }

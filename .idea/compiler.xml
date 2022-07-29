@@ -6,18 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="dataorchestration" />
+        <module name="eirtechportalmain" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="dataorchestration" target="1.8" />
+      <module name="eirtechportalmain" target="1.8" />
       <module name="WebSecurityDBConfigurer" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="WebSecurityDBConfigurer" options="-parameters" />
-      <module name="dataorchestration" options="-parameters" />
+      <module name="eirtechportalmain" options="-parameters" />
     </option>
   </component>
 </project>

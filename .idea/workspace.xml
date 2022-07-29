@@ -4,34 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="94dd30b3-bd56-43dd-8a6c-739fe0bef4b3" name="Changes" comment="PDF to EXCEL File Conversion">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__log4j_log4j_1_2_17.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/config/InfrastructureConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/daorepository/UserDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/models/UserMaster.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/service/passwordEncoderDcoder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/logback-spring.xml" afterDir="false" />
+    <list default="true" id="94dd30b3-bd56-43dd-8a6c-739fe0bef4b3" name="Changes" comment="User Registration">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/service/PasswordEnCryptValidate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/BCrypt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/passwordHashing.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataorchestration.iml" beforeDir="false" afterPath="$PROJECT_DIR$/dataorchestration.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataorchestration.iml" beforeDir="false" afterPath="$PROJECT_DIR$/eirtechportalmain.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dataorchestration/SpringBootJpaSpringDataApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/SpringBootJpaSpringDataApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dataorchestration/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/controller/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dataorchestration/controller/ajexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/controller/ajexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dataorchestration/models/UsersMaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/models/UsersMasterForCsv.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dataorchestration/service/dataOrchesTration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/service/applicatioBasicService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dataorchestration/service/dataOrchesTrationImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/service/applicatioBasicServiceImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/dataorchestration/SpringBootJpaSpringDataApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/eirtechportal/SpringBootJpaSpringDataApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dataorchestration/SpringBootJpaSpringDataApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dataorchestration/controller/HomeController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dataorchestration/controller/ajexController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dataorchestration/models/UsersMaster.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dataorchestration/service/dataOrchesTration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dataorchestration/service/dataOrchesTrationImp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/dataorchestration/SpringBootJpaSpringDataApplicationTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eirtechportal/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eirtechportal/daorepository/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/daorepository/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eirtechportal/models/UserMaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/models/UserMaster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eirtechportal/service/applicatioBasicService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/service/applicatioBasicService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eirtechportal/service/applicatioBasicServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/service/applicatioBasicServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eirtechportal/service/passwordEncoderDcoder.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,8 +85,8 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/OneDrive/WORK/JAVA_SPRING_BOOT_Links_Urls/WebSecurityDBConfigure/WebSecurityDBConfigure" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="build.tools" />
@@ -113,18 +100,26 @@
       <recent name="C:\JavaProject\DataOrchestration\src\main\resources\static\font-awesome\css" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.eirtechportal.service" />
       <recent name="com.eirtechportal.config" />
       <recent name="com.dataorchestration.daorepository" />
       <recent name="com.dataorchestration.models" />
       <recent name="com.dineshonjava.sdjpa.controller" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.runapplication">
+    <configuration name="passwordHashing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="passwordHashing" />
+      <module name="eirtechportalmain" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="runapplication" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.eirtechportal.SpringBootJpaSpringDataApplication" />
-      <module name="dataorchestration" />
+      <module name="eirtechportalmain" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -140,6 +135,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.passwordHashing" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -255,7 +255,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659005985563</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="User Registration">
+      <created>1659032986650</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1659032986650</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -279,6 +286,7 @@
     <MESSAGE value="All Required  CSS Only" />
     <MESSAGE value="DONE" />
     <MESSAGE value="PDF to EXCEL File Conversion" />
-    <option name="LAST_COMMIT_MESSAGE" value="PDF to EXCEL File Conversion" />
+    <MESSAGE value="User Registration" />
+    <option name="LAST_COMMIT_MESSAGE" value="User Registration" />
   </component>
 </project>

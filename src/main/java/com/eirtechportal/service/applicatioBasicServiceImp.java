@@ -30,7 +30,7 @@ import java.util.List;
 
 
 @Repository
-public class applicatioBasicServiceImp extends passwordEncoderDcoder  implements applicatioBasicService  {
+public class applicatioBasicServiceImp  implements applicatioBasicService  {
 
 
 
@@ -52,7 +52,7 @@ public class applicatioBasicServiceImp extends passwordEncoderDcoder  implements
     public UserMaster registerNewUser(UserMaster user) throws Exception {
 
         if (user.equals(null)) {
-           new Exception("User details are Missing..!!:");
+            throw new Exception("User details are Missing..!!:");
         }
 
         try {
@@ -63,12 +63,14 @@ public class applicatioBasicServiceImp extends passwordEncoderDcoder  implements
             newUser.setUserPhoneNo(user.getUserPhoneNo());
             newUser.setUserFullAddress("");
             newUser.setUsername(user.getUsername());
-            newUser.setPassword(encrypt(user.getPassword()));
-            newUser.setPassword(user.getPassword());
+            //--- Password Encryption
+            String convertPassword = PasswordEnCryptValidate.hashpw(user.getPassword(),PasswordEnCryptValidate.gensalt(12));
+            newUser.setPassword(convertPassword);
             newUser.setGdprConsent(user.getGdprConsent());
             newUser.setGdprConsentDate(new Date());
             newUser.setLastLoginDate(new Date());
             newUser.setUserIsActive(true);
+            newUser.setUserRole(user.getUserRole());
             newUser = usDao.save(newUser);
             LOGGER.info(user.getUsername() + " : Registered on # " + new Date());
             return newUser;
@@ -88,6 +90,39 @@ public class applicatioBasicServiceImp extends passwordEncoderDcoder  implements
 
 
     }
+
+    @Override
+    public String[] validateUserLoginDetail(String userLoginName, String userPassword) throws Exception {
+
+        String[] userDetailStatus = new String[3];
+        UserMaster userDetail = usDao.findByusername(userLoginName);
+
+        if (userDetail == null) {
+            userDetailStatus[0] = userLoginName;
+            userDetailStatus[1] = userLoginName+ ": Login name doesnt exist !!";
+            return userDetailStatus;
+        }
+
+
+        if(PasswordEnCryptValidate.checkpw(userPassword, userDetail.getPassword())) {
+            userDetailStatus[0] = "OK";
+            userDetailStatus[1] = userDetail.getUserFirstName() + " " + userDetail.getUserLastName();
+            userDetailStatus[2] = userDetail.getLastLoginDate().toString();
+        }
+        else
+        {
+            userDetailStatus[0] = "NOTOK";
+            userDetailStatus[1] = "login name and password is not correct  !!";
+        }
+
+
+        return userDetailStatus;
+    }
+
+
+
+
+
 
 
     @Override
