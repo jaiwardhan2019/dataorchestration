@@ -43,7 +43,16 @@ public class HomeController {
     @RequestMapping(value = "/index",method = {RequestMethod.POST,RequestMethod.GET}, produces = { MimeTypeUtils.TEXT_PLAIN_VALUE })
     public ModelAndView invoiceConversionTool(HttpServletRequest req, ModelMap model) throws Exception{
     	ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("index");
+        modelAndView.setViewName("homepage");
+        return modelAndView;
+    }//--------------- End Of Function -------------
+
+
+    //-------THis Will be Called when link is clicked form the Header -----------------
+    @RequestMapping(value = "/logout",method = {RequestMethod.POST,RequestMethod.GET})
+    public ModelAndView logout(HttpServletRequest req, ModelMap model) throws Exception{
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("loginpage");
         return modelAndView;
     }//--------------- End Of Function -------------
 
@@ -53,14 +62,44 @@ public class HomeController {
 
 
 
-
-
-
+    //------ Login Page -------------------
+    @RequestMapping(value = "/", method = { RequestMethod.POST, RequestMethod.GET }, produces = {MimeTypeUtils.APPLICATION_JSON_VALUE })
+    public ModelAndView loadloginpage(HttpServletRequest req, ModelMap model) throws IOException {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("loginpage");
+        return modelAndView;
+    }
 
 
 
     @Autowired
     applicatioBasicService objDataOrch;
+
+
+     //------- Will verify user -- from login page -------
+    @RequestMapping(value = "/authenticate", method = { RequestMethod.POST})
+    public ModelAndView authenticateUserDetail(HttpServletRequest req, ModelMap model) throws Exception {
+
+        String userStatus[] = objDataOrch.validateUserLoginDetail(req.getParameter("loginname"),req.getParameter("password"));
+        ModelAndView modelAndView = new ModelAndView();
+
+        if(userStatus[0].equalsIgnoreCase("OK")) {
+            model.put("userFullName",userStatus[1]);
+            model.put("userLastLoginDate",userStatus[2]);
+            modelAndView.setViewName("homepage");
+        }
+        else
+        {
+            model.put("loginStatus",userStatus[1]);
+            modelAndView.setViewName("loginpage");
+
+        }
+        req.getSession().setAttribute("userFullName",userStatus[1]);
+        return modelAndView;
+    }
+
+
+
 
     //----- Will register User to the DB With Encoded Password ----------
     @RequestMapping(value = "/register", method = { RequestMethod.POST,RequestMethod.GET},produces = MediaType.APPLICATION_JSON_VALUE)
@@ -75,48 +114,11 @@ public class HomeController {
 
 
 
-    @RequestMapping(value = "/authenticate", method = { RequestMethod.POST, RequestMethod.GET }, produces = {MimeTypeUtils.APPLICATION_JSON_VALUE })
-    public ModelAndView authenticateUserDetail(@RequestBody UserMaster user, ModelMap model) throws Exception {
-
-        String userStatus[] = objDataOrch.validateUserLoginDetail(user.getUsername(),user.getPassword());
-        ModelAndView modelAndView = new ModelAndView();
-
-        if(userStatus[0].equalsIgnoreCase("OK")) {
-            model.put("userFullName",userStatus[1]);
-            model.put("userLastLoginDate",userStatus[2]);
-            modelAndView.setViewName("index");
-        }
-        else
-        {
-            model.put("loginStatus",userStatus[1]);
-            modelAndView.setViewName("login");
-
-        }
-        return modelAndView;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @RequestMapping(value = "/loadpdftoexcelgui", method = { RequestMethod.POST, RequestMethod.GET }, produces = {MimeTypeUtils.APPLICATION_JSON_VALUE })
     public ModelAndView loadpdftoexcelgui(HttpServletRequest req, ModelMap model) throws IOException {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("convertpdffile");
+        req.getSession().setAttribute("userFullName",req.getSession().getAttribute("userFullName"));
         return modelAndView;
     }
 

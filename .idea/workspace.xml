@@ -4,21 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="94dd30b3-bd56-43dd-8a6c-739fe0bef4b3" name="Changes" comment="User Registration">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/service/PasswordEnCryptValidate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/BCrypt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/passwordHashing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="94dd30b3-bd56-43dd-8a6c-739fe0bef4b3" name="Changes" comment="User Authentication with Passowrd Hashing">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/models/DocumentConversionDetailMaster.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/documents.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/insight.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/radiant-logo-blue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/loginpage.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataorchestration.iml" beforeDir="false" afterPath="$PROJECT_DIR$/eirtechportalmain.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/eirtechportal/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/controller/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/eirtechportal/daorepository/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/daorepository/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/eirtechportal/models/UserMaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/models/UserMaster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/eirtechportal/service/applicatioBasicService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/service/applicatioBasicService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/eirtechportal/service/applicatioBasicServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/service/applicatioBasicServiceImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/eirtechportal/service/passwordEncoderDcoder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/include/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/include/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/homepage.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +81,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static/images" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -93,18 +89,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\JavaProject\eirtechportal\src\main\resources\static\images" />
+      <recent name="C:\JavaProject\eirtechportal\src\main\webapp\WEB-INF\view" />
       <recent name="C:\JavaProject\DataOrchestration\src\main\java\com\eirtechportal" />
       <recent name="C:\JavaProject\DataOrchestration\src\main\resources" />
       <recent name="C:\JavaProject\DataOrchestration\src\main\resources\static\font-awesome" />
-      <recent name="C:\JavaProject\DataOrchestration\src\main\resources\static\font-awesome\fonts" />
-      <recent name="C:\JavaProject\DataOrchestration\src\main\resources\static\font-awesome\css" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.eirtechportal.models" />
       <recent name="com.eirtechportal.service" />
       <recent name="com.eirtechportal.config" />
       <recent name="com.dataorchestration.daorepository" />
       <recent name="com.dataorchestration.models" />
-      <recent name="com.dineshonjava.sdjpa.controller" />
     </key>
   </component>
   <component name="RunManager" selected="Application.runapplication">
@@ -262,7 +258,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659032986650</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="User Authentication with Passowrd Hashing">
+      <created>1659090840113</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1659090840113</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -287,6 +290,7 @@
     <MESSAGE value="DONE" />
     <MESSAGE value="PDF to EXCEL File Conversion" />
     <MESSAGE value="User Registration" />
-    <option name="LAST_COMMIT_MESSAGE" value="User Registration" />
+    <MESSAGE value="User Authentication with Passowrd Hashing" />
+    <option name="LAST_COMMIT_MESSAGE" value="User Authentication with Passowrd Hashing" />
   </component>
 </project>

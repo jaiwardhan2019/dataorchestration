@@ -197,13 +197,14 @@ public class applicatioBasicServiceImp  implements applicatioBasicService  {
                 pdf.getConvertOptions().setPdfToXlsxOptions(new XlsxLineLayoutOptions(false,true,true));
                 pdf.saveToFile(pdfFilesFolder+File.separator+outputFileName, FileFormat.XLSX);
 
+                //TODO  Update fileconversion table to keep record
 
                 statusUpdate = outputFileName;
 
             } // End of If --
 
         } catch (IOException e ) {
-            e.printStackTrace();
+            LOGGER.error(e.toString());
             statusUpdate =e.toString();
             return statusUpdate;
         }
