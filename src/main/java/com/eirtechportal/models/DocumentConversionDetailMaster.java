@@ -63,4 +63,5 @@ public class DocumentConversionDetailMaster {
 	public void setConversionDate(Date conversionDate) {
 		this.conversionDate = conversionDate;
 	}
+
 }

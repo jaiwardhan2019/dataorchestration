@@ -1,5 +1,6 @@
 package com.eirtechportal.service;
 
+import com.eirtechportal.models.DocumentConversionDetailMaster;
 import com.eirtechportal.models.UserMaster;
 import com.eirtechportal.models.UsersMasterForCsv;
 import org.springframework.web.multipart.MultipartFile;
@@ -50,6 +51,6 @@ public interface applicatioBasicService {
      *  Purpose : Purpose of this method to upload the .pdf file to the given folder and once the file is uploaded then do the
      *            orchastation and save data in the new file.
      * */
-    public String uploadAdnConvertPdfFileToExcel(HttpServletResponse requEst, MultipartFile files)throws IOException;
+    public String uploadAdnConvertPdfFileToExcel(HttpServletResponse requEst, MultipartFile files , String userName)throws IOException;
 
 }

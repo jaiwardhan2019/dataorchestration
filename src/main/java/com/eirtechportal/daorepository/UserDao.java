@@ -12,4 +12,5 @@ public interface UserDao extends CrudRepository<UserMaster, Integer> {
 	UserMaster findByuserId(int userId);
 
 
+
 }

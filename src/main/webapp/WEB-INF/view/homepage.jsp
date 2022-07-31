@@ -8,6 +8,15 @@
 </head>
 
 <body  style="font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;">
+<br>
+<br>
+<br>
+<!-- First Part of page -->
+<ul class="breadcrumb">
+    <li><a href="javascript:void();" onClick="calHomePage();">Home</a></li>
+
+</ul>
+
 
 
 <div class="container-fluid" style="margin-top:75px;">

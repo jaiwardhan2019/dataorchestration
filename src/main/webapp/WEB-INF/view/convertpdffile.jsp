@@ -56,7 +56,7 @@ function writefiles(file){
 
 
 
-function Convert_CsvFile() {
+function Convert_PdfFile() {
 
 	if (document.convertpdffile.cfile.value == "") {
 		document.getElementById('validationstatus').innerHTML = "<span style='color:red' > Please Select File....!! </span>";
@@ -143,7 +143,7 @@ function Download_Excel_File(fileFullPath) {
 						<td  bgcolor="white" colspan="2">
 
 					        <span style="display:block" id="convertbtn">
-					           <input type="button"   class="btn btn-primary" value="Convert" onclick="Convert_CsvFile();" />
+					           <input type="button"   class="btn btn-primary" value="Convert" onclick="Convert_PdfFile();" />
 					        </span>
 
 					        <span style="display:none" id="searchbutton1">
@@ -173,22 +173,21 @@ function Download_Excel_File(fileFullPath) {
 
 
 
-	 <c:if test="${fn:length(dataList) > 0}">
+
               <br>
               <br>
               <table class="table table-striped table-bordered" border="1" style="width: 40%;" align="center">
                     <tbody>
                          <tr align="center">
                              <td  colspan="5" align="center">
-                               <span style="color:blue;"> <a href="javascript:void()" onClick="Download_Excel_File('${dataList}');"> Download Converted EXCEL File </a> &nbsp; <i class="fa fa-download" aria-hidden="true"></i> </span>
-
+                               <span style="color:blue;"> <a href="javascript:void()" onClick="Download_Excel_File('${fileNameToBeDownloaded}');"> Download Converted EXCEL File </a> &nbsp; <i class="fa fa-download" aria-hidden="true"></i> </span>
                              </td>
                          </tr>
 
                           </tbody>
                     </table>
 
- </c:if>
+
 
 <br>
 

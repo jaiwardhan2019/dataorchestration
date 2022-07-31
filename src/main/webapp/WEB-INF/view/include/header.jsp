@@ -3,15 +3,19 @@
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 
+<%
+if(request.getSession().getAttribute("userFullName") == null){response.sendRedirect("/");}
+%>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 
 <script>
 
-
     /*--- THIS PIECE OF CODE WILL DISABLE THE MOUSE RIGHT CLICK ------------ --
-
 
     var isNS = (navigator.appName == "Netscape") ? 1 : 0;
 	if(navigator.appName == "Netscape") document.captureEvents(Event.MOUSEDOWN||Event.MOUSEUP);

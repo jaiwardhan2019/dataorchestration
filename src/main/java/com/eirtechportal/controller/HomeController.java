@@ -3,6 +3,7 @@
  */
 package com.eirtechportal.controller;
 
+import com.eirtechportal.models.DocumentConversionDetailMaster;
 import com.eirtechportal.models.UserMaster;
 import com.eirtechportal.models.UsersMasterForCsv;
 import com.eirtechportal.service.applicatioBasicService;
@@ -51,6 +52,7 @@ public class HomeController {
     //-------THis Will be Called when link is clicked form the Header -----------------
     @RequestMapping(value = "/logout",method = {RequestMethod.POST,RequestMethod.GET})
     public ModelAndView logout(HttpServletRequest req, ModelMap model) throws Exception{
+        req.getSession().setAttribute("userFullName",null);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("loginpage");
         return modelAndView;
@@ -66,6 +68,7 @@ public class HomeController {
     @RequestMapping(value = "/", method = { RequestMethod.POST, RequestMethod.GET }, produces = {MimeTypeUtils.APPLICATION_JSON_VALUE })
     public ModelAndView loadloginpage(HttpServletRequest req, ModelMap model) throws IOException {
         ModelAndView modelAndView = new ModelAndView();
+        model.put("loginStatus","Please login to the application..");
         modelAndView.setViewName("loginpage");
         return modelAndView;
     }
@@ -81,8 +84,9 @@ public class HomeController {
     public ModelAndView authenticateUserDetail(HttpServletRequest req, ModelMap model) throws Exception {
 
         String userStatus[] = objDataOrch.validateUserLoginDetail(req.getParameter("loginname"),req.getParameter("password"));
-        ModelAndView modelAndView = new ModelAndView();
 
+
+        ModelAndView modelAndView = new ModelAndView();
         if(userStatus[0].equalsIgnoreCase("OK")) {
             model.put("userFullName",userStatus[1]);
             model.put("userLastLoginDate",userStatus[2]);
@@ -126,12 +130,19 @@ public class HomeController {
 
     @RequestMapping(value = "/convertpdffiletoexcel", method = { RequestMethod.POST, RequestMethod.GET })
     public ModelAndView convertpdffiletoexcel(@RequestParam("cfile") MultipartFile files, HttpServletRequest req, HttpServletResponse res, ModelMap model) throws IOException {
-        String  conversionStatus=objDataOrch.uploadAdnConvertPdfFileToExcel(res,files);
+
+        String conversionStatus = objDataOrch.uploadAdnConvertPdfFileToExcel(res,files,req.getSession().getAttribute("userFullName").toString());
+
+        req.getSession().setAttribute("userFullName",req.getSession().getAttribute("userFullName"));
         ModelAndView modelAndView = new ModelAndView();
-        model.put("dataList",conversionStatus);
+        model.addAttribute("fileNameToBeDownloaded",conversionStatus);
         modelAndView.setViewName("convertpdffile");
         return modelAndView;
     }
+
+
+
+
 
 
     @Value("${spring.operations.pdf.datafolder}")
@@ -143,10 +154,10 @@ public class HomeController {
      */
     @RequestMapping(value = "/viewdownloadalldocuments/{filFullName}", method = {RequestMethod.POST, RequestMethod.GET})
     public void zipanddownloadalldocuments(@PathVariable String filFullName, HttpServletRequest reqObj, HttpServletResponse resObj) throws Exception {
-                try {
-                    String fileFullAbsoulutePath = pdfFilesFolder+File.separator+filFullName;
-                    viewDownloadDocumentInBrowser(resObj,  filFullName, fileFullAbsoulutePath, "DOWNLOAD");
-                } catch (IOException e) { System.out.println(e.toString()); }
+        try {
+            String fileFullAbsoulutePath = pdfFilesFolder+filFullName;
+            viewDownloadDocumentInBrowser(resObj,  filFullName, fileFullAbsoulutePath, "DOWNLOAD");
+        } catch (IOException e) { System.out.println(e.toString()); }
 
     }
 
@@ -206,6 +217,7 @@ public class HomeController {
 
     //---------- This will download / view file -----
     public void viewDownloadDocumentInBrowser(HttpServletResponse res, String fileName, String documentAbsolutePath, String operation) throws IOException {
+
 
         res.setContentType("application/octet-stream");
         operation= "DOWNLOAD";

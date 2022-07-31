@@ -2,7 +2,7 @@
 <configuration>
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
     <property name="LOGS" value="logs" />
-    <property name="APPSROOT" value="/" />
+    <property name="APPSROOT" value="/eirtechportal" />
 
     <appender name="Console"
               class="ch.qos.logback.core.ConsoleAppender">

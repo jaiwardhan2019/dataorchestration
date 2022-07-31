@@ -2,7 +2,9 @@ package com.eirtechportal.service;
 
 
 import com.eirtechportal.controller.HomeController;
+import com.eirtechportal.daorepository.DocumentConversionDetailMasterDao;
 import com.eirtechportal.daorepository.UserDao;
+import com.eirtechportal.models.DocumentConversionDetailMaster;
 import com.eirtechportal.models.UserMaster;
 import org.apache.log4j.Logger;
 
@@ -103,19 +105,17 @@ public class applicatioBasicServiceImp  implements applicatioBasicService  {
             return userDetailStatus;
         }
 
-
         if(PasswordEnCryptValidate.checkpw(userPassword, userDetail.getPassword())) {
             userDetailStatus[0] = "OK";
             userDetailStatus[1] = userDetail.getUserFirstName() + " " + userDetail.getUserLastName();
             userDetailStatus[2] = userDetail.getLastLoginDate().toString();
+            updateUserLastLoginDateAdnLoginCount(userLoginName);
         }
         else
         {
             userDetailStatus[0] = "NOTOK";
             userDetailStatus[1] = "login name and password is not correct  !!";
         }
-
-
         return userDetailStatus;
     }
 
@@ -164,8 +164,10 @@ public class applicatioBasicServiceImp  implements applicatioBasicService  {
 
     @Value("${spring.operations.pdf.datafolder}")
     private String pdfFilesFolder;
+
+
     @Override
-    public String uploadAdnConvertPdfFileToExcel(HttpServletResponse resp, MultipartFile files) throws IOException {
+    public String uploadAdnConvertPdfFileToExcel(HttpServletResponse resp, MultipartFile files , String userName) throws IOException {
 
         //--- Create Folder if not exist ------
         File pdfFolder = new File(pdfFilesFolder);
@@ -174,11 +176,14 @@ public class applicatioBasicServiceImp  implements applicatioBasicService  {
         //--- Will clear all old existing file
         FileUtils.cleanDirectory(pdfFolder);
 
-        String outputFileName = files.getOriginalFilename().replaceAll("['\\\\/:*&?\"<>|-]", "");
+        String inputFileName = files.getOriginalFilename().replaceAll("['\\\\/:*&?\"<>|]", "");
+        String outputFileName  = inputFileName;
         outputFileName = outputFileName.substring(0, outputFileName.length()-3)+"xlsx";
 
+        DocumentConversionDetailMaster documenUpdate = null;
 
-        String statusUpdate = "Conversion Not Done !!!";
+
+                String statusUpdate = "Conversion Not Done !!!";
         // --------- This Part of code Will Loop For Multiple File and Save on the local Folder
 
         byte[] bytes;
@@ -187,6 +192,8 @@ public class applicatioBasicServiceImp  implements applicatioBasicService  {
             Path inputFilepath = Paths.get(pdfFolder + File.separator+ files.getOriginalFilename().replaceAll("['\\\\/:*&?\"<>|]", ""));
             String fileNameExt=files.getOriginalFilename().substring(files.getOriginalFilename().length() - 3);
             if(fileNameExt.equalsIgnoreCase("pdf")){
+
+                //---- This part will upload file and save to the /pdf folder
                 try {
                     Files.write(inputFilepath, bytes);
                 } catch (IOException e) {e.printStackTrace();}
@@ -197,21 +204,18 @@ public class applicatioBasicServiceImp  implements applicatioBasicService  {
                 pdf.getConvertOptions().setPdfToXlsxOptions(new XlsxLineLayoutOptions(false,true,true));
                 pdf.saveToFile(pdfFilesFolder+File.separator+outputFileName, FileFormat.XLSX);
 
-                //TODO  Update fileconversion table to keep record
-
-                statusUpdate = outputFileName;
-
+                // This part of code will update Converted Document detail to the DB
+                updateFileConversionDataTotheDataBase(inputFileName ,outputFileName ,userName );
+                return outputFileName;
             } // End of If --
 
         } catch (IOException e ) {
             LOGGER.error(e.toString());
             statusUpdate =e.toString();
-            return statusUpdate;
         }
 
 
-
-        return statusUpdate;
+        return outputFileName;
     }
 
 
@@ -267,35 +271,31 @@ public class applicatioBasicServiceImp  implements applicatioBasicService  {
 
 
 
-    //---------- This will download / view file -----
-    public void viewDownloadDocumentInBrowser(HttpServletResponse res, String fileName, String documentAbsolutePath, String operation) throws IOException {
-
-        res.setContentType("application/octet-stream");
-        operation= "DOWNLOAD";
-        PrintWriter out = res.getWriter();
-
-        if (operation.equalsIgnoreCase("VIEW")) {
-            res.setHeader("Content-Disposition", "inline;filename=\"" + fileName.trim() + "\"");    // View in new windows
-        }
-
-        if (operation.equalsIgnoreCase("DOWNLOAD")) {
-            res.setHeader("Content-Disposition", "attachment; filename=\"" + fileName.trim() + "\"");    // Download
-        }
-
-        FileInputStream fileInputStream = new FileInputStream(documentAbsolutePath);
-
-        int i;
-        while ((i = fileInputStream.read()) != -1) {
-            out.write(i);
-        }
-
-        fileInputStream.close();
-        out.close();
-
+    /*
+    * This method will update document conversion detail to the Table
+    * */
+    @Autowired
+    DocumentConversionDetailMasterDao docConvDao;
+    private void updateFileConversionDataTotheDataBase(String inputFileName ,String outputFileName , String UserName ){
+        DocumentConversionDetailMaster docObj = new DocumentConversionDetailMaster();
+        docObj.setInputFileWithPath(pdfFilesFolder+inputFileName);
+        docObj.setOutputFileWithPath(pdfFilesFolder+outputFileName);
+        docObj.setConversionDate(new Date());
+        docObj.setUserFullName(UserName);
+        docConvDao.save(docObj);
     }
 
 
 
+
+
+
+    public void updateUserLastLoginDateAdnLoginCount(String username) {
+        UserMaster userDetail = usDao.findByusername(username);
+        userDetail.setUserLoginCount(userDetail.getUserLoginCount() + 1);
+        userDetail.setLastLoginDate(new Date());
+        usDao.save(userDetail);
+    }
 
 
 
