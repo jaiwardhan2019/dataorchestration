@@ -172,8 +172,7 @@ function Download_Excel_File(fileFullPath) {
   </div>
 
 
-
-
+<c:if test="${not empty fileNameToBeDownloaded}">
               <br>
               <br>
               <table class="table table-striped table-bordered" border="1" style="width: 40%;" align="center">
@@ -187,8 +186,7 @@ function Download_Excel_File(fileFullPath) {
                           </tbody>
                     </table>
 
-
-
+</c:if>
 <br>
 
 
