@@ -283,8 +283,8 @@ public class applicatioBasicServiceImp  implements applicatioBasicService  {
     DocumentConversionDetailMasterDao docConvDao;
     private void updateFileConversionDataTotheDataBase(String inputFileName ,String outputFileName , String UserName ){
         DocumentConversionDetailMaster docObj = new DocumentConversionDetailMaster();
-        docObj.setInputFileWithPath(pdfFilesFolder+inputFileName);
-        docObj.setOutputFileWithPath(pdfFilesFolder+outputFileName);
+        docObj.setInputFileWithPath(pdfFilesFolder+UserName+File.separator+inputFileName);
+        docObj.setOutputFileWithPath(pdfFilesFolder+UserName+File.separator+outputFileName);
         docObj.setConversionDate(new Date());
         docObj.setUserFullName(UserName);
         docConvDao.save(docObj);

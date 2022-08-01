@@ -157,6 +157,8 @@ public class HomeController {
     @RequestMapping(value = "/viewdownloadalldocuments/{filFullName}", method = {RequestMethod.POST, RequestMethod.GET})
     public void downloadViewDocuments(@PathVariable String filFullName, HttpServletRequest reqObj, HttpServletResponse resObj) throws Exception {
         try {
+
+            //-- TODO --  this need to be changed to be based on DB query.
             String fileFullAbsoulutePath = pdfFilesFolder+reqObj.getSession().getAttribute("userFullName").toString()+File.separator+filFullName;
             viewDownloadDocumentInBrowser(resObj,  filFullName, fileFullAbsoulutePath, "DOWNLOAD");
         } catch (IOException e) { System.out.println(e.toString()); }
