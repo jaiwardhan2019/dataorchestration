@@ -131,7 +131,9 @@ public class HomeController {
     @RequestMapping(value = "/convertpdffiletoexcel", method = { RequestMethod.POST, RequestMethod.GET })
     public ModelAndView convertpdffiletoexcel(@RequestParam("cfile") MultipartFile files, HttpServletRequest req, HttpServletResponse res, ModelMap model) throws IOException {
 
+        //--- This part of code will convert the pdf file to Excel and save in the same location
         String conversionStatus = objDataOrch.uploadAdnConvertPdfFileToExcel(res,files,req.getSession().getAttribute("userFullName").toString());
+
 
         req.getSession().setAttribute("userFullName",req.getSession().getAttribute("userFullName"));
         ModelAndView modelAndView = new ModelAndView();
@@ -153,9 +155,9 @@ public class HomeController {
      * Output          : Same File downloaded to the user.
      */
     @RequestMapping(value = "/viewdownloadalldocuments/{filFullName}", method = {RequestMethod.POST, RequestMethod.GET})
-    public void zipanddownloadalldocuments(@PathVariable String filFullName, HttpServletRequest reqObj, HttpServletResponse resObj) throws Exception {
+    public void downloadViewDocuments(@PathVariable String filFullName, HttpServletRequest reqObj, HttpServletResponse resObj) throws Exception {
         try {
-            String fileFullAbsoulutePath = pdfFilesFolder+filFullName;
+            String fileFullAbsoulutePath = pdfFilesFolder+reqObj.getSession().getAttribute("userFullName").toString()+File.separator+filFullName;
             viewDownloadDocumentInBrowser(resObj,  filFullName, fileFullAbsoulutePath, "DOWNLOAD");
         } catch (IOException e) { System.out.println(e.toString()); }
 
@@ -217,7 +219,6 @@ public class HomeController {
 
     //---------- This will download / view file -----
     public void viewDownloadDocumentInBrowser(HttpServletResponse res, String fileName, String documentAbsolutePath, String operation) throws IOException {
-
 
         res.setContentType("application/octet-stream");
         operation= "DOWNLOAD";

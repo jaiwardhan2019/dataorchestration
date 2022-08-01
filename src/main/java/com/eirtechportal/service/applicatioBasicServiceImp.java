@@ -173,8 +173,13 @@ public class applicatioBasicServiceImp  implements applicatioBasicService  {
         File pdfFolder = new File(pdfFilesFolder);
         if (!pdfFolder.exists()) {pdfFolder.mkdir();}
 
+
+        pdfFolder = new File(pdfFilesFolder+userName);
+        if (!pdfFolder.exists()) {pdfFolder.mkdir();}
+
+
         //--- Will clear all old existing file
-        FileUtils.cleanDirectory(pdfFolder);
+        //FileUtils.cleanDirectory(pdfFolder);
 
         String inputFileName = files.getOriginalFilename().replaceAll("['\\\\/:*&?\"<>|]", "");
         String outputFileName  = inputFileName;
@@ -202,7 +207,7 @@ public class applicatioBasicServiceImp  implements applicatioBasicService  {
                 PdfDocument pdf = new PdfDocument();
                 pdf.loadFromFile(String.valueOf(inputFilepath));
                 pdf.getConvertOptions().setPdfToXlsxOptions(new XlsxLineLayoutOptions(false,true,true));
-                pdf.saveToFile(pdfFilesFolder+File.separator+outputFileName, FileFormat.XLSX);
+                pdf.saveToFile(pdfFolder+File.separator+outputFileName, FileFormat.XLSX);
 
                 // This part of code will update Converted Document detail to the DB
                 updateFileConversionDataTotheDataBase(inputFileName ,outputFileName ,userName );

@@ -172,26 +172,23 @@ function Download_Excel_File(fileFullPath) {
   </div>
 
 
-<c:if test="${not empty fileNameToBeDownloaded}">
-              <br>
-              <br>
-              <table class="table table-striped table-bordered" border="1" style="width: 40%;" align="center">
-                    <tbody>
-                         <tr align="center">
-                             <td  colspan="5" align="center">
-                               <span style="color:blue;"> <a href="javascript:void()" onClick="Download_Excel_File('${fileNameToBeDownloaded}');"> Download Converted EXCEL File </a> &nbsp; <i class="fa fa-download" aria-hidden="true"></i> </span>
-                             </td>
-                         </tr>
+        <c:if test="${not empty fileNameToBeDownloaded}">
+                      <br>
+                      <br>
+                      <table class="table table-striped table-bordered" border="1" style="width: 40%;" align="center">
+                            <tbody>
+                                 <tr align="center">
+                                     <td  colspan="5" align="center">
+                                       <span style="color:blue;"> <a href="javascript:void()" onClick="Download_Excel_File('${fileNameToBeDownloaded}');"> Download Converted EXCEL File </a> &nbsp; <i class="fa fa-download" aria-hidden="true"></i> </span>
+                                     </td>
+                                 </tr>
 
-                          </tbody>
-                    </table>
-
-</c:if>
+                                  </tbody>
+                            </table>
+        </c:if>
 <br>
-
 
 </body>
 </html>
-
 
 <%@include file="include/footer.jsp" %>
