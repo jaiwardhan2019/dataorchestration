@@ -1,7 +1,9 @@
 package com.eirtechportal.service;
 
 
-import com.eirtechportal.controller.HomeController;
+
+
+
 import com.eirtechportal.daorepository.DocumentConversionDetailMasterDao;
 import com.eirtechportal.daorepository.UserDao;
 import com.eirtechportal.models.DocumentConversionDetailMaster;
@@ -9,9 +11,9 @@ import com.eirtechportal.models.UserMaster;
 import org.apache.log4j.Logger;
 
 
+
 import com.spire.pdf.FileFormat;
 import com.spire.pdf.PdfDocument;
-
 import com.eirtechportal.models.UsersMasterForCsv;
 import com.spire.pdf.conversion.XlsxLineLayoutOptions;
 import org.apache.tomcat.util.http.fileupload.FileUtils;
@@ -215,8 +217,7 @@ public class applicatioBasicServiceImp  implements applicatioBasicService  {
 
 
                 //--- TODO --- Write a function to find and replace text in the Excel FIle--
-
-
+                //findAndRemoveTextFromExcelSheet(documenUpdate.getOutputFileWithPath() , documenUpdate.getOutputFileWithPath()," Evaluation Warning : The document was created with Spire.PDF for java.");
 
                 //return outputFileName;
                 return documenUpdate;
@@ -297,6 +298,8 @@ public class applicatioBasicServiceImp  implements applicatioBasicService  {
         docObj.setUserFullName(UserName);
         return docConvDao.save(docObj);
     }
+
+
 
 
 
