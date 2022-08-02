@@ -23,6 +23,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import java.util.List;
 import org.apache.log4j.Logger;
 
@@ -91,6 +92,7 @@ public class HomeController {
             model.put("userFullName",userStatus[1]);
             model.put("userLastLoginDate",userStatus[2]);
             modelAndView.setViewName("homepage");
+            LOGGER.info("User # "+userStatus[1] + " logged on @ "+ new Date());
         }
         else
         {
@@ -98,6 +100,7 @@ public class HomeController {
             modelAndView.setViewName("loginpage");
 
         }
+
         req.getSession().setAttribute("userFullName",userStatus[1]);
         return modelAndView;
     }
