@@ -167,7 +167,7 @@ public class applicatioBasicServiceImp  implements applicatioBasicService  {
 
 
     @Override
-    public String uploadAdnConvertPdfFileToExcel(HttpServletResponse resp, MultipartFile files , String userName) throws IOException {
+    public DocumentConversionDetailMaster uploadAdnConvertPdfFileToExcel(HttpServletResponse resp, MultipartFile files , String userName) throws IOException {
 
         //--- Create Folder if not exist ------
         File pdfFolder = new File(pdfFilesFolder);
@@ -194,7 +194,7 @@ public class applicatioBasicServiceImp  implements applicatioBasicService  {
         byte[] bytes;
         try {
             bytes = files.getBytes();
-            Path inputFilepath = Paths.get(pdfFolder + File.separator+ files.getOriginalFilename().replaceAll("['\\\\/:*&?\"<>|]", ""));
+            Path inputFilepath = Paths.get(pdfFolder + "/"+ files.getOriginalFilename().replaceAll("['\\\\/:*&?\"<>|]", ""));
             String fileNameExt=files.getOriginalFilename().substring(files.getOriginalFilename().length() - 3);
             if(fileNameExt.equalsIgnoreCase("pdf")){
 
@@ -207,11 +207,19 @@ public class applicatioBasicServiceImp  implements applicatioBasicService  {
                 PdfDocument pdf = new PdfDocument();
                 pdf.loadFromFile(String.valueOf(inputFilepath));
                 pdf.getConvertOptions().setPdfToXlsxOptions(new XlsxLineLayoutOptions(false,true,true));
-                pdf.saveToFile(pdfFolder+File.separator+outputFileName, FileFormat.XLSX);
+                pdf.saveToFile(pdfFolder+"/"+outputFileName, FileFormat.XLSX);
+
 
                 // This part of code will update Converted Document detail to the DB
-                updateFileConversionDataTotheDataBase(inputFileName ,outputFileName ,userName );
-                return outputFileName;
+                documenUpdate = updateFileConversionDataTotheDataBase(inputFileName ,outputFileName ,userName );
+
+
+                //--- TODO --- Write a function to find and replace text in the Excel FIle--
+
+
+
+                //return outputFileName;
+                return documenUpdate;
             } // End of If --
 
         } catch (IOException e ) {
@@ -220,7 +228,7 @@ public class applicatioBasicServiceImp  implements applicatioBasicService  {
         }
 
 
-        return outputFileName;
+        return documenUpdate;
     }
 
 
@@ -281,13 +289,13 @@ public class applicatioBasicServiceImp  implements applicatioBasicService  {
     * */
     @Autowired
     DocumentConversionDetailMasterDao docConvDao;
-    private void updateFileConversionDataTotheDataBase(String inputFileName ,String outputFileName , String UserName ){
+    private DocumentConversionDetailMaster updateFileConversionDataTotheDataBase(String inputFileName ,String outputFileName , String UserName ){
         DocumentConversionDetailMaster docObj = new DocumentConversionDetailMaster();
-        docObj.setInputFileWithPath(pdfFilesFolder+UserName+File.separator+inputFileName);
-        docObj.setOutputFileWithPath(pdfFilesFolder+UserName+File.separator+outputFileName);
+        docObj.setInputFileWithPath(pdfFilesFolder+UserName+"/"+inputFileName);
+        docObj.setOutputFileWithPath(pdfFilesFolder+UserName+"/"+outputFileName);
         docObj.setConversionDate(new Date());
         docObj.setUserFullName(UserName);
-        docConvDao.save(docObj);
+        return docConvDao.save(docObj);
     }
 
 

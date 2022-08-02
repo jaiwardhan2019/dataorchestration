@@ -7,7 +7,10 @@
     <title>Dashboard  </title>
 </head>
 
-<body  style="font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;">
+<body style="font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;background-color:#F8F9F9; background-position: 50% 50%;background-size:cover;">
+
+
+
 <br>
 <br>
 <br>

@@ -51,6 +51,6 @@ public interface applicatioBasicService {
      *  Purpose : Purpose of this method to upload the .pdf file to the given folder and once the file is uploaded then do the
      *            orchastation and save data in the new file.
      * */
-    public String uploadAdnConvertPdfFileToExcel(HttpServletResponse requEst, MultipartFile files , String userName)throws IOException;
+    public DocumentConversionDetailMaster uploadAdnConvertPdfFileToExcel(HttpServletResponse requEst, MultipartFile files , String userName)throws IOException;
 
 }

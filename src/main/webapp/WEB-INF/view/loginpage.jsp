@@ -188,9 +188,17 @@ function myFunction(){
 		});
 	</script>
 	
-	
-	
 </body>
+
+<br>
+<br>
+<footer class="text-center" style="padding-top:0px;">
+      <div class="col-lg-12" >
+           <h6 style="color:#000;font-weight:600;">
+                        @ Radiant Solutions  <%= new java.text.SimpleDateFormat("yyyy").format(new java.util.Date()) %>, All rights reserved.
+            </h6>
+        </div>
+ </footer>
 </html>
 
   

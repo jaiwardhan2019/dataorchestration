@@ -132,12 +132,16 @@ public class HomeController {
     public ModelAndView convertpdffiletoexcel(@RequestParam("cfile") MultipartFile files, HttpServletRequest req, HttpServletResponse res, ModelMap model) throws IOException {
 
         //--- This part of code will convert the pdf file to Excel and save in the same location
-        String conversionStatus = objDataOrch.uploadAdnConvertPdfFileToExcel(res,files,req.getSession().getAttribute("userFullName").toString());
+        //String conversionStatus = objDataOrch.uploadAdnConvertPdfFileToExcel(res,files,req.getSession().getAttribute("userFullName").toString());
+        DocumentConversionDetailMaster conversionDetail  = objDataOrch.uploadAdnConvertPdfFileToExcel(res,files,req.getSession().getAttribute("userFullName").toString());
 
+        String []pdfFileName   = conversionDetail.getInputFileWithPath().split("/");
+        String []excelFileName = conversionDetail.getOutputFileWithPath().split("/");
 
         req.getSession().setAttribute("userFullName",req.getSession().getAttribute("userFullName"));
         ModelAndView modelAndView = new ModelAndView();
-        model.addAttribute("fileNameToBeDownloaded",conversionStatus);
+        model.addAttribute("pdfFileName",pdfFileName[4]);
+        model.addAttribute("excelFileName",excelFileName[4]);
         modelAndView.setViewName("convertpdffile");
         return modelAndView;
     }
