@@ -175,7 +175,7 @@ function Download_Excel_File(fileFullPath) {
 <br><br>
 
 <c:if test="${not empty pdfFileName}">
-                      <table class="table table-striped table-bordered" border="1" style="width: 60%;" align="center">
+                      <table class="table table-striped table-bordered" border="1" style="width: 50%;" align="center">
                             <tbody>
                                  <tr align="center">
 
@@ -196,28 +196,24 @@ function Download_Excel_File(fileFullPath) {
 
 
                                 <tr align="center">
-
                                      <td  colspan="5" align="left">
                                           <img src="images/page_white_excel.png"/> &nbsp;&nbsp;
                                           <a href="javascript:void()" onClick="Download_Excel_File('${excelFileName}');">
                                              ${excelFileName}
                                           </a>
                                      </td>
-
-                                     <td   align="center">
+                                     <td  align="center">
                                          <a href="javascript:void()" onClick="Download_Excel_File('${excelFileName}');">
                                               <i class="fa fa-download" aria-hidden="true"></i> </span>
                                           </a>
                                      </td>
                                  </tr>
-
-
-                                  </tbody>
+                                </tbody>
                             </table>
         </c:if>
 
 
+
 </body>
 </html>
-
 <%@include file="include/footer.jsp" %>

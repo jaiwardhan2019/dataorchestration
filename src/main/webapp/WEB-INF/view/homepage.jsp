@@ -29,9 +29,12 @@
 
 				<!----------------- BODY AREA-------------------->
 				<div class="col-md-12 col-sm-12 col-xs-12" >
-					<div id="mainbody">
-
-
+					<div id="mainbody" align="center">
+					<br>
+					<br>
+                        <p>
+                        <h1> Welcome Portal Home .. </h1>
+                        </p>
 
 				     </div>
 
@@ -47,8 +50,7 @@
 
 </html>
 <br>
+<br>
 <br><br>
-<br><br>
-<br><br>
-<br><br><br>
+
 <%@include file="include/footer.jsp" %>
