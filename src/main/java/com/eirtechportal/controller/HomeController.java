@@ -7,6 +7,7 @@ import com.eirtechportal.models.DocumentConversionDetailMaster;
 import com.eirtechportal.models.UserMaster;
 import com.eirtechportal.models.UsersMasterForCsv;
 import com.eirtechportal.service.applicatioBasicService;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
@@ -25,7 +26,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 import java.util.List;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 @RestController
@@ -33,7 +35,8 @@ import org.apache.log4j.Logger;
 public class HomeController {
 
 
-    private static final Logger LOGGER = Logger.getLogger(HomeController.class);
+
+    final static Logger LOGGER = (Logger) LoggerFactory.getLogger(HomeController.class);
 
 
     @RequestMapping(value = "/test", method = {RequestMethod.POST, RequestMethod.GET}, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -134,17 +137,26 @@ public class HomeController {
     @RequestMapping(value = "/convertpdffiletoexcel", method = { RequestMethod.POST, RequestMethod.GET })
     public ModelAndView convertpdffiletoexcel(@RequestParam("cfile") MultipartFile files, HttpServletRequest req, HttpServletResponse res, ModelMap model) throws IOException {
 
-        //--- This part of code will convert the pdf file to Excel and save in the same location
-        //String conversionStatus = objDataOrch.uploadAdnConvertPdfFileToExcel(res,files,req.getSession().getAttribute("userFullName").toString());
-        DocumentConversionDetailMaster conversionDetail  = objDataOrch.uploadAdnConvertPdfFileToExcel(res,files,req.getSession().getAttribute("userFullName").toString());
+        //--- Check if Licence is valid or not
+        if(!objDataOrch.PdfFileConversionLicenceStatus(req.getSession().getAttribute("userFullName").toString())) {
+            model.addAttribute("licenceStatus", "Your PDF to Excel File Conversion Licence is Expired !! <BR><BR> Please contact #  jai.wardhan@radiantsolutions.ie  / +353-861760595 ");
+        }
+        else
+        {
+            //--- This part of code will convert the pdf file to Excel and save in the same location
+            DocumentConversionDetailMaster conversionDetail = objDataOrch.uploadAdnConvertPdfFileToExcel(res, files, req.getSession().getAttribute("userFullName").toString());
 
-        String []pdfFileName   = conversionDetail.getInputFileWithPath().split("/");
-        String []excelFileName = conversionDetail.getOutputFileWithPath().split("/");
+            String[] pdfFileName = conversionDetail.getInputFileWithPath().split("/");
+            String[] excelFileName = conversionDetail.getOutputFileWithPath().split("/");
+
+            model.addAttribute("pdfFileName",pdfFileName[4]);
+            model.addAttribute("excelFileName",excelFileName[4]);
+
+        }
+
 
         req.getSession().setAttribute("userFullName",req.getSession().getAttribute("userFullName"));
         ModelAndView modelAndView = new ModelAndView();
-        model.addAttribute("pdfFileName",pdfFileName[4]);
-        model.addAttribute("excelFileName",excelFileName[4]);
         modelAndView.setViewName("convertpdffile");
         return modelAndView;
     }

@@ -33,9 +33,8 @@
 					<br>
 					<br>
                         <p>
-                        <h1> Welcome Portal Home .. </h1>
+                        <h1> Welcome to Portal Home .. </h1>
                         </p>
-
 				     </div>
 
 				</div>

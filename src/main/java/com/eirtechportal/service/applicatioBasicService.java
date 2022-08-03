@@ -53,4 +53,16 @@ public interface applicatioBasicService {
      * */
     public DocumentConversionDetailMaster uploadAdnConvertPdfFileToExcel(HttpServletResponse requEst, MultipartFile files , String userName)throws IOException;
 
+
+
+    /*
+     *  Author  : Jai Wardhan
+     *  Date    : 03 - Aug - 2022
+     *  Purpose : Purpose of this method to check if user Licence is valid or not
+     *
+     * */
+    public boolean PdfFileConversionLicenceStatus(String userName);
+
+
+
 }

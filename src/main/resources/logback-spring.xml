@@ -40,9 +40,9 @@
     </root>
 
     <!-- LOG "com.baeldung*" at TRACE level -->
-    <logger name="com.eirtechportal" level="error" additivity="false">
+    <logger name="com.eirtechportal.*" level="info" additivity="false">
         <appender-ref ref="RollingFile" />
-        <appender-ref ref="Console" />
+
     </logger>
 
 

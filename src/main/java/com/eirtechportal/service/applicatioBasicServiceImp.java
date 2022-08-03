@@ -4,11 +4,11 @@ package com.eirtechportal.service;
 
 
 
+import com.eirtechportal.controller.HomeController;
 import com.eirtechportal.daorepository.DocumentConversionDetailMasterDao;
 import com.eirtechportal.daorepository.UserDao;
 import com.eirtechportal.models.DocumentConversionDetailMaster;
 import com.eirtechportal.models.UserMaster;
-import org.apache.log4j.Logger;
 
 
 
@@ -32,6 +32,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 @Repository
 public class applicatioBasicServiceImp  implements applicatioBasicService  {
@@ -41,8 +44,7 @@ public class applicatioBasicServiceImp  implements applicatioBasicService  {
     @Value("${spring.operations.csv.datafolder}")
     private String csvFilesFolder;
 
-
-    private static final Logger LOGGER = Logger.getLogger(applicatioBasicServiceImp.class);
+    final static Logger LOGGER = (Logger) LoggerFactory.getLogger(applicatioBasicServiceImp.class);
 
 
 
@@ -50,6 +52,8 @@ public class applicatioBasicServiceImp  implements applicatioBasicService  {
     private UserDao usDao;
 
 
+    @Autowired
+    DocumentConversionDetailMasterDao docConvDao;
 
 
     //------ Save User And Encoded Password to the DataBase
@@ -203,18 +207,20 @@ public class applicatioBasicServiceImp  implements applicatioBasicService  {
                 //---- This part will upload file and save to the /pdf folder
                 try {
                     Files.write(inputFilepath, bytes);
-                } catch (IOException e) {e.printStackTrace();}
+                    LOGGER.info(files.getOriginalFilename()+ " File Uploaded and ..  EXCEL Conversion started..");
+                } catch (IOException e) {LOGGER.error(e.toString());}
 
                 //--- THis part will convert PDF to Excel and save on /pdf folder
                 PdfDocument pdf = new PdfDocument();
                 pdf.loadFromFile(String.valueOf(inputFilepath));
                 pdf.getConvertOptions().setPdfToXlsxOptions(new XlsxLineLayoutOptions(false,true,true));
                 pdf.saveToFile(pdfFolder+"/"+outputFileName, FileFormat.XLSX);
+                LOGGER.info(outputFileName + " Excel File Conversion is done..");
 
 
                 // This part of code will update Converted Document detail to the DB
                 documenUpdate = updateFileConversionDataTotheDataBase(inputFileName ,outputFileName ,userName );
-
+                LOGGER.info("DB Update of the file is done..");
 
                 //--- TODO --- Write a function to find and replace text in the Excel FIle--
                 //findAndRemoveTextFromExcelSheet(documenUpdate.getOutputFileWithPath() , documenUpdate.getOutputFileWithPath()," Evaluation Warning : The document was created with Spire.PDF for java.");
@@ -234,13 +240,11 @@ public class applicatioBasicServiceImp  implements applicatioBasicService  {
 
 
 
-
-
-
-
-
-
-
+    @Override
+    public boolean PdfFileConversionLicenceStatus(String userName) {
+        List<DocumentConversionDetailMaster> document = docConvDao.findUserDocumentsConvertedCount(userName);
+        return document.size() < 7 ? true:false;
+    }
 
 
 
@@ -288,8 +292,7 @@ public class applicatioBasicServiceImp  implements applicatioBasicService  {
     /*
     * This method will update document conversion detail to the Table
     * */
-    @Autowired
-    DocumentConversionDetailMasterDao docConvDao;
+
     private DocumentConversionDetailMaster updateFileConversionDataTotheDataBase(String inputFileName ,String outputFileName , String UserName ){
         DocumentConversionDetailMaster docObj = new DocumentConversionDetailMaster();
         docObj.setInputFileWithPath(pdfFilesFolder+UserName+"/"+inputFileName);

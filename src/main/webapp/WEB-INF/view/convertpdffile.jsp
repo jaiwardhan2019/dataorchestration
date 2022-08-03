@@ -171,47 +171,68 @@ function Download_Excel_File(fileFullPath) {
 
   </div>
 
+<br>
+<br>
+        <c:if test="${not empty pdfFileName}">
+          <table class="table table-striped table-bordered" border="1" style="width: 50%;" align="center">
+                <tbody>
+                     <tr align="center">
 
-<br><br>
+                         <td  colspan="5" align="left">
+                             <img src="images/page_white_acrobat.png"/> &nbsp;&nbsp;
+                             <a href="javascript:void()" onClick="Download_Excel_File('${pdfFileName}');">
+                              ${pdfFileName}
+                              </a>
 
-<c:if test="${not empty pdfFileName}">
-                      <table class="table table-striped table-bordered" border="1" style="width: 50%;" align="center">
-                            <tbody>
-                                 <tr align="center">
+                         </td>
 
-                                     <td  colspan="5" align="left">
-                                         <img src="images/page_white_acrobat.png"/> &nbsp;&nbsp;
-                                         <a href="javascript:void()" onClick="Download_Excel_File('${pdfFileName}');">
-                                          ${pdfFileName}
-                                          </a>
-
-                                     </td>
-
-                                     <td   align="center">
-                                        <a href="javascript:void()" onClick="Download_Excel_File('${pdfFileName}');">
-                                           <i class="fa fa-download" aria-hidden="true"></i> </span>
-                                        </a>
-                                     </td>
-                                 </tr>
+                         <td   align="center">
+                            <a href="javascript:void()" onClick="Download_Excel_File('${pdfFileName}');">
+                               <i class="fa fa-download" aria-hidden="true"></i> </span>
+                            </a>
+                         </td>
+                     </tr>
 
 
-                                <tr align="center">
-                                     <td  colspan="5" align="left">
-                                          <img src="images/page_white_excel.png"/> &nbsp;&nbsp;
-                                          <a href="javascript:void()" onClick="Download_Excel_File('${excelFileName}');">
-                                             ${excelFileName}
-                                          </a>
-                                     </td>
-                                     <td  align="center">
-                                         <a href="javascript:void()" onClick="Download_Excel_File('${excelFileName}');">
-                                              <i class="fa fa-download" aria-hidden="true"></i> </span>
-                                          </a>
-                                     </td>
-                                 </tr>
-                                </tbody>
-                            </table>
+                    <tr align="center">
+                         <td  colspan="5" align="left">
+                              <img src="images/page_white_excel.png"/> &nbsp;&nbsp;
+                              <a href="javascript:void()" onClick="Download_Excel_File('${excelFileName}');">
+                                 ${excelFileName}
+                              </a>
+                         </td>
+                         <td  align="center">
+                             <a href="javascript:void()" onClick="Download_Excel_File('${excelFileName}');">
+                                  <i class="fa fa-download" aria-hidden="true"></i> </span>
+                              </a>
+                         </td>
+                     </tr>
+                    </tbody>
+                </table>
         </c:if>
 
+
+
+
+         <!--  This part is for licencing -->
+        <c:if test="${not empty licenceStatus}">
+          <table class="table" border="0" style="width: 50%;" align="center">
+                <tbody>
+                     <tr align="center">
+                         <td  colspan="6" align="center">
+                                <div class="alert alert-danger" style="color:#000;text-center:justify;font-size:10pt;">
+                                   <i class="fa fa-exclamation-triangle fa-1x"></i>
+                                   &nbsp;
+                                   ${licenceStatus}
+                                   <br>
+                                </div>
+                         </td>
+                     </tr>
+
+                    </tbody>
+                </table>
+
+        </c:if>
 
 
 </body>

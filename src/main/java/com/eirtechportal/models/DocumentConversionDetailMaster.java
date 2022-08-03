@@ -4,13 +4,13 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Document_Conversion_Detail_Master",uniqueConstraints = { @UniqueConstraint(columnNames = "ID") })
+@Table(name = "document_conversion_detail_master",uniqueConstraints = { @UniqueConstraint(columnNames = "ID") })
 public class DocumentConversionDetailMaster {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
-	private int Id;
+	private long Id;
 
 	@Column(name = "INPUTFILEWITHPATH")
 	private String inputFileWithPath;
@@ -24,7 +24,7 @@ public class DocumentConversionDetailMaster {
 	@Column(name = "CONVERSIONDATE")
 	private Date conversionDate;
 
-	public int getId() {
+	public long getId() {
 		return Id;
 	}
 
