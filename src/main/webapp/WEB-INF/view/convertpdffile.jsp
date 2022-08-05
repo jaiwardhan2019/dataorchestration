@@ -172,8 +172,10 @@ function Download_Excel_File(fileFullPath) {
   </div>
 
 <br>
-<br>
+
         <c:if test="${not empty pdfFileName}">
+        <br>
+
           <table class="table table-striped table-bordered" border="1" style="width: 50%;" align="center">
                 <tbody>
                      <tr align="center">

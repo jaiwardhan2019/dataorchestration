@@ -35,6 +35,9 @@
 			<url>https://repo.e-iceblue.com/nexus/content/groups/public/</url>
 		</repository>
 
+
+
+
 	</repositories>
 	<!-- END-->
 
@@ -49,6 +52,7 @@
 			<artifactId>spire.pdf</artifactId>
 			<version>8.7.0</version>
 		</dependency>
+
 
 
 		<!-- END -->

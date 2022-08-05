@@ -22,6 +22,11 @@
       <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="AsposeJavaAPI" />
+      <option name="name" value="Aspose Java API" />
+      <option name="url" value="https://repository.aspose.com/repo/" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="com.e-iceblue" />
       <option name="name" value="e-iceblue" />
       <option name="url" value="https://repo.e-iceblue.cn/repository/maven-public/" />
