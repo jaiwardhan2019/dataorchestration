@@ -102,6 +102,14 @@ function calLogout(){
 }
 
 
+function UploadLargeFileUploadPage() {
+    document.portal.method="POST";
+	document.portal.action="loadlargefileuploadergui";
+    document.portal.submit();
+	return true;
+}
+
+
 function loadCsvFileConversionPage() {
     document.portal.method="POST";
 	document.portal.action="loadcsvconvertergui";
@@ -181,6 +189,18 @@ function Logout_application(){
                 <a href="javascript:void();" onClick="calHomePage();" style="font-size:9pt;font-weight:600;color:#FDFEFE;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-home fa-lg" aria-hidden="true"></i> Home</a>
             </li>
 
+            <li class="dropdown">
+
+                <a onmouseover="this.click()" style="font-size:9pt;font-weight:600;color:#FDFEFE;"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-cogs" aria-hidden="true"></i> &nbsp;Large File Process <span class="caret"></span></a>
+                    <ul class="dropdown-menu" style="left:0;width:200px;">
+                        <li style="margin-top:3px;margin-bottom:3px;"><a href="javascript:void();" onClick="UploadLargeFileUploadPage();"  style="font-size:09pt;color:#FDFEFE;">
+                                <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;Upload File </a>
+                        </li>
+                        <li style="margin-top:3px;margin-bottom:3px;"><a href="javascript:void();" onClick="validateLargeFile();"  style="font-size:09pt;color:#FDFEFE;">
+                                <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;Validate File </a>
+                         </li>
+              </ul>
+            </li>
 
 
 

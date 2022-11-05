@@ -64,10 +64,6 @@ public class HomeController {
 
 
 
-
-
-
-
     //------ Login Page -------------------
     @RequestMapping(value = "/", method = { RequestMethod.POST, RequestMethod.GET }, produces = {MimeTypeUtils.APPLICATION_JSON_VALUE })
     public ModelAndView loadloginpage(HttpServletRequest req, ModelMap model) throws IOException {
@@ -186,6 +182,14 @@ public class HomeController {
 
 
 
+
+
+    @RequestMapping(value = "/loadlargefileuploadergui", method = { RequestMethod.POST, RequestMethod.GET }, produces = {MimeTypeUtils.APPLICATION_JSON_VALUE })
+    public ModelAndView loadLargeFileuploaderGui(HttpServletRequest req, ModelMap model) throws IOException {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("uploadlargefile");
+        return modelAndView;
+    }
 
 
     @RequestMapping(value = "/loadcsvconvertergui", method = { RequestMethod.POST, RequestMethod.GET }, produces = {MimeTypeUtils.APPLICATION_JSON_VALUE })
