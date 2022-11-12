@@ -171,7 +171,7 @@ function Download_Excel_File(fileFullPath) {
 
 <br>
 
-        <c:if test="${not empty pdfFileName}">
+        <c:if test="${not empty fileStatus}">
         <br>
 
           <table class="table table-striped table-bordered" border="1" style="width: 40%;" align="center">
@@ -180,14 +180,14 @@ function Download_Excel_File(fileFullPath) {
 
                          <td  colspan="3" align="left">
                              <img src="images/page_white_text.png"/> &nbsp;&nbsp;
-                             <a href="javascript:void()" onClick="Download_Excel_File('${pdfFileName}');">
-                              ${pdfFileName}
+                             <a href="javascript:void()" onClick="Download_Excel_File('${fileStatus}');">
+                              ${fileStatus}
                               </a>
 
                          </td>
 
                          <td   align="center">
-                            <a href="javascript:void()" onClick="Download_Excel_File('${pdfFileName}');">
+                            <a href="javascript:void()" onClick="Download_Excel_File('${fileStatus}');">
                                <i class="fa fa-download" aria-hidden="true"></i> </span>
                             </a>
                          </td>

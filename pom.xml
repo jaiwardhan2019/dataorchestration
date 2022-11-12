@@ -46,14 +46,19 @@
 
 	<dependencies>
 
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.4</version>
+		</dependency>
+
+
 		<!-- PDF to Excel Tool -->
 		<dependency>
 			<groupId>e-iceblue</groupId>
 			<artifactId>spire.pdf</artifactId>
 			<version>8.7.0</version>
 		</dependency>
-
-
 
 		<!-- END -->
 
@@ -113,6 +118,16 @@
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
 		<!-- End of  HOT Deployment-->
+
+
+		<!-- Big File Upload -->
+		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.4</version>
+		</dependency>
+
 
 
 		<dependency>
