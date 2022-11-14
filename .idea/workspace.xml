@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="94dd30b3-bd56-43dd-8a6c-739fe0bef4b3" name="Changes" comment="Today Update 05 - Nov - 2022">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_fileupload_commons_fileupload_1_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/controller/UploadController.java" afterDir="false" />
+    <list default="true" id="94dd30b3-bd56-43dd-8a6c-739fe0bef4b3" name="Changes" comment="Today Update 12 - Nov - 2022">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/controller/bigFileManagerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/controller/fileSplitter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eirtechportalmain.iml" beforeDir="false" afterPath="$PROJECT_DIR$/eirtechportalmain.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/eirtechportal/controller/bigFileUploaderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/controller/bigFileUploaderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/uploadlargefile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/uploadlargefile.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eirtechportal/controller/bigFileUploaderController.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -359,7 +353,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667658579128</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Today Update 12 - Nov - 2022">
+      <created>1668268737717</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1668268737717</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -402,6 +403,7 @@
     <MESSAGE value="Today Update 03- Aug - 2022" />
     <MESSAGE value="Today Update 05 - Aug - 2022" />
     <MESSAGE value="Today Update 05 - Nov - 2022" />
-    <option name="LAST_COMMIT_MESSAGE" value="Today Update 05 - Nov - 2022" />
+    <MESSAGE value="Today Update 12 - Nov - 2022" />
+    <option name="LAST_COMMIT_MESSAGE" value="Today Update 12 - Nov - 2022" />
   </component>
 </project>
