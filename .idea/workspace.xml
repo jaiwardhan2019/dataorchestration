@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="94dd30b3-bd56-43dd-8a6c-739fe0bef4b3" name="Changes" comment="Today Update 12 - Nov - 2022">
-      <change afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eirtechportalmain.iml" beforeDir="false" afterPath="$PROJECT_DIR$/eirtechportalmain.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eirtechportal/controller/fileSplitter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/controller/fileSplitter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/eirtechportal/SpringBootJpaSpringDataApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/eirtechportal/SpringBootJpaSpringDataApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,9 +77,9 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.updates" />
   </component>
   <component name="RecentsManager">
@@ -95,19 +98,43 @@
       <recent name="com.eirtechportal.config" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.runapplication">
-    <configuration name="passwordHashing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="passwordHashing" />
-      <module name="eirtechportalmain" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.SpringBootJpaSpringDataApplicationTests">
     <configuration name="runapplication" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.eirtechportal.SpringBootJpaSpringDataApplication" />
       <module name="eirtechportalmain" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringBootJpaSpringDataApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="eirtechportalmain" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.eirtechportal.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.eirtechportal" />
+      <option name="MAIN_CLASS_NAME" value="com.eirtechportal.SpringBootJpaSpringDataApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringBootJpaSpringDataApplicationTests.createxmlfile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="eirtechportalmain" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.eirtechportal.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.eirtechportal" />
+      <option name="MAIN_CLASS_NAME" value="com.eirtechportal.SpringBootJpaSpringDataApplicationTests" />
+      <option name="METHOD_NAME" value="createxmlfile" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -128,6 +155,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SpringBootJpaSpringDataApplicationTests.splitFileWithVersion3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="eirtechportalmain" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.eirtechportal.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.eirtechportal" />
+      <option name="MAIN_CLASS_NAME" value="com.eirtechportal.SpringBootJpaSpringDataApplicationTests" />
+      <option name="METHOD_NAME" value="splitFileWithVersion3" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringBootJpaSpringDataApplicationTests.splitXmlFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="eirtechportalmain" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.eirtechportal.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.eirtechportal" />
+      <option name="MAIN_CLASS_NAME" value="com.eirtechportal.SpringBootJpaSpringDataApplicationTests" />
+      <option name="METHOD_NAME" value="splitXmlFile" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -141,8 +200,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SpringBootJpaSpringDataApplicationTests" />
+        <item itemvalue="JUnit.SpringBootJpaSpringDataApplicationTests.splitXmlFile" />
+        <item itemvalue="JUnit.SpringBootJpaSpringDataApplicationTests.splitFileWithVersion3" />
+        <item itemvalue="JUnit.SpringBootJpaSpringDataApplicationTests.createxmlfile" />
         <item itemvalue="JUnit.SpringBootJpaSpringDataApplicationTests.findAndReplaceTextinExcelFile" />
-        <item itemvalue="Application.passwordHashing" />
       </list>
     </recent_temporary>
   </component>
@@ -365,7 +427,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668466879461</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Today Update 12 - Nov - 2022">
+      <created>1668506256452</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1668506256452</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="UnknownFeatures">

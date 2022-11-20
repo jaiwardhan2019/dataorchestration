@@ -15,7 +15,7 @@ import java.util.UUID;
 public class fileSplitter {
 
     @Value("${spring.operations.xml.datafolder}")
-    private String xmlFilesFolder;
+    private static String xmlFilesFolder;
 
 
 
