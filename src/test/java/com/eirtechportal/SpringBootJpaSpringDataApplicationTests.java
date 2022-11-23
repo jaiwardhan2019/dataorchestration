@@ -47,11 +47,10 @@ public class SpringBootJpaSpringDataApplicationTests {
 			int nof = 0;
 			if (temp1 == temp) { nof = temp1; } else { nof = temp1 + 1;}
 			System.out.println("No. of files to be generated :" + nof); // Displays no. of files to be generated.
+
 			splitFile(fileAbsolutePath,nof,noOfLine);
 
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+		} catch (FileNotFoundException e) { e.printStackTrace(); }
 
 
 	}

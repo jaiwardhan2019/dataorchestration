@@ -34,10 +34,6 @@
 			<name>e-iceblue</name>
 			<url>https://repo.e-iceblue.com/nexus/content/groups/public/</url>
 		</repository>
-
-
-
-
 	</repositories>
 	<!-- END-->
 
@@ -45,6 +41,14 @@
 
 
 	<dependencies>
+
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+		</dependency>
+
+
 
 		<dependency>
 			<groupId>commons-fileupload</groupId>

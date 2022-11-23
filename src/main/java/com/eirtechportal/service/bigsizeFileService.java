@@ -13,8 +13,6 @@ import java.util.List;
 
 public interface bigsizeFileService {
 
-
-
     /*
      *  Author  : Jai Wardhan
      *  Date    : 05 - Nov -2022
@@ -22,8 +20,5 @@ public interface bigsizeFileService {
      * */
 
     public List<FileDetail> uploadBigSizeFile(HttpServletResponse requEst, MultipartFile files , String userName);
-
-
-
 
 }

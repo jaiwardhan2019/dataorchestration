@@ -24,6 +24,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.concurrent.atomic.AtomicReference;
 
 
 @Controller
@@ -41,11 +42,19 @@ public class bigFileManagerController {
     applicatioBasicService objDataOrch;
 
 
+    @Autowired
+    fileSplitter spliterService;
+
     @RequestMapping(value = "/uploadlargefile", method = { RequestMethod.POST})
     public ModelAndView uploadlargefile(@RequestParam("cfile") MultipartFile[] files,HttpServletRequest req,  ModelMap model) throws IOException {
 
+        // 1. Upload File
         //uploadFilesUsingByteCopy(files, xmlFilesFolder);  <<--- Cost Big Memory
-        uploadFilesUsingStreaming(files, xmlFilesFolder);  // Streaming Cost very low Memory
+        String uploadedFileName = uploadFilesUsingStreaming(files, xmlFilesFolder);  // Streaming Cost very low Memory
+
+        // 2. Split File
+        spliterService.splitFile(xmlFilesFolder+uploadedFileName,200000);
+
 
         model.addAttribute("fileStatus","File Uploaded Sucessfully..");
 
@@ -94,11 +103,12 @@ public class bigFileManagerController {
 
 
     @Async
-    private void uploadFilesUsingStreaming(MultipartFile[] files, String uploadRootDirectory) throws IOException {
+    private String uploadFilesUsingStreaming(MultipartFile[] files, String uploadRootDirectory) throws IOException {
 
         File uploadDir = new File(uploadRootDirectory);
         if(!uploadDir.exists()){uploadDir.mkdir();}
 
+        final String[] finalFileName = {null};
         //--- List of File --------------
         Arrays.asList(files).stream().forEach(file -> {
 
@@ -113,10 +123,12 @@ public class bigFileManagerController {
                 fout.close();
                 IOUtils.closeQuietly(uploadedStream);
                 System.out.println("File Name :" + FileName + "\nuploadedFileSize :" + uploadedFileSize);
+                finalFileName[0] = FileName;
             } catch (IOException e) { e.printStackTrace();}
 
         });
 
+        return finalFileName[0];
     }
 
 
@@ -142,14 +154,14 @@ public class bigFileManagerController {
 
 
 
-
-
-
-    @RequestMapping(value = "/splitlargefile", method = { RequestMethod.POST})
+    @RequestMapping(value = "/splitlargefile", method = { RequestMethod.POST, RequestMethod.GET})
     public ModelAndView splitlargefile(HttpServletRequest req,  ModelMap model) throws IOException {
 
-        Path filePath = Paths.get(xmlFilesFolder + File.separator + "TestData.xml");
-        fileSplitter.splitFile(String.valueOf(filePath),(1024*8));
+
+        String fileAbsolutePath = xmlFilesFolder + File.separatorChar + "recordsmaster.xml";
+
+
+
 
         model.addAttribute("fileStatus","File Split Sucessfully..");
         req.getSession().setAttribute("userFullName",req.getSession().getAttribute("userFullName"));
@@ -157,6 +169,8 @@ public class bigFileManagerController {
         modelAndView.setViewName("uploadlargefile");
         return modelAndView;
     }
+
+
 
 
 

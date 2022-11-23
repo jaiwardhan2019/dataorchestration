@@ -1,78 +1,95 @@
 package com.eirtechportal.controller;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-import java.io.RandomAccessFile;
+import java.io.*;
 import java.nio.channels.FileChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.UUID;
 
+
+@Service
 public class fileSplitter {
 
     @Value("${spring.operations.xml.datafolder}")
-    private static String xmlFilesFolder;
+    private String xmlFilesFolder;
+
+
+    public void splitFile(String fileAbsolutePath , int noofLinePerFile){
+        try {
+            // Reading file and getting no. of files to be generated
+            File file = new File(fileAbsolutePath);
+            Scanner scanner = new Scanner(file);
+            int count = 0;
+           // while (scanner.hasNextLine()) { scanner.nextLine(); count++; }
+            System.out.println("Lines in the file: " + count);     // Displays no. of lines in the input file.
+            double temp = (count / noofLinePerFile);
+            int temp1 = (int) temp;
+            int nof = 0;
+            if (temp1 == temp) { nof = temp1; } else { nof = temp1 + 1;}
+            System.out.println("No. of files to be generated :" + nof); // Displays no. of files to be generated.
+
+            splitFile(fileAbsolutePath,10,noofLinePerFile);
+
+        } catch (FileNotFoundException e) { e.printStackTrace(); }
+    }
 
 
 
-    private static final String dir = xmlFilesFolder;
-    private static final String suffix = ".splitPart";
+    private void splitFile(String inputFileAbsolutePath, int numberOfFile, int noOfLine){
 
-    /**
-     * Split a file into multiples files.
-     *
-     * @param fileName   Name of file to be split.
-     * @param mBperSplit maximum number of MB per file.
-     * @throws IOException
-     */
-    public static List<Path> splitFile(final String fileName, final int mBperSplit) throws IOException {
+        try{
 
-        if (mBperSplit <= 0) {
-            throw new IllegalArgumentException("mBperSplit must be more than zero");
-        }
+            FileInputStream fstream = new FileInputStream(inputFileAbsolutePath);
+            DataInputStream in = new DataInputStream(fstream);
+            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+            String strLine;
 
-
-
-        List<Path> partFiles = new ArrayList<>();
-        final long sourceSize = Files.size(Paths.get(fileName));
-        final long bytesPerSplit = 1024L * 1024L * mBperSplit;
-        final long numSplits = sourceSize / bytesPerSplit;
-        final long remainingBytes = sourceSize % bytesPerSplit;
-        int position = 0;
-
-
-        try (RandomAccessFile sourceFile = new RandomAccessFile(fileName, "r");
-             FileChannel sourceChannel = sourceFile.getChannel()) {
-
-            for (; position < numSplits; position++) {
-                //write multipart files.
-                writePartToFile(bytesPerSplit, position * bytesPerSplit, sourceChannel, partFiles);
+            for (int j=1;j<=numberOfFile;j++)
+            {
+                FileWriter fstream1 = new FileWriter(xmlFilesFolder+"DataFile-"+j+".xml");     // Destination File Location
+                BufferedWriter out = new BufferedWriter(fstream1);
+                for (int i=1;i<=noOfLine;i++)
+                {
+                    strLine = br.readLine();
+                    if (strLine!= null)
+                    {
+                        out.write(strLine);
+                        if(i!=noOfLine)
+                        {
+                            out.newLine();
+                        }
+                    }
+                }
+                out.close();
             }
 
-            if (remainingBytes > 0) {
-                writePartToFile(remainingBytes, position * bytesPerSplit, sourceChannel, partFiles);
-            }
+            in.close();
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return partFiles;
-    }
-
-
-
-    private static void writePartToFile(long byteSize, long position, FileChannel sourceChannel, List<Path> partFiles) throws IOException {
-        Path fileName = Paths.get(dir + UUID.randomUUID() + suffix);
-        try (RandomAccessFile toFile = new RandomAccessFile(fileName.toFile(), "rw");
-             FileChannel toChannel = toFile.getChannel()) {
-            sourceChannel.position(position);
-            toChannel.transferFrom(sourceChannel, 0, byteSize);
-        }
-        partFiles.add(fileName);
-    }
-
-
 
 
     }
+
+
+
+
+
+
+
+
+
+
+
+}
