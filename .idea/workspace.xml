@@ -4,25 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="94dd30b3-bd56-43dd-8a6c-739fe0bef4b3" name="Changes" comment="Today 23 -Nov - 2022">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_findbugs_jsr305_3_0_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_errorprone_error_prone_annotations_2_11_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_failureaccess_1_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_31_1_jre.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_listenablefuture_9999_0_empty_to_avoid_conflict_with_guava.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_j2objc_j2objc_annotations_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_checkerframework_checker_qual_3_12_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eirtechportal.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/service/fileUploader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="94dd30b3-bd56-43dd-8a6c-739fe0bef4b3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eirtechportalmain.iml" beforeDir="false" afterPath="$PROJECT_DIR$/eirtechportalmain.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/eirtechportal/controller/bigFileManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/controller/bigFileManagerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/eirtechportal/controller/fileSplitter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/service/fileSplitter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eirtechportal/service/fileSplitter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/service/fileSplitter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -461,7 +446,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669232514119</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Today 24 -Nov - 2022">
+      <created>1669309502812</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1669309502812</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -507,6 +499,7 @@
     <MESSAGE value="Today Update 12 - Nov - 2022" />
     <MESSAGE value="Today Update 20 - Nov - 2022" />
     <MESSAGE value="Today 23 -Nov - 2022" />
-    <option name="LAST_COMMIT_MESSAGE" value="Today 23 -Nov - 2022" />
+    <MESSAGE value="Today 24 -Nov - 2022" />
+    <option name="LAST_COMMIT_MESSAGE" value="Today 24 -Nov - 2022" />
   </component>
 </project>

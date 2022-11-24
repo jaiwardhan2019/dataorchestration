@@ -1,5 +1,6 @@
 package com.eirtechportal.service;
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -110,8 +111,10 @@ public class fileSplitter {
     private File generateTargetFileName(String FilePath, MultipartFile files, int targetFileSize, int fileCount) {
 
         File fileName = null;
+        String tempFileName = null;
         if (files.getSize() > targetFileSize) {
-            fileName = new File(fileCount + "-" + fileCount + FilePath + files.getOriginalFilename());
+            tempFileName =  FilenameUtils.removeExtension(files.getOriginalFilename())+"-"+fileCount+"."+FilenameUtils.getExtension(files.getOriginalFilename());
+            fileName = new File(FilePath + tempFileName);
         } else {
             fileName = new File(FilePath + files.getOriginalFilename());
 
@@ -129,7 +132,7 @@ public class fileSplitter {
         int count = 1, data;
         try {
             File filename = new File(FilePath);
-            //RandomAccessFile infile = new RandomAccessFile(filename, "r");
+
             InputStream infile = new BufferedInputStream(new FileInputStream(filename));
             data = infile.read();
             while (data != -1) {

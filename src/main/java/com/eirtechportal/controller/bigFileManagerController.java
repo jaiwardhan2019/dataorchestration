@@ -49,29 +49,8 @@ public class bigFileManagerController {
     public ModelAndView uploadlargefile(@RequestParam("cfile") MultipartFile[] files,HttpServletRequest req,  ModelMap model) throws IOException {
 
         Stopwatch stopwatch = Stopwatch.createStarted();
-
-
-        // 1. Upload File
-        //String uploadedFileName = fileUploaderObj.uploadFilesUsingStreaming(files, xmlFilesFolder);  //<-- Streaming Cost very low Memory
-        //stopwatch.stop();
-        //System.out.println("Time taken in upload :# "+stopwatch.elapsed(SECONDS));
-
-
-        // 2. Split File
-        //stopwatch.reset();
-        //stopwatch.start();
-        //spliterService.splitFileByNumberOfLine(xmlFilesFolder+uploadedFileName,200000);
-        //spliterService.splitFileByNoOfByte(xmlFilesFolder+uploadedFileName,(1024*1024*1024));
-        //stopwatch.stop();
-        //System.out.println("Time taken in Split File :# "+stopwatch.elapsed(SECONDS));
-
-
-        // 3. Transfer File
-        //Write service class to transfer File
-
-
         // 4. Split and Upload at the same time.
-        spliterService.uploadAndSplitFileIfSizeBigger(files,xmlFilesFolder,(1024*1024*12));
+        spliterService.uploadAndSplitFileIfSizeBigger(files,xmlFilesFolder,(1024*1024*15));
         stopwatch.stop();
         System.out.println("Time taken in upload and Split : # "+stopwatch.elapsed(SECONDS));
 
