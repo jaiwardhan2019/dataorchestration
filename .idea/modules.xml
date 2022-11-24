@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/eirtechportalmain.iml" filepath="$PROJECT_DIR$/eirtechportalmain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eirtechportal.iml" filepath="$PROJECT_DIR$/eirtechportal.iml" />
     </modules>
   </component>
 </project>
