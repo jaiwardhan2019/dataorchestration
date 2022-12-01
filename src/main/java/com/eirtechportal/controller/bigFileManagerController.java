@@ -4,6 +4,7 @@
 package com.eirtechportal.controller;
 
 import com.eirtechportal.service.applicatioBasicService;
+import com.eirtechportal.service.fileParsher;
 import com.eirtechportal.service.fileSplitter;
 import com.eirtechportal.service.fileUploader;
 import com.google.common.base.Stopwatch;
@@ -18,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.stream.XMLStreamException;
 import java.io.*;
 
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
@@ -39,8 +41,6 @@ public class bigFileManagerController {
     applicatioBasicService objDataOrch;
 
 
-    @Autowired
-    fileSplitter spliterService;
 
     @Autowired
     fileUploader fileUploaderObj;
@@ -49,8 +49,8 @@ public class bigFileManagerController {
     public ModelAndView uploadlargefile(@RequestParam("cfile") MultipartFile[] files,HttpServletRequest req,  ModelMap model) throws IOException {
 
         Stopwatch stopwatch = Stopwatch.createStarted();
-        // 4. Split and Upload at the same time.
-        spliterService.uploadAndSplitFileIfSizeBigger(files,xmlFilesFolder,(1024*1024*15));
+        // 1. Upload File and Split if it is bigger in size.
+        fileUploaderObj.uploadAndSplitFileIfSizeBigger(files,xmlFilesFolder,(1024*1024*15));
         stopwatch.stop();
         System.out.println("Time taken in upload and Split : # "+stopwatch.elapsed(SECONDS));
 
@@ -66,14 +66,40 @@ public class bigFileManagerController {
 
 
 
+
+
+    @Autowired
+    fileParsher  fileParsherObj;
+
+    @RequestMapping(value = "/parselargefile", method = { RequestMethod.POST, RequestMethod.GET})
+    public void parselargefile(HttpServletRequest req,  ModelMap model) throws IOException, XMLStreamException {
+
+        Stopwatch stopwatch = Stopwatch.createStarted();
+
+        fileParsherObj.parseBigFile();
+
+        stopwatch.stop();
+        System.out.println("Time taken to parse file  : # "+stopwatch.elapsed(SECONDS));
+
+
+        /*
+        model.addAttribute("fileStatus","File Split Sucessfully..");
+        req.getSession().setAttribute("userFullName",req.getSession().getAttribute("userFullName"));
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("uploadlargefile");
+        return modelAndView;*/
+    }
+
+
+
+
+
     @RequestMapping(value = "/splitlargefile", method = { RequestMethod.POST, RequestMethod.GET})
     public ModelAndView splitlargefile(HttpServletRequest req,  ModelMap model) throws IOException {
 
-
         String fileAbsolutePath = xmlFilesFolder + File.separatorChar + "recordsmaster.xml";
 
-
-
+        //---Write splitter Code...
 
         model.addAttribute("fileStatus","File Split Sucessfully..");
         req.getSession().setAttribute("userFullName",req.getSession().getAttribute("userFullName"));

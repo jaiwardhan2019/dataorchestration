@@ -1,5 +1,6 @@
 package com.eirtechportal.service;
 
+import org.apache.commons.io.FilenameUtils;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Async;
@@ -21,6 +22,51 @@ public class fileUploader {
 
     @Value("${spring.operations.xml.datafolder}")
     private String xmlFilesFolder;
+
+
+
+
+    @Async
+    public void uploadAndSplitFileIfSizeBigger(MultipartFile[] files, String FilePath, int fileSize) throws IOException {
+
+        long leninfile = 0, leng = 0;
+        int count = 1, data;
+        File filename = null;
+        InputStream infile = new BufferedInputStream(files[0].getInputStream());
+        data = infile.read();
+        while (data != -1) {
+            filename = generateTargetFileName(FilePath, files[0], fileSize, count);
+            OutputStream outfile = new BufferedOutputStream(new FileOutputStream(filename));
+            while (data != -1 && leng < fileSize) {
+                outfile.write(data);
+                leng++;
+                data = infile.read();
+            }
+            leninfile += leng;
+            leng = 0;
+            outfile.close();
+            count++;
+        }
+
+    }
+
+
+    //--- Generate File Name with the no if size is bigger--
+    private File generateTargetFileName(String FilePath, MultipartFile files, int targetFileSize, int fileCount) {
+
+        File fileName = null;
+        String tempFileName = null;
+        if (files.getSize() > targetFileSize) {
+            tempFileName = FilenameUtils.removeExtension(files.getOriginalFilename()) + "-" + fileCount + "." + FilenameUtils.getExtension(files.getOriginalFilename());
+            fileName = new File(FilePath + tempFileName);
+        } else {
+            fileName = new File(FilePath + files.getOriginalFilename());
+
+        }
+        return fileName;
+    }
+
+
 
 
 
