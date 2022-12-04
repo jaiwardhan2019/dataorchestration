@@ -3,10 +3,7 @@
  */
 package com.eirtechportal.controller;
 
-import com.eirtechportal.service.applicatioBasicService;
-import com.eirtechportal.service.fileParsher;
-import com.eirtechportal.service.fileSplitter;
-import com.eirtechportal.service.fileUploader;
+import com.eirtechportal.service.*;
 import com.google.common.base.Stopwatch;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -107,6 +104,21 @@ public class bigFileManagerController {
         modelAndView.setViewName("uploadlargefile");
         return modelAndView;
     }
+
+
+
+    @Autowired
+    xmlFileCreator objFileCreator;
+
+    @RequestMapping(value = "/createxmlfile", method = { RequestMethod.POST, RequestMethod.GET})
+    public void createxmlfile(HttpServletRequest req,  ModelMap model) throws IOException {
+
+        objFileCreator.createTestXmlFile();
+
+        //---Write splitter Code...
+    }
+
+
 
 
 
