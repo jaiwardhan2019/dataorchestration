@@ -122,6 +122,7 @@ public class fileUploader {
                 FileOutputStream foutStream = new FileOutputStream(String.valueOf(filePath));
                 Long uploadedFileSize = IOUtils.copyLarge(fileInputStream, foutStream);
                 foutStream.close();
+                fileInputStream.close();
                 IOUtils.closeQuietly(fileInputStream);
                 finalFileName[0] = FileName;
             } catch (IOException e) { e.printStackTrace();}

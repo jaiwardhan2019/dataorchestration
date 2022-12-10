@@ -47,7 +47,9 @@ public class bigFileManagerController {
 
         Stopwatch stopwatch = Stopwatch.createStarted();
         // 1. Upload File and Split if it is bigger in size.
-        fileUploaderObj.uploadAndSplitFileIfSizeBigger(files,xmlFilesFolder,(1024*1024*15));
+        //fileUploaderObj.uploadAndSplitFileIfSizeBigger(files,xmlFilesFolder,(1024*1024*15));
+        //fileUploaderObj.uploadFilesUsingBuffeReaderAndStreaming(files,xmlFilesFolder);
+        fileUploaderObj.uploadFilesUsingStreaming(files,xmlFilesFolder);
         stopwatch.stop();
         System.out.println("Time taken in upload and Split : # "+stopwatch.elapsed(SECONDS));
 
