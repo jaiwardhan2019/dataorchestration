@@ -65,20 +65,43 @@ public class bigFileManagerController {
 
 
 
+    @PostMapping("/uploadfiletoaws")
+    public String uploadfiletoaws(@RequestParam("cfile") MultipartFile multipart) {
+        String fileName = multipart.getOriginalFilename();
+        System.out.println("filename: " + fileName);
+/*
+        String message = "";
+        try {
+            S3Util.uploadFile(fileName, multipart.getInputStream());
+            message = "Your file has been uploaded successfully!";
+        } catch (Exception ex) {
+            message = "Error uploading file: " + ex.getMessage();
+        }
+*/
+
+        return "message";
+    }
+
+
+
 
 
     @Autowired
     fileParsher  fileParsherObj;
 
-    @RequestMapping(value = "/parselargefile", method = { RequestMethod.POST, RequestMethod.GET})
+    @Autowired
+    BigFileParsher BigFileParsherObj;
+
+    @RequestMapping(value = "/validatebigfile", method = { RequestMethod.POST, RequestMethod.GET})
     public void parselargefile(HttpServletRequest req,  ModelMap model) throws IOException, XMLStreamException {
 
         Stopwatch stopwatch = Stopwatch.createStarted();
 
-        fileParsherObj.parseBigFile();
+            //fileParsherObj.parseBigFile();
+            BigFileParsherObj.parseXmlFile();
 
         stopwatch.stop();
-        System.out.println("Time taken to parse file  : # "+stopwatch.elapsed(SECONDS));
+        System.out.println("Time taken to parse file in Second : # "+stopwatch.elapsed(SECONDS));
 
 
         /*
@@ -119,12 +142,6 @@ public class bigFileManagerController {
 
         //---Write splitter Code...
     }
-
-
-
-
-
-
 
 
 }

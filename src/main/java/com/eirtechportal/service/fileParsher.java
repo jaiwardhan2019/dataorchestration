@@ -12,8 +12,11 @@ import java.io.*;
 import java.util.Scanner;
 
 
+
+
 @Service
 public class fileParsher {
+
 
     @Value("${spring.operations.xml.datafolder}")
     String xmlFilesFolder;
@@ -21,7 +24,7 @@ public class fileParsher {
 
     public void  parseBigFile() throws FileNotFoundException, XMLStreamException {
 
-        String fileAbsolutePath = xmlFilesFolder + File.separatorChar + "vendorone.xml";
+        String fileAbsolutePath = xmlFilesFolder + File.separatorChar + "vendors.xml";
 
         XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
             // https://rules.sonarsource.com/java/RSPEC-2755
@@ -35,7 +38,7 @@ public class fileParsher {
             System.out.println(eventType);   // 7, START_DOCUMENT
             System.out.println(reader);      // xerces
 
-           int lineCounter=0;
+            int lineCounter=0;
 
             while (reader.hasNext()) {
 
@@ -52,35 +55,35 @@ public class fileParsher {
                             //System.out.printf("Staff id : %s%n", id);
                             break;
 
-                        case "name":
-                            eventType = reader.next();
-                            if (eventType == XMLEvent.CHARACTERS) {
-                                //System.out.printf("Name : %s%n", reader.getText());
-                            }
-                            break;
+                                case "name":
+                                    eventType = reader.next();
+                                    if (eventType == XMLEvent.CHARACTERS) {
+                                        //System.out.printf("Name : %s%n", reader.getText());
+                                    }
+                                    break;
 
-                        case "role":
-                            eventType = reader.next();
-                            if (eventType == XMLEvent.CHARACTERS) {
-                                //System.out.printf("Role : %s%n", reader.getText());
-                            }
-                            break;
+                                case "role":
+                                    eventType = reader.next();
+                                    if (eventType == XMLEvent.CHARACTERS) {
+                                        //System.out.printf("Role : %s%n", reader.getText());
+                                    }
+                                    break;
 
-                        case "salary":
-                            String currency = reader.getAttributeValue(null, "currency");
-                            eventType = reader.next();
-                            if (eventType == XMLEvent.CHARACTERS) {
-                                String salary = reader.getText();
-                                //System.out.printf("Salary [Currency] : %,.2f [%s]%n",  Float.parseFloat(salary), currency);
-                            }
-                            break;
+                                case "salary":
+                                    String currency = reader.getAttributeValue(null, "currency");
+                                    eventType = reader.next();
+                                    if (eventType == XMLEvent.CHARACTERS) {
+                                        String salary = reader.getText();
+                                        //System.out.printf("Salary [Currency] : %,.2f [%s]%n",  Float.parseFloat(salary), currency);
+                                    }
+                                    break;
 
-                        case "bio":
-                            eventType = reader.next();
-                            if (eventType == XMLEvent.CHARACTERS) {
-                                //System.out.printf("Bio : %s%n", reader.getText());
-                            }
-                            break;
+                                case "bio":
+                                    eventType = reader.next();
+                                    if (eventType == XMLEvent.CHARACTERS) {
+                                        //System.out.printf("Bio : %s%n", reader.getText());
+                                    }
+                                    break;
                     }
 
                 }

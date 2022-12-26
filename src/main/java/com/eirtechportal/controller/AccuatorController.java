@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RestControllerEndpoint(id = "rest-end-point")
 public class AccuatorController {
 
-
 	@GetMapping(value = "/test")
 	public String producer1() {
 		return "Message sent to the RabbitMQ JavaInUse Successfully";

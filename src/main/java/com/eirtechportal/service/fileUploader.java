@@ -125,6 +125,7 @@ public class fileUploader {
                 fileInputStream.close();
                 IOUtils.closeQuietly(fileInputStream);
                 finalFileName[0] = FileName;
+
             } catch (IOException e) { e.printStackTrace();}
 
         });
@@ -133,6 +134,7 @@ public class fileUploader {
     }
 
 
+    //--- Fastest but memory consumed Lot ---
     public void uploadFilesUsingByteCopy(MultipartFile[] files, String uploadRootDirectory) throws IOException {
 
         //-------- Loop for the file list.
