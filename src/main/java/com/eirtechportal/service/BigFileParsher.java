@@ -33,7 +33,9 @@ public class BigFileParsher {
     public void parseXmlFile() throws FileNotFoundException, XMLStreamException {
 
 
-        String fileAbsolutePath = xmlFilesFolder + File.separatorChar + "vendors1.xml";
+        //String fileAbsolutePath = xmlFilesFolder + File.separatorChar + "vendors.xml";
+        String fileAbsolutePath = xmlFilesFolder + File.separatorChar + "employee.xml";
+
         //
         // Get an input factory
         //
@@ -60,12 +62,13 @@ public class BigFileParsher {
 
 
 
+
     private static void printEvent(XMLStreamReader xmlr) {
 
-        System.out.print("EVENT:["+xmlr.getLocation().getLineNumber()+"]["+xmlr.getLocation().getColumnNumber()+"] ");
-        System.out.print(" [");
+        System.out.print("Line No:["+xmlr.getLocation().getLineNumber()+" Column :"+xmlr.getLocation().getColumnNumber()+"] \n");
 
         switch (xmlr.getEventType()) {
+
             case XMLStreamConstants.START_ELEMENT:
                 System.out.print("<");
                 printName(xmlr);
@@ -73,23 +76,28 @@ public class BigFileParsher {
                 printAttributes(xmlr);
                 System.out.print(">");
                 break;
+
             case XMLStreamConstants.END_ELEMENT:
                 System.out.print("</");
                 printName(xmlr);
                 System.out.print(">");
                 break;
+
             case XMLStreamConstants.SPACE:
+
             case XMLStreamConstants.CHARACTERS:
                 int start = xmlr.getTextStart();
                 int length = xmlr.getTextLength();
                 System.out.print(new String(xmlr.getTextCharacters(),start,length));
                 break;
+
             case XMLStreamConstants.PROCESSING_INSTRUCTION:
                 System.out.print("<?");
                 if (xmlr.hasText())
                 System.out.print(xmlr.getText());
                 System.out.print("?>");
                 break;
+
             case XMLStreamConstants.CDATA:
                 System.out.print("<![CDATA[");
                 start = xmlr.getTextStart();
@@ -97,21 +105,22 @@ public class BigFileParsher {
                 System.out.print(new String(xmlr.getTextCharacters(),start,length));
                 System.out.print("]]>");
                 break;
+
             case XMLStreamConstants.COMMENT:
                 System.out.print("<!--");
                 if (xmlr.hasText())
                     System.out.print(xmlr.getText());
                 System.out.print("-->");
                 break;
+
             case XMLStreamConstants.ENTITY_REFERENCE:
                 System.out.print(xmlr.getLocalName()+"=");
                 if (xmlr.hasText())
                     System.out.print("["+xmlr.getText()+"]");
                 break;
+
             case XMLStreamConstants.START_DOCUMENT:
-                System.out.print("<?xml");
-                System.out.print(" version='"+xmlr.getVersion()+"'");
-                System.out.print(" encoding='"+xmlr.getCharacterEncodingScheme()+"'");
+                System.out.print("<?xml  version='"+xmlr.getVersion()+"' encoding='"+xmlr.getCharacterEncodingScheme()+"'");
                 if (xmlr.isStandalone())
                     System.out.print(" standalone='yes'");
                 else
@@ -119,7 +128,7 @@ public class BigFileParsher {
                 System.out.print("?>");
                 break;
         }
-        System.out.println("]");
+
     }
 
 

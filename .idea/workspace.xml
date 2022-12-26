@@ -4,50 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="94dd30b3-bd56-43dd-8a6c-739fe0bef4b3" name="Changes" comment="Accuater End Point on different Port">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_15.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_buffer_4_1_84_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_codec_4_1_84_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_codec_http2_4_1_84_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_codec_http_4_1_84_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_common_4_1_84_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_handler_4_1_84_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_resolver_4_1_84_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_transport_4_1_84_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_transport_classes_epoll_4_1_84_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_transport_native_unix_common_4_1_84_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_13.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_15.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_reactivestreams_reactive_streams_1_0_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__software_amazon_awssdk_annotations_2_18_34.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__software_amazon_awssdk_apache_client_2_18_34.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__software_amazon_awssdk_arns_2_18_34.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__software_amazon_awssdk_auth_2_18_34.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__software_amazon_awssdk_aws_core_2_18_34.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__software_amazon_awssdk_aws_query_protocol_2_18_34.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__software_amazon_awssdk_aws_xml_protocol_2_18_34.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__software_amazon_awssdk_endpoints_spi_2_18_34.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__software_amazon_awssdk_http_client_spi_2_18_34.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__software_amazon_awssdk_json_utils_2_18_34.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__software_amazon_awssdk_metrics_spi_2_18_34.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__software_amazon_awssdk_netty_nio_client_2_18_34.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__software_amazon_awssdk_profiles_2_18_34.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__software_amazon_awssdk_protocol_core_2_18_34.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__software_amazon_awssdk_regions_2_18_34.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__software_amazon_awssdk_s3_2_18_34.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__software_amazon_awssdk_sdk_core_2_18_34.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__software_amazon_awssdk_third_party_jackson_core_2_18_34.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__software_amazon_awssdk_utils_2_18_34.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__software_amazon_eventstream_eventstream_1_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/service/BigFileParsher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/service/S3Util.java" afterDir="false" />
+    <list default="true" id="94dd30b3-bd56-43dd-8a6c-739fe0bef4b3" name="Changes" comment="XML Parser With Validation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eirtechportal.iml" beforeDir="false" afterPath="$PROJECT_DIR$/eirtechportal.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/eirtechportal/controller/AccuatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/controller/AccuatorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/eirtechportal/controller/bigFileManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/controller/bigFileManagerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/eirtechportal/service/fileParsher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/service/fileParsher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/eirtechportal/service/fileUploader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/service/fileUploader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eirtechportal/service/BigFileParsher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/service/BigFileParsher.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -525,7 +484,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670697067332</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="XML Parser With Validation">
+      <created>1672015163144</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1672015163144</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -576,6 +542,7 @@
     <MESSAGE value="04 - Dec - Create XML File" />
     <MESSAGE value="END POINT ON NEW Port" />
     <MESSAGE value="Accuater End Point on different Port" />
-    <option name="LAST_COMMIT_MESSAGE" value="Accuater End Point on different Port" />
+    <MESSAGE value="XML Parser With Validation" />
+    <option name="LAST_COMMIT_MESSAGE" value="XML Parser With Validation" />
   </component>
 </project>
