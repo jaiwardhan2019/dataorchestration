@@ -16,10 +16,7 @@ import javax.xml.stream.*;
  */
 
 // @Todo
-//  https://www.roseindia.net/xml/dom/DOMParserCheck.shtml  <--  chek if xml file is wel formed or not
-//  https://docs.oracle.com/cd/E11035_01/wls100/xml/stax.html#wp1099797 <--  validate XML file ..
-
-
+// Pen test on field regex validation
 
 @Service
 public class BigFileParsher {

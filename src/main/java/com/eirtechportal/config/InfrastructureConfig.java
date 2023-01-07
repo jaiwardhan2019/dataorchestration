@@ -2,7 +2,11 @@
 package com.eirtechportal.config;
 
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.view.UrlBasedViewResolver;
+import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
+import org.springframework.web.servlet.view.tiles3.TilesView;
 
 
 //@PropertySources({@PropertySource("classpath:#log4jlll.properties")})
@@ -55,6 +59,5 @@ public class InfrastructureConfig {
 		     return DataSourceBuilder.create().build(); 
 	  }
 */
-	
-	 
+
 }

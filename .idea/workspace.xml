@@ -5,7 +5,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="94dd30b3-bd56-43dd-8a6c-739fe0bef4b3" name="Changes" comment="XML Parser With Validation">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_virtuald_curvesapi_1_07.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_SparseBitSet_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_8_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_digester_commons_digester_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_collections4_4_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_compress_1_21.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_math3_3_6_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_5_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_5_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_lite_5_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tiles_tiles_api_3_0_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tiles_tiles_autotag_core_runtime_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tiles_tiles_core_3_0_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tiles_tiles_jsp_3_0_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tiles_tiles_request_api_1_0_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tiles_tiles_request_jsp_1_0_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tiles_tiles_request_servlet_1_0_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tiles_tiles_servlet_3_0_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tiles_tiles_template_3_0_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlbeans_xmlbeans_5_0_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jcl_over_slf4j_1_7_36.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__xml_apis_xml_apis_1_4_01.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/include/tilefooter.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/include/tileheader.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/AMOSExcel.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/AmosDataEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ReadCsvFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/report.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_7.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eirtechportal.iml" beforeDir="false" afterPath="$PROJECT_DIR$/eirtechportal.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eirtechportal/SpringBootJpaSpringDataApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/SpringBootJpaSpringDataApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eirtechportal/config/InfrastructureConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/config/InfrastructureConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eirtechportal/controller/bigFileManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/controller/bigFileManagerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/eirtechportal/service/BigFileParsher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eirtechportal/service/BigFileParsher.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -68,12 +102,13 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ChangesTree.GroupingKeys" value="" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/eirtechportal/service" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/java" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -81,30 +116,24 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\JavaProject\eirtechportal\src\test\java" />
+      <recent name="C:\JavaProject\eirtechportal\src\main\webapp\WEB-INF\view" />
+      <recent name="C:\JavaProject\eirtechportal\src\main\webapp\WEB-INF\view\include" />
       <recent name="C:\JavaProject\eirtechportal\src\main\java\com\eirtechportal\service" />
       <recent name="C:\JavaProject\eirtechportal\src\main\java\com\eirtechportal\controller" />
-      <recent name="C:\JavaProject\eirtechportal\src\main\java\com\eirtechportal\models" />
-      <recent name="C:\JavaProject\eirtechportal\src\main\webapp\WEB-INF\view" />
-      <recent name="C:\JavaProject\eirtechportal\src\test\java\com\eirtechportal" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
       <recent name="com.eirtechportal.controller" />
       <recent name="com.eirtechportal.service" />
       <recent name="com.eirtechportal.models" />
       <recent name="com.eirtechportal.daorepository" />
-      <recent name="com.eirtechportal.config" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.runapplication">
-    <configuration name="Parse" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.eirtechportal.service.Parse" />
+  <component name="RunManager" selected="Application.ReadCsvFile">
+    <configuration name="ReadCsvFile" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ReadCsvFile" />
       <module name="eirtechportal" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.eirtechportal.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -192,9 +221,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.runapplication" />
+      <item itemvalue="Application.ReadCsvFile" />
+      <item itemvalue="JUnit.SpringBootJpaSpringDataApplicationTests" />
+      <item itemvalue="JUnit.SpringBootJpaSpringDataApplicationTests.createxmlfile" />
+      <item itemvalue="JUnit.SpringBootJpaSpringDataApplicationTests.splitFileWithVersion3" />
+      <item itemvalue="JUnit.SpringBootJpaSpringDataApplicationTests.splitXmlFile" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Parse" />
+        <item itemvalue="Application.ReadCsvFile" />
         <item itemvalue="JUnit.SpringBootJpaSpringDataApplicationTests.splitXmlFile" />
         <item itemvalue="JUnit.SpringBootJpaSpringDataApplicationTests" />
         <item itemvalue="JUnit.SpringBootJpaSpringDataApplicationTests.splitFileWithVersion3" />
@@ -491,7 +528,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672015163144</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="XML Parser With Validation">
+      <created>1672058368665</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1672058368665</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="UnknownFeatures">

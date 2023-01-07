@@ -46,16 +46,19 @@ public class bigFileManagerController {
     public ModelAndView uploadlargefile(@RequestParam("cfile") MultipartFile[] files,HttpServletRequest req,  ModelMap model) throws IOException {
 
         Stopwatch stopwatch = Stopwatch.createStarted();
+
         // 1. Upload File and Split if it is bigger in size.
         //fileUploaderObj.uploadAndSplitFileIfSizeBigger(files,xmlFilesFolder,(1024*1024*15));
         //fileUploaderObj.uploadFilesUsingBuffeReaderAndStreaming(files,xmlFilesFolder);
         fileUploaderObj.uploadFilesUsingStreaming(files,xmlFilesFolder);
+
+
+
         stopwatch.stop();
-        System.out.println("Time taken in upload and Split : # "+stopwatch.elapsed(SECONDS));
+        System.out.println("Time taken in upload : # "+stopwatch.elapsed(SECONDS));
 
 
         model.addAttribute("fileStatus","File Uploaded Sucessfully..");
-
         req.getSession().setAttribute("userFullName",req.getSession().getAttribute("userFullName"));
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("uploadlargefile");
