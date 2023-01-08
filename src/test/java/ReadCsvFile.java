@@ -1,7 +1,5 @@
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.*;
@@ -31,8 +29,8 @@ public class ReadCsvFile {
 
                 if(line.toUpperCase().contains("SUBJECT")){
                     // Add Data
-                    String commentData = line.toUpperCase().replaceAll("SUBJECT:,,","");
-                    PrevObjAmosData.setDocSubject(commentData);
+                    String commentData = line.replaceAll(",Subject:,,","");
+                    PrevObjAmosData.setDocSubject(commentData.replace(",,,,,,,,,,",""));
                     recordsToWrite.add(PrevObjAmosData);
                     System.out.println("\n For the Airtech =>"+PrevObjAmosData);
                 }
@@ -70,30 +68,40 @@ public class ReadCsvFile {
         catch (IOException e) { e.printStackTrace();}
 
 
-      //--- This part will write Data to the new file from 9th Row Onward
-        String outputFileAbsoultePath="C:\\JavaProject\\eirtechportal\\src\\test\\java\\report.xlsx";
+        //--- This part will write Data to the new file from 9th Row Onward
         try {
+
+            String outputFileAbsoultePath="C:\\JavaProject\\eirtechportal\\src\\test\\java\\report.xlsx";
             appendRows(8,recordsToWrite, new File(outputFileAbsoultePath));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+        } catch (IOException e) { e.printStackTrace();}
 
     }
 
 
 
 
-
-
-
     //--- this method will render data to the row.
-    private static void appendRows(int rowNumStartPossition,List<AmosDataEntity> recordsToWrite, File file)
+    private static void appendRows(int rowNumStartPossition,List<AmosDataEntity> recordsToWrite, File fileTowrite)
             throws IOException, NoClassDefFoundError {
 
-        XSSFWorkbook workbook = new XSSFWorkbook(new FileInputStream(file));
+        XSSFWorkbook workbook = new XSSFWorkbook(new FileInputStream(fileTowrite));
         Sheet sheet = workbook.getSheetAt(0);
         //int rowNum = sheet.getLastRowNum() + 1;
         int rowNum =rowNumStartPossition;
+
+        //Create new style
+        CellStyle style = workbook.createCellStyle();
+        style.setWrapText(true);
+        style.setAlignment(HorizontalAlignment.CENTER);
+        style.setVerticalAlignment(VerticalAlignment.CENTER);
+
+        Font font = workbook.createFont();
+        font.setFontName("Calibri");
+        font.setFontHeightInPoints((short) 8);
+        style.setFont(font);
+
+
 
         Map<Integer, Object[]> data = prepareData(rowNum, recordsToWrite);
 
@@ -104,6 +112,7 @@ public class ReadCsvFile {
             int cellNum = 0;
             for (Object obj : objArr) {
                 Cell cell = row.createCell(cellNum++);
+                cell.setCellStyle(style); // Setting Up Style to the cell
                 if (obj instanceof String)
                     cell.setCellValue((String) obj);
                 else if (obj instanceof Integer)
@@ -111,7 +120,7 @@ public class ReadCsvFile {
             }
         }
         try {
-            FileOutputStream out = new FileOutputStream(file);
+            FileOutputStream out = new FileOutputStream(fileTowrite);
             workbook.write(out);
             out.close();
         } catch (Exception e) {
@@ -123,16 +132,26 @@ public class ReadCsvFile {
 
 
     private static Map<Integer, Object[]> prepareData(int rowNum, List<AmosDataEntity> recordsToWrite) {
-       int itemNo=1;
+        int itemNo=1;
+        String blankString = " ";
         Map<Integer, Object[]> data = new HashMap<>();
         for (AmosDataEntity entity : recordsToWrite) {
             data.put(rowNum, new Object[]{
                     itemNo,
+                    blankString,
                     entity.getDocNo(),
-                    entity.getDocType(),
-                    entity.getDocDate(),
+                    blankString,
                     entity.getDocSubject(),
-                    entity.getDocATA()
+                    blankString,
+                    entity.getDocWo(),
+                    entity.getDocDate(),
+                    entity.getDocTahTsn(),
+                    entity.getDocTacCsn(),
+                    blankString,
+                    blankString,
+                    blankString,
+                    blankString,
+                    entity.getDocStats()
             });
             rowNum++;
             itemNo++;
