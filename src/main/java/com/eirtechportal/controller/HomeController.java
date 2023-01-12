@@ -85,7 +85,6 @@ public class HomeController {
 
         String userStatus[] = objDataOrch.validateUserLoginDetail(req.getParameter("loginname"),req.getParameter("password"));
 
-
         ModelAndView modelAndView = new ModelAndView();
         if(userStatus[0].equalsIgnoreCase("OK")) {
             model.put("userFullName",userStatus[1]);
@@ -113,8 +112,6 @@ public class HomeController {
         UserMaster registerUser = objDataOrch.registerNewUser(user);
         return ResponseEntity.ok(registerUser);
     }
-
-
 
 
 
