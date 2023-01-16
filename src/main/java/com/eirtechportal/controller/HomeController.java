@@ -3,6 +3,7 @@
  */
 package com.eirtechportal.controller;
 
+import com.eirtechportal.daorepository.DocumentConversionDetailMasterDao;
 import com.eirtechportal.models.DocumentConversionDetailMaster;
 import com.eirtechportal.models.UserMaster;
 import com.eirtechportal.models.UsersMasterForCsv;
@@ -26,6 +27,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -177,8 +180,9 @@ public class HomeController {
             String[] pdfFileName = conversionDetail.getInputFileWithPath().split("/");
             String[] excelFileName = conversionDetail.getOutputFileWithPath().split("/");
 
-            model.addAttribute("pdfFileName",pdfFileName[4]);
-            model.addAttribute("excelFileName",excelFileName[4]);
+            model.addAttribute("sourceFileName",pdfFileName[4]);
+            model.addAttribute("targetFileName",excelFileName[4]);
+            model.addAttribute("documentId",conversionDetail.getId());
 
 
         req.getSession().setAttribute("userFullName",req.getSession().getAttribute("userFullName"));
@@ -192,22 +196,23 @@ public class HomeController {
 
 
 
-    @Value("${spring.operations.pdf.datafolder}")
-    private String pdfFilesFolder;
+
+
+    @Autowired
+    DocumentConversionDetailMasterDao docConvDao;
+
     /**
      * This API will Collect All  file for a project and make 1 zip file and then download.
      * Input Parameter : File Name
      * Output          : Same File downloaded to the user.
      */
-    @RequestMapping(value = "/viewdownloadalldocuments/{filFullName}", method = {RequestMethod.POST, RequestMethod.GET})
-    public void downloadViewDocuments(@PathVariable String filFullName, HttpServletRequest reqObj, HttpServletResponse resObj) throws Exception {
+    @RequestMapping(value = "/viewdownloadalldocuments/{documentId}", method = {RequestMethod.POST, RequestMethod.GET})
+    public void downloadViewDocuments(@PathVariable Long documentId, HttpServletRequest reqObj, HttpServletResponse resObj) throws Exception {
         try {
 
-            //-- TODO --  fileFullAbsoulutePath this need to be changed to be based on DB query.
-            String fileFullAbsoulutePath = pdfFilesFolder+reqObj.getSession().getAttribute("userFullName").toString()+File.separator+filFullName;
+            Optional<DocumentConversionDetailMaster> docObj = docConvDao.findById(documentId);
 
-
-            viewDownloadDocumentInBrowser(resObj,  filFullName, fileFullAbsoulutePath, "DOWNLOAD");
+            viewDownloadDocumentInBrowser(resObj,  docObj.get().getInputFileWithPath(), docObj.get().getOutputFileWithPath(), "DOWNLOAD");
 
         } catch (IOException e) { System.out.println(e.toString()); }
 

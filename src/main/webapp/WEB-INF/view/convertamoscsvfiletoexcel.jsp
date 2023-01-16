@@ -75,10 +75,10 @@ function Creating_Report_From_CSV() {
 
 
 
-function Download_Excel_File(fileFullPath) {
+function Download_Excel_File(documentId) {
 
 		document.createexcelreportfromcsv.method = "POST";
-		document.createexcelreportfromcsv.action = "viewdownloadalldocuments/"+fileFullPath;
+		document.createexcelreportfromcsv.action = "viewdownloadalldocuments/"+documentId;
 	    document.createexcelreportfromcsv.submit();
 		return true;
 
@@ -173,7 +173,7 @@ function Download_Excel_File(fileFullPath) {
 
 <br>
 
-        <c:if test="${not empty pdfFileName}">
+        <c:if test="${not empty sourceFileName}">
         <br>
 
           <table class="table table-striped table-bordered" border="1" style="width: 50%;" align="center">
@@ -182,14 +182,14 @@ function Download_Excel_File(fileFullPath) {
 
                          <td  colspan="5" align="left">
                              <img src="images/page_white_acrobat.png"/> &nbsp;&nbsp;
-                             <a href="javascript:void()" onClick="Download_Excel_File('${pdfFileName}');">
-                              ${pdfFileName}
+                             <a href="javascript:void()" onClick="Download_Excel_File('${documentId}');">
+                              ${sourceFileName}
                               </a>
 
                          </td>
 
                          <td   align="center">
-                            <a href="javascript:void()" onClick="Download_Excel_File('${pdfFileName}');">
+                            <a href="javascript:void()" onClick="Download_Excel_File('${documentId}');">
                                <i class="fa fa-download" aria-hidden="true"></i> </span>
                             </a>
                          </td>
@@ -199,12 +199,12 @@ function Download_Excel_File(fileFullPath) {
                     <tr align="center">
                          <td  colspan="5" align="left">
                               <img src="images/page_white_excel.png"/> &nbsp;&nbsp;
-                              <a href="javascript:void()" onClick="Download_Excel_File('${excelFileName}');">
-                                 ${excelFileName}
+                              <a href="javascript:void()" onClick="Download_Excel_File('${documentId}');">
+                                 ${targetFileName}
                               </a>
                          </td>
                          <td  align="center">
-                             <a href="javascript:void()" onClick="Download_Excel_File('${excelFileName}');">
+                             <a href="javascript:void()" onClick="Download_Excel_File('${documentId}');">
                                   <i class="fa fa-download" aria-hidden="true"></i> </span>
                               </a>
                          </td>

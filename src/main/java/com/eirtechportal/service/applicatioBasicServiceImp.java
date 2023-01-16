@@ -264,7 +264,6 @@ public class applicatioBasicServiceImp  implements applicatioBasicService  {
 
             String line = "";
             String splitBy = ",";
-            //String fileAbsoultePath="C:\\JavaProject\\eirtechportal\\src\\test\\java\\AMOSExcel.csv";
             String fileAbsoultePath=inputFilepath.toString();
             List<AmosDataEntity> recordsToWrite = new ArrayList<AmosDataEntity>();
 
@@ -284,7 +283,7 @@ public class applicatioBasicServiceImp  implements applicatioBasicService  {
                         String commentData = line.replaceAll(",Subject:,,","");
                         PrevObjAmosData.setDocSubject(commentData.replace(",,,,,,,,,,",""));
                         recordsToWrite.add(PrevObjAmosData);
-                        System.out.println("\n For the Airtech =>"+PrevObjAmosData);
+                        //System.out.println("\n For the Airtech =>"+PrevObjAmosData);
                     }
                     else{
 

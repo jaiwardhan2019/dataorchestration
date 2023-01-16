@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public interface DocumentConversionDetailMasterDao extends CrudRepository<DocumentConversionDetailMaster, Long> {
@@ -17,5 +18,6 @@ public interface DocumentConversionDetailMasterDao extends CrudRepository<Docume
 	List<DocumentConversionDetailMaster> findUserDocumentsConvertedCount(String userFullName);
 
 
+	Optional<DocumentConversionDetailMaster> findById(Long Id);
 
 }
