@@ -100,7 +100,7 @@ public class bigFileManagerController {
 
         Stopwatch stopwatch = Stopwatch.createStarted();
 
-            //fileParsherObj.parseBigFile();
+            fileParsherObj.parseBigFile();
             BigFileParsherObj.parseXmlFile();
 
         stopwatch.stop();

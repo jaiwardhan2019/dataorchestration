@@ -79,12 +79,6 @@ if(request.getSession().getAttribute("userFullName") == null){response.sendRedir
 
 
 
-//--- This function will be loading all pages to the body main area
-//function loadJspPagetoTheBody(callingpagename) {
-//		var callingurl = "loadjsppage?pagename="+callingpagename;
-//		$('#mainbody').load(callingurl);
-//}
-
 
 function calHomePage(){
 	document.portal.method="POST";
@@ -122,6 +116,13 @@ function loadCsvFileConversionPage() {
 function loadPdfFileConversionPage() {
     document.portal.method="POST";
 	document.portal.action="loadpdftoexcelgui";
+    document.portal.submit();
+	return true;
+}
+
+function loadAmosCsvToExcelConversionPage() {
+    document.portal.method="POST";
+	document.portal.action="loadcsvtoexcelgui";
     document.portal.submit();
 	return true;
 }
@@ -189,8 +190,8 @@ function Logout_application(){
                 <a href="javascript:void();" onClick="calHomePage();" style="font-size:9pt;font-weight:600;color:#FDFEFE;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-home fa-lg" aria-hidden="true"></i> Home</a>
             </li>
 
+            <!--
             <li class="dropdown">
-
                 <a onmouseover="this.click()" style="font-size:9pt;font-weight:600;color:#FDFEFE;"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-cogs" aria-hidden="true"></i> &nbsp;Large File Process <span class="caret"></span></a>
                     <ul class="dropdown-menu" style="left:0;width:200px;">
                         <li style="margin-top:3px;margin-bottom:3px;"><a href="javascript:void();" onClick="UploadLargeFileUploadPage();"  style="font-size:09pt;color:#FDFEFE;">
@@ -201,6 +202,7 @@ function Logout_application(){
                          </li>
               </ul>
             </li>
+            -->
 
 
 
@@ -209,7 +211,11 @@ function Logout_application(){
                 <a onmouseover="this.click()" style="font-size:9pt;font-weight:600;color:#FDFEFE;"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-cogs" aria-hidden="true"></i> &nbsp;Convert File <span class="caret"></span></a>
                     <ul class="dropdown-menu" style="left:0;width:200px;">
                         <li style="margin-top:3px;margin-bottom:3px;"><a href="javascript:void();" onClick="loadPdfFileConversionPage();"  style="font-size:09pt;color:#FDFEFE;">
-                                <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;PDF to Excel </a>
+                                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;&nbsp;PDF to Excel </a>
+                        </li>
+
+                        <li style="margin-top:3px;margin-bottom:3px;"><a href="javascript:void();" onClick="loadAmosCsvToExcelConversionPage();"  style="font-size:09pt;color:#FDFEFE;">
+                                <i class="fa fa-file-excel-o" aria-hidden="true"></i>&nbsp;&nbsp;AMOS .CSV to EXCEL</a>
                         </li>
 
               </ul>

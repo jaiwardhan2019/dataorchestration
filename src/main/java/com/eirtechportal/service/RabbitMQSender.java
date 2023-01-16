@@ -1,3 +1,4 @@
+/*
 package com.eirtechportal.service;
 
 import com.eirtechportal.models.Employee;
@@ -31,3 +32,4 @@ public class RabbitMQSender {
 
 
 }
+*/

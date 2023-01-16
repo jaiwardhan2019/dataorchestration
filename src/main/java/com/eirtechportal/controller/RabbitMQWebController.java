@@ -1,3 +1,4 @@
+/*
 package com.eirtechportal.controller;
 
 import com.eirtechportal.models.Employee;
@@ -30,3 +31,4 @@ public class RabbitMQWebController {
 
 }
 
+*/

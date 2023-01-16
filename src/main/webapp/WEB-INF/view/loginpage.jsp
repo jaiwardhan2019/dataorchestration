@@ -161,6 +161,20 @@ function myFunction(){
                             <hr style="margin-bottom:8px;margin-top:8px;"/>
 							<div class="row">
 								<div class="col-md-12 col-sm-9 col-xs-12" style="color:#FDFEFE;font-size:10pt;font-weight:400;">
+									<i class="fa fa-file-pdf-o fa-fw" size="medium" color="white" aria-hidden="true"></i>
+									&nbsp; Convert PDF File to EXCEL.
+								</div>
+							</div>
+							<hr style="margin-bottom:8px;margin-top:8px;"/>
+							<div class="row">
+								<div class="col-md-12 col-sm-9 col-xs-12" style="color:#FDFEFE;font-size:10pt;font-weight:400;">
+									<i class="fa fa-file-excel-o fa-fw" size="medium" color="white" aria-hidden="true"></i>
+									&nbsp; Convert AMOS CSV File to EXCEL Report.
+								</div>
+							</div>
+							<hr style="margin-bottom:8px;margin-top:8px;"/>
+							<div class="row">
+								<div class="col-md-12 col-sm-9 col-xs-12" style="color:#FDFEFE;font-size:10pt;font-weight:400;">
 									<i class="fa fa-line-chart fa-fw" size="medium" color="white" aria-hidden="true"></i>
 									&nbsp;Easy report generation.
 								</div>

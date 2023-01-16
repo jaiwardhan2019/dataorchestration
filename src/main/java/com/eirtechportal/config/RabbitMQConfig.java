@@ -1,3 +1,4 @@
+/*
 package com.eirtechportal.config;
 
 import org.springframework.amqp.core.AmqpTemplate;
@@ -45,4 +46,6 @@ public class RabbitMQConfig {
         return new Jackson2JsonMessageConverter();
     }
 
+
 }
+*/

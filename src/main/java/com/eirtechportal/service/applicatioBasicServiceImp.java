@@ -3,12 +3,15 @@ package com.eirtechportal.service;
 
 import com.eirtechportal.daorepository.DocumentConversionDetailMasterDao;
 import com.eirtechportal.daorepository.UserDao;
+import com.eirtechportal.models.AmosDataEntity;
 import com.eirtechportal.models.DocumentConversionDetailMaster;
 import com.eirtechportal.models.UserMaster;
 import com.spire.pdf.FileFormat;
 import com.spire.pdf.PdfDocument;
 import com.eirtechportal.models.UsersMasterForCsv;
 import com.spire.pdf.conversion.XlsxLineLayoutOptions;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,9 +23,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -185,8 +186,7 @@ public class applicatioBasicServiceImp  implements applicatioBasicService  {
 
         DocumentConversionDetailMaster documenUpdate = null;
 
-
-                String statusUpdate = "Conversion Not Done !!!";
+        String statusUpdate = "Conversion Not Done !!!";
         // --------- This Part of code Will Loop For Multiple File and Save on the local Folder
 
         byte[] bytes;
@@ -211,7 +211,7 @@ public class applicatioBasicServiceImp  implements applicatioBasicService  {
 
 
                 // This part of code will update Converted Document detail to the DB
-                documenUpdate = updateFileConversionDataTotheDataBase(inputFileName ,outputFileName ,userName );
+                documenUpdate = updateFileConversionDataTotheDataBase(pdfFilesFolder,inputFileName ,outputFileName ,userName );
                 LOGGER.info("DB Update of the file is done..");
 
                 //--- TODO --- Write a function to find and replace text in the Excel FIle--
@@ -230,6 +230,207 @@ public class applicatioBasicServiceImp  implements applicatioBasicService  {
 
         return documenUpdate;
     }
+
+
+
+    @Value ("${spring.operations.amos.csv.datafolder}")
+    private String amosCsvFileRoot;
+
+    @Override
+    public DocumentConversionDetailMaster uploadAmosCsvFileAndCreateExcelReport(HttpServletResponse requEst, MultipartFile files, String userName) throws IOException {
+
+        //--- Create Folder if not exist ------
+        File amosCsvFileFolder = new File(amosCsvFileRoot);
+        if (!amosCsvFileFolder.exists()) {amosCsvFileFolder.mkdir();}
+
+        amosCsvFileFolder = new File(amosCsvFileRoot+userName);
+        if (!amosCsvFileFolder.exists()) {amosCsvFileFolder.mkdir();}
+        String outputFileName  = "amoscsvfile.csv";
+
+        DocumentConversionDetailMaster documenUpdate = null;
+        String statusUpdate = "Conversion Not Done !!!";
+
+        byte[] bytes;
+        try {
+            bytes = files.getBytes();
+            Path inputFilepath = Paths.get(amosCsvFileFolder + "/"+ outputFileName);
+            //---- This part will upload file and save to the  AMOS Folder.
+            try {
+
+                Files.write(inputFilepath, bytes);
+                LOGGER.info(files.getOriginalFilename()+ " AMOS csv File Uploaded and ..  EXCEL Conversion started..");
+
+            } catch (IOException e) { LOGGER.error(e.toString());}
+
+            String line = "";
+            String splitBy = ",";
+            //String fileAbsoultePath="C:\\JavaProject\\eirtechportal\\src\\test\\java\\AMOSExcel.csv";
+            String fileAbsoultePath=inputFilepath.toString();
+            List<AmosDataEntity> recordsToWrite = new ArrayList<AmosDataEntity>();
+
+            try
+            {
+                //parsing a CSV file into BufferedReader class constructor
+                BufferedReader br = new BufferedReader(new FileReader(fileAbsoultePath));
+                br.readLine();
+                int itemNo = 1;
+                AmosDataEntity PrevObjAmosData = new AmosDataEntity();
+                while ((line = br.readLine()) != null){             //returns a Boolean value
+
+                    AmosDataEntity objAmosData = new AmosDataEntity();
+
+                    if(line.toUpperCase().contains("SUBJECT")){
+                        // Add Data
+                        String commentData = line.replaceAll(",Subject:,,","");
+                        PrevObjAmosData.setDocSubject(commentData.replace(",,,,,,,,,,",""));
+                        recordsToWrite.add(PrevObjAmosData);
+                        System.out.println("\n For the Airtech =>"+PrevObjAmosData);
+                    }
+                    else{
+
+                        String[] columnArray = line.split(splitBy);    // use comma as separator
+                        if(columnArray.length > 0) {
+                            objAmosData.setItemNo(itemNo);
+                            objAmosData.setDocNo(columnArray[0]);
+                            objAmosData.setDocType (columnArray[1]);
+                            objAmosData.setDocRev(columnArray[2]);
+                            objAmosData.setDocComponent(columnArray[3]);
+                            objAmosData.setDocAC(columnArray[4]);
+                            objAmosData.setDocATA(columnArray[5]);
+                            objAmosData.setDocStats(columnArray[6]);
+                            objAmosData.setDocRep(columnArray[7]);
+                            objAmosData.setDocDate(columnArray[8]);
+                            objAmosData.setDocTahTsn(columnArray[9]);
+                            objAmosData.setDocTacCsn(columnArray[10]);
+                            objAmosData.setDocWo(columnArray[11]);
+                            objAmosData.setDocDueDim1(columnArray[12]);
+                            PrevObjAmosData = objAmosData;
+
+                        }
+
+                    }
+
+
+                }
+                itemNo++;
+
+            }//-- End of while
+
+
+            catch (IOException e) { e.printStackTrace();}
+
+
+            //--- This part will write Data to the new file from 9th Row Onward
+            try {
+
+                String outputFileAbsoultePath= amosCsvFileFolder + "/"+ "report.xlsx";
+                appendRows(8,recordsToWrite, new File(outputFileAbsoultePath));
+
+            } catch (IOException e) { e.printStackTrace();}
+
+
+        } catch (IOException e ) { LOGGER.error(e.toString()); statusUpdate =e.toString(); }
+
+
+        return updateFileConversionDataTotheDataBase(amosCsvFileRoot,files.getOriginalFilename(),"report.xlsx",userName);
+
+    }
+
+
+
+    //--- this method will render data to the row.
+    private void appendRows(int rowNumStartPossition,List<AmosDataEntity> recordsToWrite, File fileTowrite)
+            throws IOException, NoClassDefFoundError {
+
+        XSSFWorkbook workbook = new XSSFWorkbook(new FileInputStream(fileTowrite));
+        Sheet sheet = workbook.getSheetAt(0);
+        //int rowNum = sheet.getLastRowNum() + 1;
+        int rowNum =rowNumStartPossition;
+
+        //Create new style
+        CellStyle style = workbook.createCellStyle();
+        style.setWrapText(true);
+        style.setAlignment(HorizontalAlignment.CENTER);
+        style.setVerticalAlignment(VerticalAlignment.CENTER);
+
+        Font font = workbook.createFont();
+        font.setFontName("Calibri");
+        font.setFontHeightInPoints((short) 8);
+        style.setFont(font);
+
+
+
+        Map<Integer, Object[]> data = prepareData(rowNum, recordsToWrite);
+
+        Set<Integer> keySet = data.keySet();
+        for (Integer key : keySet) {
+            Row row = sheet.createRow(rowNum++);
+            Object[] objArr = data.get(key);
+            int cellNum = 0;
+            for (Object obj : objArr) {
+                Cell cell = row.createCell(cellNum++);
+                cell.setCellStyle(style); // Setting Up Style to the cell
+                if (obj instanceof String)
+                    cell.setCellValue((String) obj);
+                else if (obj instanceof Integer)
+                    cell.setCellValue((Integer) obj);
+            }
+        }
+        try {
+            FileOutputStream out = new FileOutputStream(fileTowrite);
+            workbook.write(out);
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+    private  Map<Integer, Object[]> prepareData(int rowNum, List<AmosDataEntity> recordsToWrite) {
+        int itemNo=1;
+        String blankString = " ";
+        Map<Integer, Object[]> data = new HashMap<>();
+        for (AmosDataEntity entity : recordsToWrite) {
+            data.put(rowNum, new Object[]{
+                    itemNo,
+                    blankString,
+                    entity.getDocNo(),
+                    blankString,
+                    entity.getDocSubject(),
+                    blankString,
+                    entity.getDocWo(),
+                    entity.getDocDate(),
+                    entity.getDocTahTsn(),
+                    entity.getDocTacCsn(),
+                    blankString,
+                    blankString,
+                    blankString,
+                    blankString,
+                    entity.getDocStats()
+            });
+            rowNum++;
+            itemNo++;
+        }
+        return data;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -286,10 +487,10 @@ public class applicatioBasicServiceImp  implements applicatioBasicService  {
     * This method will update document conversion detail to the Table
     * */
 
-    private DocumentConversionDetailMaster updateFileConversionDataTotheDataBase(String inputFileName ,String outputFileName , String UserName ){
+    private DocumentConversionDetailMaster updateFileConversionDataTotheDataBase(String rootFolderName,String inputFileName ,String outputFileName , String UserName ){
         DocumentConversionDetailMaster docObj = new DocumentConversionDetailMaster();
-        docObj.setInputFileWithPath(pdfFilesFolder+UserName+"/"+inputFileName);
-        docObj.setOutputFileWithPath(pdfFilesFolder+UserName+"/"+outputFileName);
+        docObj.setInputFileWithPath(rootFolderName+UserName+"/"+inputFileName);
+        docObj.setOutputFileWithPath(rootFolderName+UserName+"/"+outputFileName);
         docObj.setConversionDate(new Date());
         docObj.setUserFullName(UserName);
         return docConvDao.save(docObj);

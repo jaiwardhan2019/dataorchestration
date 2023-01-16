@@ -157,6 +157,39 @@ public class HomeController {
 
 
 
+    @RequestMapping(value = "/loadcsvtoexcelgui", method = { RequestMethod.POST, RequestMethod.GET }, produces = {MimeTypeUtils.APPLICATION_JSON_VALUE })
+    public ModelAndView loadcsvtoexcelgui(HttpServletRequest req, ModelMap model) throws IOException {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("convertamoscsvfiletoexcel");
+        req.getSession().setAttribute("userFullName",req.getSession().getAttribute("userFullName"));
+        return modelAndView;
+    }
+
+
+
+    @RequestMapping(value = "/createexcelreportfromcsvtoexcel", method = { RequestMethod.POST, RequestMethod.GET })
+    public ModelAndView createexcelreportfromcsvtoexcel(@RequestParam("cfile") MultipartFile files, HttpServletRequest req, HttpServletResponse res, ModelMap model) throws IOException {
+
+
+            //--- This part of code will convert the pdf file to Excel and save in the same location
+            DocumentConversionDetailMaster conversionDetail = objDataOrch.uploadAmosCsvFileAndCreateExcelReport(res, files, req.getSession().getAttribute("userFullName").toString());
+
+            String[] pdfFileName = conversionDetail.getInputFileWithPath().split("/");
+            String[] excelFileName = conversionDetail.getOutputFileWithPath().split("/");
+
+            model.addAttribute("pdfFileName",pdfFileName[4]);
+            model.addAttribute("excelFileName",excelFileName[4]);
+
+
+        req.getSession().setAttribute("userFullName",req.getSession().getAttribute("userFullName"));
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("convertamoscsvfiletoexcel");
+        return modelAndView;
+    }
+
+
+
+
 
 
     @Value("${spring.operations.pdf.datafolder}")
@@ -170,9 +203,12 @@ public class HomeController {
     public void downloadViewDocuments(@PathVariable String filFullName, HttpServletRequest reqObj, HttpServletResponse resObj) throws Exception {
         try {
 
-            //-- TODO --  this need to be changed to be based on DB query.
+            //-- TODO --  fileFullAbsoulutePath this need to be changed to be based on DB query.
             String fileFullAbsoulutePath = pdfFilesFolder+reqObj.getSession().getAttribute("userFullName").toString()+File.separator+filFullName;
+
+
             viewDownloadDocumentInBrowser(resObj,  filFullName, fileFullAbsoulutePath, "DOWNLOAD");
+
         } catch (IOException e) { System.out.println(e.toString()); }
 
     }

@@ -1,6 +1,6 @@
 <%@include file="include/header.jsp" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <html>
 <head>
@@ -28,10 +28,10 @@ function search_progress() {
 
 function Validate_Xml_File(filePath) {
 
-	var allowedExtensions = /(\.pdf)$/i;
+	var allowedExtensions = /(\.csv)$/i;
 
 	if (!allowedExtensions.exec(filePath)) {
-		document.getElementById('validationstatus').innerHTML = "<span style='color:red' > Invalid file type\n You have to select .pdf File Only..!! </span>";
+		document.getElementById('validationstatus').innerHTML = "<span style='color:red' > Invalid file type\n You have to select AMOS .csv File Only..!! </span>";
 		return false;
 	} else {
 		return true;
@@ -58,16 +58,16 @@ function writefiles(file){
 
 function Creating_Report_From_CSV() {
 
-	if (document.convertpdffile.cfile.value == "") {
+	if (document.createexcelreportfromcsv.cfile.value == "") {
 		document.getElementById('validationstatus').innerHTML = "<span style='color:red' > Please Select File....!! </span>";
-		document.convertpdffile.cfile.focus();
+		document.createexcelreportfromcsv.cfile.focus();
 		return false;
 	}
-	if (Validate_Xml_File(document.convertpdffile.cfile.value)) {
+	if (Validate_Xml_File(document.createexcelreportfromcsv.cfile.value)) {
 		search_progress();
-		document.convertpdffile.method = "POST";
-		document.convertpdffile.action = "convertpdffiletoexcel";
-	    document.convertpdffile.submit();
+		document.createexcelreportfromcsv.method = "POST";
+		document.createexcelreportfromcsv.action = "createexcelreportfromcsvtoexcel";
+	    document.createexcelreportfromcsv.submit();
 		return true;
 	}
 
@@ -77,9 +77,9 @@ function Creating_Report_From_CSV() {
 
 function Download_Excel_File(fileFullPath) {
 
-		document.convertpdffile.method = "POST";
-		document.convertpdffile.action = "viewdownloadalldocuments/"+fileFullPath;
-	    document.convertpdffile.submit();
+		document.createexcelreportfromcsv.method = "POST";
+		document.createexcelreportfromcsv.action = "viewdownloadalldocuments/"+fileFullPath;
+	    document.createexcelreportfromcsv.submit();
 		return true;
 
 }//---------- End Of Function  ------------------
@@ -93,11 +93,11 @@ function Download_Excel_File(fileFullPath) {
 <ul class="breadcrumb">
     <li><a href="javascript:void();" onClick="calHomePage();">Home</a></li>
     <li>Convert File </li>
-    <li>PDF To Excel </li>
+    <li> AMOS .CSV to Excel Report  </li>
 </ul>
 
 <div class="col-md-12 col-sm-12 col-xs-12"  align="left">
-    <i class="fa fa-cogs fa-2x" aria-hidden="true"></i>&ensp;&ensp;<span style="font-weight:600;font-size:13pt;">Convert PDF to Excel </span></a>
+    <i class="fa fa-cogs fa-2x" aria-hidden="true"></i>&ensp;&ensp;<span style="font-weight:600;font-size:13pt;">Create Excel Report from AMOS .CSV file  </span></a>
 </div>
  <br>
  <br>
@@ -110,14 +110,14 @@ function Download_Excel_File(fileFullPath) {
 
  <div class="col-md-12 col-sm-12 col-xs-12" align="center">
 
- <form name="convertpdffile" id="convertpdffile" method="post" enctype="multipart/form-data">
+ <form name="createexcelreportfromcsv" id="createexcelreportfromcsv" method="post" enctype="multipart/form-data">
     <input type="hidden" id="profilelist" name="profilelist" value="${profilelist}">
       <table class="table table-striped table-bordered" border="1" style="width: 40%;" align="center">
     		<tbody>
 			     <tr align="center">
 					 <td  bgcolor="#0070BA" colspan="2">
-					   <span style="color:white;"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> &nbsp;<b>
-					    Convert PDF File To Excel  &nbsp;&nbsp;
+					   <span style="color:white;"> <i class="fa fa-file-excel-o" aria-hidden="true"></i> &nbsp;<b>
+					    Excel Report  &nbsp;&nbsp;
 					   </b></span>
 					 </td>
 			     </tr>
@@ -126,7 +126,7 @@ function Download_Excel_File(fileFullPath) {
 
 	           <tr>
 	              <td align="right" bgcolor="white" width="40%">
-					<div><label>.PDF File </label></div>
+					<div><label>Select AMOS .CSV File </label></div>
 				  </td>
 
                  <td align="right" bgcolor="white" width="60%">
@@ -148,7 +148,7 @@ function Download_Excel_File(fileFullPath) {
 
 					        <span style="display:none" id="searchbutton1">
 					                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:100%">
-							         <b>Converting File please wait....</b>&nbsp;&nbsp;<i class="fa fa-spinner fa-pulse fa-2x"></i>
+							         <b>Creating Report please wait....</b>&nbsp;&nbsp;<i class="fa fa-spinner fa-pulse fa-2x"></i>
 							         </div>
 					        </span>
 			 			     </td>

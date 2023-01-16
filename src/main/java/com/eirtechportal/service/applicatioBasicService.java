@@ -54,6 +54,15 @@ public interface applicatioBasicService {
     public DocumentConversionDetailMaster uploadAdnConvertPdfFileToExcel(HttpServletResponse requEst, MultipartFile files , String userName)throws IOException;
 
 
+    /*
+     *  Author  : Jai Wardhan
+     *  Date    : 15 - Jan -2023
+     *  Purpose : Purpose of this method to upload the AMOS .csv file and create EXCEL Report from there
+     *
+     * */
+    public DocumentConversionDetailMaster uploadAmosCsvFileAndCreateExcelReport(HttpServletResponse requEst, MultipartFile files , String userName)throws IOException;
+
+
 
     /*
      *  Author  : Jai Wardhan
