@@ -10,12 +10,22 @@ import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 import software.amazon.awssdk.services.s3.model.S3Exception;
 
+/*
+*  1. https://docs.aws.amazon.com/AmazonS3/latest/userguide/example_s3_Scenario_UsingLargeFiles_section.html
+*  2. https://ozenero.com/amazon-s3-uploaddownload-large-files-s3-springboot-amazon-s3-multipartfile-application?ref=morioh.com&utm_source=morioh.com
+*  3. https://repost.aws/knowledge-center/s3-upload-large-files  << Tuning Optimization
+*  4. https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/s3/src/main/java/com/example/s3
+*
+* */
+//https://stackoverflow.com/questions/36201759/how-to-set-inputstream-content-length
 public class S3Util {
 
     private static final String BUCKET = "xmlinbound";
 
     public static void uploadFile(String fileName, InputStream inputStream)
+
             throws S3Exception, AwsServiceException, SdkClientException, IOException {
+
         S3Client client = S3Client.builder().build();
 
         PutObjectRequest request = PutObjectRequest.builder()
