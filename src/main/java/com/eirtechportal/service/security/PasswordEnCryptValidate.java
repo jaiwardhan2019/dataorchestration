@@ -1,4 +1,4 @@
-package com.eirtechportal.service;
+package com.eirtechportal.service.security;
 
 // Copyright (c) 2022 Radiant Solution
 //
